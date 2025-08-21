@@ -78,6 +78,25 @@ True
 True
 >>> 1>10
 False
+>>> 1<2 and 2<3
+True
+>>> 2<3 and 3<2
+False
+>>> 1<2<3
+True
+>>> 2<3<2
+False
+>>> a=[1,2,3,4]
+>>> b=a
+>>> b is a
+True
+>>> b==a
+True
+>>> b=[1,2,3,4]
+>>> b is a
+False
+>>> b==a
+True
 >>> 2<=2
 True
 >>> 2>=2
