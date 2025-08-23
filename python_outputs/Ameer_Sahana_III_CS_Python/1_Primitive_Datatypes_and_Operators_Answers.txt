@@ -91,3 +91,5 @@ True
 1
 >>> False+True*3
 3
+>>> False -2
+-2
