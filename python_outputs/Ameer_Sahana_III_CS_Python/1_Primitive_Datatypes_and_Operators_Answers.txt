@@ -93,3 +93,35 @@ True
 3
 >>> False -2
 -2
+>>> 0==False
+True
+>>> True==1
+True
+>>> 2>True
+True
+>>> False>True
+False
+>>> False<True
+True
+>>> 1!=True
+False
+>>> bool(0)
+False
+>>> bool(1)
+True
+>>> bool(2)
+True
+>>> bool({})
+False
+>>> bool([])
+False
+>>> bool([1,2])
+True
+>>> bool([0,-1])
+True
+>>> 1==1
+True
+>>> 5==0
+False
+>>> 1!=1
+False
