@@ -167,3 +167,32 @@ True
 'This is also a String'
 >>> """Hello"""
 'Hello'
+>>> "Hello"+"World"
+'HelloWorld'
+>>> "Hello" "World"
+'HelloWorld'
+>>> """Hello
+... World"""
+'Hello  \nWorld'
+>>> "Hello"[1]
+'e'
+>>> len("Hello")
+5
+>>> len("Hello Sahana")
+12
+>>> name="sahana"
+>>> f"Her name is{name}."
+'Her name issahana.'
+>>> f"her name is {name}."
+'her name is sahana.'
+>>> print(name)
+sahana
+>>> f"{name} is {len(name)} characters."
+'sahana is 6 characters.'
+>>> "none"==None
+False
+>>> "None"==None
+False
+>>> None==None
+True
+>>>
