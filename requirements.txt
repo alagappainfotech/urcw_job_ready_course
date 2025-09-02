@@ -35,4 +35,6 @@ python-dotenv>=1.0.0
 # Additional utilities
 click>=8.1.0
 Jinja2>=3.1.0
-MarkupSafe>=2.1.0 
+MarkupSafe>=2.1.0
+
+openpyxl
