@@ -1,0 +1,1 @@
+../../basics/6/7_6_class.py

@@ -1,6 +1,30 @@
 ####################################################
 ## 2. Variables and Collections
+## Module 2: Advanced Data Structures & Control Flow
 ####################################################
+
+# =============================================================================
+# LEARNING OBJECTIVES:
+# 1. Master Python's powerful built-in collections (lists, tuples, sets, dictionaries)
+# 2. Understand advanced control flow structures and decision-making
+# 3. Implement efficient data manipulation using comprehensions
+# 4. Apply string manipulation and formatting techniques
+# 5. Develop algorithmic thinking through complex data operations
+# =============================================================================
+
+# =============================================================================
+# COLLECTION CHARACTERISTICS OVERVIEW:
+# | Collection | Ordered | Mutable | Indexed | Duplicates | Use Case |
+# |------------|---------|---------|---------|------------|----------|
+# | List       | ✓       | ✓       | ✓       | ✓          | Dynamic sequences |
+# | Tuple      | ✓       | ✗       | ✓       | ✓          | Fixed sequences |
+# | Set        | ✗       | ✓       | ✗       | ✗          | Unique elements |
+# | Dict       | ✓*      | ✓       | ✓       | ✗          | Key-value pairs |
+# *As of Python 3.7, dictionaries maintain insertion order
+# =============================================================================
+
+print("Module 2: Advanced Data Structures & Control Flow")
+print("=" * 60)
 
 # Python has a print function
 print("I'm Python. Nice to meet you!")  # => I'm Python. Nice to meet you!
@@ -218,3 +242,282 @@ filled_set | other_set  # => {1, 2, 3, 4, 5, 6}
 # Make a one layer deep copy
 filled_set = some_set.copy()  # filled_set is {1, 2, 3, 4, 5}
 filled_set is some_set        # => False
+
+# =============================================================================
+# ADVANCED COLLECTION OPERATIONS
+# =============================================================================
+
+print("\n" + "="*60)
+print("ADVANCED COLLECTION OPERATIONS")
+print("="*60)
+
+# List Comprehensions - Pythonic way to create lists
+print("\n1. List Comprehensions:")
+print("-" * 40)
+
+# Basic list comprehension
+squares = [x**2 for x in range(10)]
+print(f"Squares: {squares}")
+
+# List comprehension with condition
+even_squares = [x**2 for x in range(10) if x % 2 == 0]
+print(f"Even squares: {even_squares}")
+
+# Nested list comprehension
+matrix = [[i + j for j in range(3)] for i in range(3)]
+print(f"Matrix: {matrix}")
+
+# Dictionary Comprehensions
+print("\n2. Dictionary Comprehensions:")
+print("-" * 40)
+
+# Basic dictionary comprehension
+square_dict = {x: x**2 for x in range(5)}
+print(f"Square dictionary: {square_dict}")
+
+# Dictionary comprehension with condition
+even_square_dict = {x: x**2 for x in range(10) if x % 2 == 0}
+print(f"Even square dictionary: {even_square_dict}")
+
+# Set Comprehensions
+print("\n3. Set Comprehensions:")
+print("-" * 40)
+
+# Basic set comprehension
+unique_lengths = {len(word) for word in ["hello", "world", "python", "code"]}
+print(f"Unique word lengths: {unique_lengths}")
+
+# =============================================================================
+# STRING MANIPULATION AND FORMATTING
+# =============================================================================
+
+print("\n" + "="*60)
+print("STRING MANIPULATION AND FORMATTING")
+print("="*60)
+
+# String Methods
+print("\n1. String Methods:")
+print("-" * 40)
+
+text = "  Hello, World!  "
+print(f"Original: '{text}'")
+print(f"Strip: '{text.strip()}'")
+print(f"Lower: '{text.lower()}'")
+print(f"Upper: '{text.upper()}'")
+print(f"Replace: '{text.replace('World', 'Python')}'")
+print(f"Split: {text.split(',')}")
+print(f"Startswith 'Hello': {text.strip().startswith('Hello')}")
+print(f"Endswith '!': {text.strip().endswith('!')}")
+
+# String Formatting
+print("\n2. String Formatting:")
+print("-" * 40)
+
+name = "Alice"
+age = 25
+score = 87.5
+
+# f-strings (Python 3.6+)
+print(f"f-string: {name} is {age} years old and scored {score:.1f}%")
+
+# format() method
+print("format(): {} is {} years old and scored {:.1f}%".format(name, age, score))
+
+# % formatting (older style)
+print("% formatting: %s is %d years old and scored %.1f%%" % (name, age, score))
+
+# String joining
+print("\n3. String Joining:")
+print("-" * 40)
+
+words = ["Python", "is", "awesome", "for", "data", "science"]
+sentence = " ".join(words)
+print(f"Joined: {sentence}")
+
+# Custom separator
+csv_line = ",".join(["Alice", "25", "87.5", "Computer Science"])
+print(f"CSV format: {csv_line}")
+
+# =============================================================================
+# CONTROL FLOW WITH COLLECTIONS
+# =============================================================================
+
+print("\n" + "="*60)
+print("CONTROL FLOW WITH COLLECTIONS")
+print("="*60)
+
+# Conditional expressions with collections
+print("\n1. Conditional Expressions:")
+print("-" * 40)
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+
+# List comprehension with conditional
+even_numbers = [x for x in numbers if x % 2 == 0]
+odd_numbers = [x for x in numbers if x % 2 != 0]
+print(f"Even numbers: {even_numbers}")
+print(f"Odd numbers: {odd_numbers}")
+
+# Complex conditions
+filtered_numbers = [x for x in numbers if x > 3 and x < 8]
+print(f"Numbers between 3 and 8: {filtered_numbers}")
+
+# Nested loops and conditions
+print("\n2. Nested Operations:")
+print("-" * 40)
+
+# Flatten a nested list
+nested_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+flattened = [item for sublist in nested_list for item in sublist]
+print(f"Nested list: {nested_list}")
+print(f"Flattened: {flattened}")
+
+# =============================================================================
+# PRACTICAL EXAMPLES
+# =============================================================================
+
+print("\n" + "="*60)
+print("PRACTICAL EXAMPLES")
+print("="*60)
+
+# Example 1: Data Processing
+print("\n1. Data Processing Example:")
+print("-" * 40)
+
+# Sample data: student grades
+student_data = [
+    {"name": "Alice", "grades": [85, 92, 78, 96]},
+    {"name": "Bob", "grades": [90, 88, 95, 87]},
+    {"name": "Charlie", "grades": [70, 75, 80, 72]},
+    {"name": "Diana", "grades": [95, 98, 92, 94]}
+]
+
+# Calculate averages using list comprehension
+for student in student_data:
+    name = student["name"]
+    grades = student["grades"]
+    average = sum(grades) / len(grades)
+    print(f"{name}: {grades} -> Average: {average:.1f}")
+
+# Find students with average > 85
+high_achievers = [s["name"] for s in student_data 
+                 if sum(s["grades"]) / len(s["grades"]) > 85]
+print(f"High achievers (>85): {high_achievers}")
+
+# Example 2: Text Analysis
+print("\n2. Text Analysis Example:")
+print("-" * 40)
+
+text = "Python is a powerful programming language. Python is used for data science, web development, and automation."
+
+# Word frequency analysis
+words = text.lower().replace(",", "").replace(".", "").split()
+word_freq = {}
+for word in words:
+    word_freq[word] = word_freq.get(word, 0) + 1
+
+print("Word frequency:")
+for word, count in sorted(word_freq.items()):
+    print(f"  {word}: {count}")
+
+# Most common words
+most_common = sorted(word_freq.items(), key=lambda x: x[1], reverse=True)[:3]
+print(f"Most common words: {most_common}")
+
+# Example 3: Set Operations for Data Analysis
+print("\n3. Set Operations Example:")
+print("-" * 40)
+
+# Two groups of students
+group_a = {"Alice", "Bob", "Charlie", "Diana", "Eve"}
+group_b = {"Bob", "Charlie", "Frank", "Grace", "Henry"}
+
+print(f"Group A: {group_a}")
+print(f"Group B: {group_b}")
+
+# Set operations
+both_groups = group_a & group_b  # Intersection
+only_a = group_a - group_b       # Difference
+only_b = group_b - group_a       # Difference
+all_students = group_a | group_b # Union
+
+print(f"Students in both groups: {both_groups}")
+print(f"Students only in Group A: {only_a}")
+print(f"Students only in Group B: {only_b}")
+print(f"All students: {all_students}")
+
+# =============================================================================
+# PERFORMANCE CONSIDERATIONS
+# =============================================================================
+
+print("\n" + "="*60)
+print("PERFORMANCE CONSIDERATIONS")
+print("="*60)
+
+print("""
+Collection Performance Characteristics:
+
+1. LISTS:
+   - Access by index: O(1)
+   - Search: O(n)
+   - Insert/Delete at end: O(1)
+   - Insert/Delete at beginning: O(n)
+
+2. TUPLES:
+   - Access by index: O(1)
+   - Search: O(n)
+   - Immutable (no insert/delete)
+
+3. SETS:
+   - Add/Remove: O(1) average
+   - Search: O(1) average
+   - Union/Intersection: O(n+m)
+
+4. DICTIONARIES:
+   - Access by key: O(1) average
+   - Add/Remove: O(1) average
+   - Search: O(1) average
+
+Choose the right collection for your use case!
+""")
+
+# =============================================================================
+# BEST PRACTICES
+# =============================================================================
+
+print("\n" + "="*60)
+print("BEST PRACTICES")
+print("="*60)
+
+print("""
+1. COLLECTION SELECTION:
+   - Use lists for ordered, mutable sequences
+   - Use tuples for fixed, immutable data
+   - Use sets for unique elements and fast membership testing
+   - Use dictionaries for key-value mappings
+
+2. COMPREHENSIONS:
+   - Prefer comprehensions over loops for simple transformations
+   - Keep comprehensions readable - use multiple lines if needed
+   - Use generator expressions for large datasets
+
+3. STRING OPERATIONS:
+   - Use f-strings for most formatting needs
+   - Use join() for concatenating multiple strings
+   - Be aware of string immutability
+
+4. PERFORMANCE:
+   - Choose appropriate data structures
+   - Use built-in methods when possible
+   - Consider memory usage for large datasets
+
+5. READABILITY:
+   - Use meaningful variable names
+   - Add comments for complex operations
+   - Follow PEP 8 style guidelines
+""")
+
+print("\n" + "="*60)
+print("MODULE 2 COMPLETE!")
+print("Next: Module 3 - Code Organization, Functions & Error Handling")
+print("="*60)

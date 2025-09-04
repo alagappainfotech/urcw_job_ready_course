@@ -1,0 +1,948 @@
+"""
+Module 2: Advanced Data Structures & Control Flow
+Comprehensive Exercises and Lab Problems
+
+This file contains hands-on exercises designed to reinforce the concepts
+learned in Module 2. Complete these exercises to develop proficiency in
+Python's advanced data structures and control flow.
+"""
+
+# =============================================================================
+# EXERCISE SET 1: QUICK CHECKS - Immediate Reinforcement
+# =============================================================================
+
+def quick_check_1_collection_selection():
+    """
+    Quick Check: Collection Selection
+    
+    Choose the most appropriate collection type for different scenarios.
+    Consider performance, mutability, and use case requirements.
+    """
+    print("Quick Check 1: Collection Selection")
+    print("=" * 50)
+    
+    scenarios = [
+        {
+            "description": "Store unique user IDs for fast lookup",
+            "options": ["list", "tuple", "set", "dict"],
+            "best_choice": "set",
+            "reason": "Sets provide O(1) average lookup time for unique elements"
+        },
+        {
+            "description": "Store coordinates (x, y) that won't change",
+            "options": ["list", "tuple", "set", "dict"],
+            "best_choice": "tuple",
+            "reason": "Tuples are immutable and perfect for fixed data like coordinates"
+        },
+        {
+            "description": "Store student names with their grades",
+            "options": ["list", "tuple", "set", "dict"],
+            "best_choice": "dict",
+            "reason": "Dictionaries provide key-value mapping for associative data"
+        },
+        {
+            "description": "Store a shopping list that can be modified",
+            "options": ["list", "tuple", "set", "dict"],
+            "best_choice": "list",
+            "reason": "Lists are mutable and maintain order for sequential data"
+        }
+    ]
+    
+    for i, scenario in enumerate(scenarios, 1):
+        print(f"\n{i}. {scenario['description']}")
+        print(f"   Options: {', '.join(scenario['options'])}")
+        print(f"   Best choice: {scenario['best_choice']}")
+        print(f"   Reason: {scenario['reason']}")
+
+
+def quick_check_2_comprehension_writing():
+    """
+    Quick Check: Comprehension Writing
+    
+    Write comprehensions to transform data efficiently.
+    Practice list, set, and dictionary comprehensions.
+    """
+    print("\nQuick Check 2: Comprehension Writing")
+    print("=" * 50)
+    
+    # Sample data
+    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    words = ["python", "java", "javascript", "c++", "go", "rust"]
+    
+    print("Original data:")
+    print(f"Numbers: {numbers}")
+    print(f"Words: {words}")
+    
+    # List comprehensions
+    print("\nList Comprehensions:")
+    squares = [x**2 for x in numbers]
+    even_squares = [x**2 for x in numbers if x % 2 == 0]
+    word_lengths = [len(word) for word in words]
+    
+    print(f"Squares: {squares}")
+    print(f"Even squares: {even_squares}")
+    print(f"Word lengths: {word_lengths}")
+    
+    # Set comprehensions
+    print("\nSet Comprehensions:")
+    unique_lengths = {len(word) for word in words}
+    even_numbers_set = {x for x in numbers if x % 2 == 0}
+    
+    print(f"Unique word lengths: {unique_lengths}")
+    print(f"Even numbers set: {even_numbers_set}")
+    
+    # Dictionary comprehensions
+    print("\nDictionary Comprehensions:")
+    word_to_length = {word: len(word) for word in words}
+    number_to_square = {x: x**2 for x in numbers if x % 2 == 0}
+    
+    print(f"Word to length: {word_to_length}")
+    print(f"Even number to square: {number_to_square}")
+
+
+def quick_check_3_string_operations():
+    """
+    Quick Check: String Operations
+    
+    Practice string manipulation and formatting techniques.
+    """
+    print("\nQuick Check 3: String Operations")
+    print("=" * 50)
+    
+    text = "  Python Programming is AWESOME!  "
+    print(f"Original: '{text}'")
+    
+    # Basic string methods
+    print(f"Strip: '{text.strip()}'")
+    print(f"Lower: '{text.lower()}'")
+    print(f"Upper: '{text.upper()}'")
+    print(f"Title: '{text.strip().title()}'")
+    print(f"Replace: '{text.replace('AWESOME', 'AMAZING')}'")
+    
+    # String splitting and joining
+    words = text.strip().lower().split()
+    print(f"Words: {words}")
+    print(f"Joined with '-': {'-'.join(words)}")
+    
+    # String formatting
+    name = "Alice"
+    age = 25
+    score = 87.5
+    
+    print(f"\nString formatting examples:")
+    print(f"f-string: {name} is {age} years old and scored {score:.1f}%")
+    print("format(): {} is {} years old and scored {:.1f}%".format(name, age, score))
+
+
+def quick_check_4_control_flow_logic():
+    """
+    Quick Check: Control Flow Logic
+    
+    Predict execution paths in complex conditional and loop structures.
+    """
+    print("\nQuick Check 4: Control Flow Logic")
+    print("=" * 50)
+    
+    # Complex conditional example
+    def analyze_number(num):
+        if num > 0:
+            if num % 2 == 0:
+                return "positive even"
+            else:
+                return "positive odd"
+        elif num < 0:
+            return "negative"
+        else:
+            return "zero"
+    
+    test_numbers = [5, -3, 0, 8, -10]
+    print("Number analysis:")
+    for num in test_numbers:
+        result = analyze_number(num)
+        print(f"  {num} -> {result}")
+    
+    # Loop with break and continue
+    print("\nLoop with break and continue:")
+    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    result = []
+    
+    for num in numbers:
+        if num % 3 == 0:
+            continue  # Skip multiples of 3
+        if num > 7:
+            break     # Stop if number > 7
+        result.append(num)
+    
+    print(f"Numbers processed: {result}")
+
+
+def quick_check_5_match_case_examples():
+    """
+    Quick Check: Pattern Matching (match/case)
+    """
+    print("\nQuick Check 5: match/case")
+    print("=" * 50)
+
+    def classify(value):
+        match value:
+            case {"type": "point", "x": xval, "y": yval} if xval == yval:
+                return "diagonal point"
+            case (a, b):
+                return f"tuple({a}, {b})"
+            case str() as s if s.endswith("rejected"):
+                return "ends with 'rejected'"
+            case _:
+                return "unknown"
+
+    samples = [
+        {"type": "point", "x": 3, "y": 3},
+        (1, 2),
+        "request rejected",
+        42,
+    ]
+    for s in samples:
+        print(s, "->", classify(s))
+
+
+# =============================================================================
+# EXERCISE SET 2: TRY THIS - Hands-on Application
+# =============================================================================
+
+def try_this_1_list_manipulation():
+    """
+    Try This: List Manipulation
+    
+    Practice advanced list operations including slicing, methods, and comprehensions.
+    """
+    print("\nTry This 1: List Manipulation")
+    print("=" * 50)
+    
+    # Create a sample list
+    numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+    print(f"Original list: {numbers}")
+    
+    # Advanced slicing
+    print(f"First 5 elements: {numbers[:5]}")
+    print(f"Last 3 elements: {numbers[-3:]}")
+    print(f"Every 2nd element: {numbers[::2]}")
+    print(f"Reverse: {numbers[::-1]}")
+    
+    # List methods
+    numbers_copy = numbers.copy()
+    numbers_copy.append(11)
+    numbers_copy.insert(0, 0)
+    numbers_copy.extend([12, 13, 14])
+    print(f"After modifications: {numbers_copy}")
+    
+    # List comprehensions with conditions
+    even_numbers = [x for x in numbers if x % 2 == 0]
+    squares_of_odds = [x**2 for x in numbers if x % 2 != 0]
+    
+    print(f"Even numbers: {even_numbers}")
+    print(f"Squares of odd numbers: {squares_of_odds}")
+    
+    # Nested list operations
+    matrix = [[i + j for j in range(3)] for i in range(3)]
+    print(f"Matrix: {matrix}")
+    
+    # Flatten matrix
+    flattened = [item for row in matrix for item in row]
+    print(f"Flattened matrix: {flattened}")
+
+
+def try_this_2_dictionary_usage():
+    """
+    Try This: Dictionary Usage
+    
+    Create and manipulate key-value data structures effectively.
+    """
+    print("\nTry This 2: Dictionary Usage")
+    print("=" * 50)
+    
+    # Create a dictionary
+    student_grades = {
+        "Alice": [85, 92, 78, 96],
+        "Bob": [90, 88, 95, 87],
+        "Charlie": [70, 75, 80, 72],
+        "Diana": [95, 98, 92, 94]
+    }
+    
+    print("Student grades:")
+    for student, grades in student_grades.items():
+        average = sum(grades) / len(grades)
+        print(f"  {student}: {grades} -> Average: {average:.1f}")
+    
+    # Dictionary operations
+    print(f"\nAll students: {list(student_grades.keys())}")
+    print(f"All grades: {list(student_grades.values())}")
+    
+    # Dictionary comprehension
+    averages = {student: sum(grades) / len(grades) 
+                for student, grades in student_grades.items()}
+    print(f"Student averages: {averages}")
+    
+    # Find students with average > 85
+    high_achievers = {student: avg for student, avg in averages.items() 
+                     if avg > 85}
+    print(f"High achievers: {high_achievers}")
+    
+    # Nested dictionary
+    student_info = {
+        "Alice": {"grades": [85, 92, 78, 96], "major": "Computer Science"},
+        "Bob": {"grades": [90, 88, 95, 87], "major": "Mathematics"},
+        "Charlie": {"grades": [70, 75, 80, 72], "major": "Physics"}
+    }
+    
+    print(f"\nStudent info: {student_info}")
+    print(f"Alice's major: {student_info['Alice']['major']}")
+
+
+def try_this_3_set_operations():
+    """
+    Try This: Set Operations
+    
+    Perform set mathematics and membership testing efficiently.
+    """
+    print("\nTry This 3: Set Operations")
+    print("=" * 50)
+    
+    # Create sets
+    group_a = {"Alice", "Bob", "Charlie", "Diana", "Eve"}
+    group_b = {"Bob", "Charlie", "Frank", "Grace", "Henry"}
+    group_c = {"Alice", "Diana", "Ivy", "Jack", "Kate"}
+    
+    print(f"Group A: {group_a}")
+    print(f"Group B: {group_b}")
+    print(f"Group C: {group_c}")
+    
+    # Set operations
+    intersection_ab = group_a & group_b
+    union_ab = group_a | group_b
+    difference_ab = group_a - group_b
+    symmetric_diff_ab = group_a ^ group_b
+    
+    print(f"\nSet operations:")
+    print(f"A ∩ B (intersection): {intersection_ab}")
+    print(f"A ∪ B (union): {union_ab}")
+    print(f"A - B (difference): {difference_ab}")
+    print(f"A △ B (symmetric difference): {symmetric_diff_ab}")
+    
+    # Multiple set operations
+    all_students = group_a | group_b | group_c
+    in_all_groups = group_a & group_b & group_c
+    only_in_a = group_a - group_b - group_c
+    
+    print(f"\nMultiple set operations:")
+    print(f"All students: {all_students}")
+    print(f"In all groups: {in_all_groups}")
+    print(f"Only in group A: {only_in_a}")
+    
+    # Set comprehensions
+    long_names = {name for name in all_students if len(name) > 4}
+    names_starting_with_a = {name for name in all_students if name.startswith('A')}
+    
+    print(f"\nSet comprehensions:")
+    print(f"Long names (>4 chars): {long_names}")
+    print(f"Names starting with 'A': {names_starting_with_a}")
+
+
+def try_this_4_string_processing():
+    """
+    Try This: String Processing
+    
+    Format and transform text data using various string methods.
+    """
+    print("\nTry This 4: String Processing")
+    print("=" * 50)
+    
+    # Sample text data
+    text = "  Python is a powerful programming language. It's used for data science, web development, and automation.  "
+    print(f"Original text: '{text}'")
+    
+    # Basic string cleaning
+    cleaned = text.strip().lower()
+    print(f"Cleaned: '{cleaned}'")
+    
+    # Word analysis
+    words = cleaned.replace(",", "").replace(".", "").replace("'", "").split()
+    print(f"Words: {words}")
+    
+    # Word frequency
+    word_freq = {}
+    for word in words:
+        word_freq[word] = word_freq.get(word, 0) + 1
+    
+    print(f"Word frequency: {word_freq}")
+    
+    # Most common words
+    most_common = sorted(word_freq.items(), key=lambda x: x[1], reverse=True)[:3]
+    print(f"Most common words: {most_common}")
+    
+    # String formatting examples
+    name = "Alice"
+    age = 25
+    languages = ["Python", "JavaScript", "SQL"]
+    
+    print(f"\nString formatting examples:")
+    print(f"f-string: {name} is {age} years old and knows {', '.join(languages)}")
+    print("format(): {} is {} years old and knows {}".format(name, age, ', '.join(languages)))
+    
+    # Text transformation
+    sentences = text.strip().split('.')
+    capitalized_sentences = [s.strip().capitalize() + '.' for s in sentences if s.strip()]
+    print(f"Capitalized sentences: {capitalized_sentences}")
+
+
+# =============================================================================
+# EXERCISE SET 3: LAB PROBLEMS - Critical Thinking
+# =============================================================================
+
+def lab_1_data_analysis_system():
+    """
+    Lab Problem 1: Data Analysis System
+    
+    Build a comprehensive system to process and analyze structured data
+    using various collection types and control flow structures.
+    """
+    print("\nLab Problem 1: Data Analysis System")
+    print("=" * 50)
+    
+    # Sample sales data
+    sales_data = [
+        {"product": "Laptop", "category": "Electronics", "price": 999.99, "quantity": 5, "region": "North"},
+        {"product": "Mouse", "category": "Electronics", "price": 29.99, "quantity": 20, "region": "North"},
+        {"product": "Keyboard", "category": "Electronics", "price": 79.99, "quantity": 15, "region": "South"},
+        {"product": "Monitor", "category": "Electronics", "price": 299.99, "quantity": 8, "region": "North"},
+        {"product": "Desk", "category": "Furniture", "price": 199.99, "quantity": 3, "region": "South"},
+        {"product": "Chair", "category": "Furniture", "price": 149.99, "quantity": 7, "region": "North"},
+        {"product": "Lamp", "category": "Furniture", "price": 49.99, "quantity": 12, "region": "South"},
+        {"product": "Book", "category": "Education", "price": 19.99, "quantity": 50, "region": "North"},
+        {"product": "Pen", "category": "Education", "price": 2.99, "quantity": 100, "region": "South"},
+    ]
+    
+    print("Sales Data Analysis")
+    print("-" * 30)
+    
+    # 1. Calculate total revenue by category
+    category_revenue = {}
+    for item in sales_data:
+        category = item["category"]
+        revenue = item["price"] * item["quantity"]
+        category_revenue[category] = category_revenue.get(category, 0) + revenue
+    
+    print("Revenue by category:")
+    for category, revenue in sorted(category_revenue.items(), key=lambda x: x[1], reverse=True):
+        print(f"  {category}: ${revenue:,.2f}")
+    
+    # 2. Find products with highest total value
+    product_values = {item["product"]: item["price"] * item["quantity"] 
+                     for item in sales_data}
+    top_products = sorted(product_values.items(), key=lambda x: x[1], reverse=True)[:3]
+    
+    print(f"\nTop 3 products by total value:")
+    for product, value in top_products:
+        print(f"  {product}: ${value:,.2f}")
+    
+    # 3. Regional analysis
+    regional_sales = {}
+    for item in sales_data:
+        region = item["region"]
+        if region not in regional_sales:
+            regional_sales[region] = {"revenue": 0, "products": set()}
+        regional_sales[region]["revenue"] += item["price"] * item["quantity"]
+        regional_sales[region]["products"].add(item["product"])
+    
+    print(f"\nRegional analysis:")
+    for region, data in regional_sales.items():
+        print(f"  {region}: ${data['revenue']:,.2f} revenue, {len(data['products'])} unique products")
+    
+    # 4. Price range analysis
+    prices = [item["price"] for item in sales_data]
+    price_ranges = {
+        "Under $50": len([p for p in prices if p < 50]),
+        "$50-$100": len([p for p in prices if 50 <= p < 100]),
+        "$100-$500": len([p for p in prices if 100 <= p < 500]),
+        "Over $500": len([p for p in prices if p >= 500])
+    }
+    
+    print(f"\nPrice range distribution:")
+    for range_name, count in price_ranges.items():
+        print(f"  {range_name}: {count} products")
+
+
+def lab_2_text_processing_engine():
+    """
+    Lab Problem 2: Text Processing Engine
+    
+    Build a comprehensive text processing system that analyzes documents,
+    extracts information, and generates reports.
+    """
+    print("\nLab Problem 2: Text Processing Engine")
+    print("=" * 50)
+    
+    # Sample document
+    document = """
+    Python is a high-level programming language. Python was created by Guido van Rossum.
+    Python is widely used for web development, data science, and automation.
+    Python has a simple syntax that makes it easy to learn.
+    Many companies use Python for their backend systems.
+    Python's extensive library ecosystem makes it very powerful.
+    """
+    
+    def clean_text(text):
+        """Clean and normalize text for analysis."""
+        import string
+        # Remove punctuation and convert to lowercase
+        cleaned = text.lower()
+        for punct in string.punctuation:
+            cleaned = cleaned.replace(punct, ' ')
+        return cleaned
+    
+    def analyze_text(text):
+        """Comprehensive text analysis."""
+        cleaned = clean_text(text)
+        words = [word for word in cleaned.split() if word]
+        
+        # Basic statistics
+        word_count = len(words)
+        unique_words = len(set(words))
+        avg_word_length = sum(len(word) for word in words) / len(words) if words else 0
+        
+        # Word frequency
+        word_freq = {}
+        for word in words:
+            word_freq[word] = word_freq.get(word, 0) + 1
+        
+        # Most common words
+        most_common = sorted(word_freq.items(), key=lambda x: x[1], reverse=True)[:5]
+        
+        # Longest words
+        longest_words = sorted(set(words), key=len, reverse=True)[:5]
+        
+        # Word length distribution
+        length_dist = {}
+        for word in words:
+            length = len(word)
+            length_dist[length] = length_dist.get(length, 0) + 1
+        
+        return {
+            "word_count": word_count,
+            "unique_words": unique_words,
+            "avg_word_length": avg_word_length,
+            "most_common": most_common,
+            "longest_words": longest_words,
+            "length_distribution": length_dist
+        }
+    
+    # Analyze the document
+    analysis = analyze_text(document)
+    
+    print("Text Analysis Report")
+    print("-" * 30)
+    print(f"Total words: {analysis['word_count']}")
+    print(f"Unique words: {analysis['unique_words']}")
+    print(f"Average word length: {analysis['avg_word_length']:.1f} characters")
+    
+    print(f"\nMost common words:")
+    for word, count in analysis['most_common']:
+        print(f"  {word}: {count}")
+    
+    print(f"\nLongest words:")
+    for word in analysis['longest_words']:
+        print(f"  {word} ({len(word)} characters)")
+    
+    print(f"\nWord length distribution:")
+    for length, count in sorted(analysis['length_distribution'].items()):
+        print(f"  {length} characters: {count} words")
+    
+    # Advanced analysis: Find sentences
+    sentences = [s.strip() for s in document.split('.') if s.strip()]
+    sentence_lengths = [len(s.split()) for s in sentences]
+    
+    print(f"\nSentence analysis:")
+    print(f"Number of sentences: {len(sentences)}")
+    print(f"Average sentence length: {sum(sentence_lengths) / len(sentence_lengths):.1f} words")
+    print(f"Shortest sentence: {min(sentence_lengths)} words")
+    print(f"Longest sentence: {max(sentence_lengths)} words")
+
+
+def lab_3_inventory_management_system():
+    """
+    Lab Problem 3: Inventory Management System
+    
+    Create a product tracking system that manages inventory,
+    tracks sales, and generates business reports.
+    """
+    print("\nLab Problem 3: Inventory Management System")
+    print("=" * 50)
+    
+    class InventoryManager:
+        def __init__(self):
+            self.products = {}
+            self.sales_history = []
+        
+        def add_product(self, product_id, name, category, price, initial_stock):
+            """Add a new product to inventory."""
+            self.products[product_id] = {
+                "name": name,
+                "category": category,
+                "price": price,
+                "stock": initial_stock,
+                "total_sold": 0
+            }
+        
+        def sell_product(self, product_id, quantity):
+            """Record a sale and update inventory."""
+            if product_id not in self.products:
+                return False, "Product not found"
+            
+            product = self.products[product_id]
+            if product["stock"] < quantity:
+                return False, "Insufficient stock"
+            
+            # Update inventory
+            product["stock"] -= quantity
+            product["total_sold"] += quantity
+            
+            # Record sale
+            sale = {
+                "product_id": product_id,
+                "quantity": quantity,
+                "revenue": product["price"] * quantity,
+                "timestamp": "2024-01-01"  # Simplified timestamp
+            }
+            self.sales_history.append(sale)
+            
+            return True, f"Sale recorded: {quantity} units of {product['name']}"
+        
+        def get_low_stock_products(self, threshold=5):
+            """Find products with low stock."""
+            return {pid: product for pid, product in self.products.items() 
+                   if product["stock"] <= threshold}
+        
+        def get_category_summary(self):
+            """Get summary by category."""
+            category_data = {}
+            for product in self.products.values():
+                category = product["category"]
+                if category not in category_data:
+                    category_data[category] = {
+                        "products": 0,
+                        "total_stock": 0,
+                        "total_value": 0,
+                        "total_sold": 0
+                    }
+                
+                category_data[category]["products"] += 1
+                category_data[category]["total_stock"] += product["stock"]
+                category_data[category]["total_value"] += product["price"] * product["stock"]
+                category_data[category]["total_sold"] += product["total_sold"]
+            
+            return category_data
+        
+        def get_top_selling_products(self, limit=5):
+            """Get top selling products."""
+            return sorted(self.products.items(), 
+                         key=lambda x: x[1]["total_sold"], 
+                         reverse=True)[:limit]
+    
+    # Create inventory manager and add products
+    inventory = InventoryManager()
+    
+    # Add sample products
+    products_to_add = [
+        ("LAP001", "Gaming Laptop", "Electronics", 1299.99, 10),
+        ("MOU001", "Wireless Mouse", "Electronics", 29.99, 50),
+        ("KEY001", "Mechanical Keyboard", "Electronics", 89.99, 25),
+        ("DESK001", "Office Desk", "Furniture", 199.99, 5),
+        ("CHAIR001", "Ergonomic Chair", "Furniture", 299.99, 8),
+        ("BOOK001", "Python Programming", "Books", 49.99, 20),
+        ("PEN001", "Ballpoint Pen", "Office", 2.99, 100)
+    ]
+    
+    for product_data in products_to_add:
+        inventory.add_product(*product_data)
+    
+    print("Inventory Management System")
+    print("-" * 40)
+    
+    # Record some sales
+    sales_to_record = [
+        ("LAP001", 2),
+        ("MOU001", 10),
+        ("KEY001", 5),
+        ("DESK001", 1),
+        ("CHAIR001", 3),
+        ("BOOK001", 8),
+        ("PEN001", 25)
+    ]
+    
+    print("Recording sales...")
+    for product_id, quantity in sales_to_record:
+        success, message = inventory.sell_product(product_id, quantity)
+        print(f"  {message}")
+    
+    # Generate reports
+    print(f"\nInventory Reports:")
+    print("-" * 20)
+    
+    # Low stock report
+    low_stock = inventory.get_low_stock_products(threshold=10)
+    print(f"Low stock products (≤10 units):")
+    for pid, product in low_stock.items():
+        print(f"  {product['name']}: {product['stock']} units")
+    
+    # Category summary
+    category_summary = inventory.get_category_summary()
+    print(f"\nCategory summary:")
+    for category, data in category_summary.items():
+        print(f"  {category}:")
+        print(f"    Products: {data['products']}")
+        print(f"    Total stock: {data['total_stock']} units")
+        print(f"    Total value: ${data['total_value']:,.2f}")
+        print(f"    Total sold: {data['total_sold']} units")
+    
+    # Top selling products
+    top_sellers = inventory.get_top_selling_products(limit=3)
+    print(f"\nTop selling products:")
+    for pid, product in top_sellers:
+        print(f"  {product['name']}: {product['total_sold']} units sold")
+
+
+def lab_4_student_records_system():
+    """
+    Lab Problem 4: Student Records System
+    
+    Design a comprehensive grade management system that handles
+    multiple students, courses, and generates detailed reports.
+    """
+    print("\nLab Problem 4: Student Records System")
+    print("=" * 50)
+    
+    class StudentRecordsSystem:
+        def __init__(self):
+            self.students = {}
+            self.courses = {}
+        
+        def add_student(self, student_id, name, major, year):
+            """Add a new student."""
+            self.students[student_id] = {
+                "name": name,
+                "major": major,
+                "year": year,
+                "courses": {}
+            }
+        
+        def add_course(self, course_id, name, credits, instructor):
+            """Add a new course."""
+            self.courses[course_id] = {
+                "name": name,
+                "credits": credits,
+                "instructor": instructor
+            }
+        
+        def enroll_student(self, student_id, course_id):
+            """Enroll a student in a course."""
+            if student_id not in self.students:
+                return False, "Student not found"
+            if course_id not in self.courses:
+                return False, "Course not found"
+            
+            self.students[student_id]["courses"][course_id] = {
+                "grades": [],
+                "credits": self.courses[course_id]["credits"]
+            }
+            return True, "Student enrolled successfully"
+        
+        def add_grade(self, student_id, course_id, grade):
+            """Add a grade for a student in a course."""
+            if (student_id not in self.students or 
+                course_id not in self.students[student_id]["courses"]):
+                return False, "Student not enrolled in course"
+            
+            self.students[student_id]["courses"][course_id]["grades"].append(grade)
+            return True, "Grade added successfully"
+        
+        def calculate_gpa(self, student_id):
+            """Calculate GPA for a student."""
+            if student_id not in self.students:
+                return None
+            
+            total_points = 0
+            total_credits = 0
+            
+            for course_id, course_data in self.students[student_id]["courses"].items():
+                grades = course_data["grades"]
+                credits = course_data["credits"]
+                
+                if grades:  # Only if student has grades
+                    avg_grade = sum(grades) / len(grades)
+                    # Convert percentage to GPA (simplified scale)
+                    if avg_grade >= 90:
+                        gpa_points = 4.0
+                    elif avg_grade >= 80:
+                        gpa_points = 3.0
+                    elif avg_grade >= 70:
+                        gpa_points = 2.0
+                    elif avg_grade >= 60:
+                        gpa_points = 1.0
+                    else:
+                        gpa_points = 0.0
+                    
+                    total_points += gpa_points * credits
+                    total_credits += credits
+            
+            return total_points / total_credits if total_credits > 0 else 0.0
+        
+        def get_class_rankings(self):
+            """Get class rankings by GPA."""
+            rankings = []
+            for student_id, student_data in self.students.items():
+                gpa = self.calculate_gpa(student_id)
+                if gpa is not None:
+                    rankings.append((student_id, student_data["name"], gpa))
+            
+            return sorted(rankings, key=lambda x: x[2], reverse=True)
+        
+        def get_course_statistics(self, course_id):
+            """Get statistics for a specific course."""
+            if course_id not in self.courses:
+                return None
+            
+            all_grades = []
+            enrolled_students = 0
+            
+            for student_data in self.students.values():
+                if course_id in student_data["courses"]:
+                    grades = student_data["courses"][course_id]["grades"]
+                    all_grades.extend(grades)
+                    enrolled_students += 1
+            
+            if not all_grades:
+                return {"enrolled": enrolled_students, "grades": []}
+            
+            return {
+                "enrolled": enrolled_students,
+                "grades": all_grades,
+                "average": sum(all_grades) / len(all_grades),
+                "highest": max(all_grades),
+                "lowest": min(all_grades)
+            }
+    
+    # Create the system
+    system = StudentRecordsSystem()
+    
+    # Add courses
+    courses = [
+        ("CS101", "Introduction to Programming", 3, "Dr. Smith"),
+        ("CS102", "Data Structures", 3, "Dr. Johnson"),
+        ("MATH101", "Calculus I", 4, "Dr. Brown"),
+        ("ENG101", "English Composition", 3, "Dr. Davis")
+    ]
+    
+    for course_data in courses:
+        system.add_course(*course_data)
+    
+    # Add students
+    students = [
+        ("S001", "Alice Johnson", "Computer Science", "Sophomore"),
+        ("S002", "Bob Smith", "Computer Science", "Junior"),
+        ("S003", "Charlie Brown", "Mathematics", "Freshman"),
+        ("S004", "Diana Davis", "Computer Science", "Senior")
+    ]
+    
+    for student_data in students:
+        system.add_student(*student_data)
+    
+    # Enroll students in courses
+    enrollments = [
+        ("S001", "CS101"), ("S001", "MATH101"), ("S001", "ENG101"),
+        ("S002", "CS101"), ("S002", "CS102"), ("S002", "MATH101"),
+        ("S003", "MATH101"), ("S003", "ENG101"),
+        ("S004", "CS101"), ("S004", "CS102"), ("S004", "MATH101")
+    ]
+    
+    for student_id, course_id in enrollments:
+        system.enroll_student(student_id, course_id)
+    
+    # Add grades
+    grades = [
+        ("S001", "CS101", 85), ("S001", "CS101", 90), ("S001", "CS101", 88),
+        ("S001", "MATH101", 92), ("S001", "MATH101", 89), ("S001", "MATH101", 94),
+        ("S001", "ENG101", 87), ("S001", "ENG101", 91),
+        ("S002", "CS101", 78), ("S002", "CS101", 82), ("S002", "CS101", 85),
+        ("S002", "CS102", 88), ("S002", "CS102", 90),
+        ("S002", "MATH101", 85), ("S002", "MATH101", 87),
+        ("S003", "MATH101", 95), ("S003", "MATH101", 98), ("S003", "MATH101", 96),
+        ("S003", "ENG101", 89), ("S003", "ENG101", 92),
+        ("S004", "CS101", 92), ("S004", "CS101", 94), ("S004", "CS101", 96),
+        ("S004", "CS102", 90), ("S004", "CS102", 93),
+        ("S004", "MATH101", 88), ("S004", "MATH101", 91)
+    ]
+    
+    for student_id, course_id, grade in grades:
+        system.add_grade(student_id, course_id, grade)
+    
+    print("Student Records System")
+    print("-" * 30)
+    
+    # Generate reports
+    print("Student GPAs:")
+    for student_id, student_data in system.students.items():
+        gpa = system.calculate_gpa(student_id)
+        print(f"  {student_data['name']}: {gpa:.2f}")
+    
+    print(f"\nClass Rankings:")
+    rankings = system.get_class_rankings()
+    for i, (student_id, name, gpa) in enumerate(rankings, 1):
+        print(f"  {i}. {name}: {gpa:.2f}")
+    
+    print(f"\nCourse Statistics:")
+    for course_id, course_data in system.courses.items():
+        stats = system.get_course_statistics(course_id)
+        if stats and stats["grades"]:
+            print(f"  {course_data['name']}:")
+            print(f"    Enrolled: {stats['enrolled']} students")
+            print(f"    Average: {stats['average']:.1f}")
+            print(f"    Highest: {stats['highest']}")
+            print(f"    Lowest: {stats['lowest']}")
+
+
+# =============================================================================
+# MAIN EXECUTION
+# =============================================================================
+
+def run_all_exercises():
+    """Run all exercises in sequence."""
+    print("MODULE 2: ADVANCED DATA STRUCTURES & CONTROL FLOW")
+    print("COMPREHENSIVE EXERCISES")
+    print("=" * 60)
+    
+    # Quick Checks
+    quick_check_1_collection_selection()
+    quick_check_2_comprehension_writing()
+    quick_check_3_string_operations()
+    quick_check_4_control_flow_logic()
+    quick_check_5_match_case_examples()
+    
+    # Try This Exercises
+    try_this_1_list_manipulation()
+    try_this_2_dictionary_usage()
+    try_this_3_set_operations()
+    try_this_4_string_processing()
+    
+    # Lab Problems
+    lab_1_data_analysis_system()
+    lab_2_text_processing_engine()
+    lab_3_inventory_management_system()
+    lab_4_student_records_system()
+    
+    print("\n" + "=" * 60)
+    print("MODULE 2 EXERCISES COMPLETE!")
+    print("Review your solutions and ensure they follow Pythonic best practices.")
+    print("Next: Module 3 - Code Organization, Functions & Error Handling")
+    print("=" * 60)
+
+
+if __name__ == "__main__":
+    run_all_exercises()
