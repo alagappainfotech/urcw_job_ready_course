@@ -204,6 +204,98 @@ def quick_check_5_match_case_examples():
         print(s, "->", classify(s))
 
 
+def try_decorator_auth():
+    """
+    Try This: Authentication Decorator
+
+    Implement a decorator that enforces an `is_admin` flag on a function.
+    If the caller is not admin, raise PermissionError.
+    """
+    print("\nTry This: Authentication Decorator")
+    print("=" * 50)
+
+    import functools
+
+    def requires_admin(func):
+        @functools.wraps(func)
+        def wrapper(*args, **kwargs):
+            is_admin = kwargs.pop("is_admin", False)
+            if not is_admin:
+                raise PermissionError("Admin privileges required")
+            return func(*args, **kwargs)
+        return wrapper
+
+    @requires_admin
+    def reset_user_password(username: str) -> str:
+        return f"Password reset for {username}"
+
+    try:
+        print(reset_user_password("alice", is_admin=True))
+        print(reset_user_password("bob", is_admin=False))
+    except PermissionError as e:
+        print("Caught:", e)
+
+
+def try_custom_context_manager():
+    """
+    Try This: Custom Context Manager
+
+    Create a context manager that simulates opening/closing a network connection
+    and guarantees cleanup even on error.
+    """
+    print("\nTry This: Custom Context Manager")
+    print("=" * 50)
+
+    class Connection:
+        def __init__(self, endpoint: str):
+            self.endpoint = endpoint
+            self.open = False
+        def __enter__(self):
+            self.open = True
+            print(f"Connecting to {self.endpoint}...")
+            return self
+        def __exit__(self, exc_type, exc, tb):
+            self.open = False
+            print(f"Disconnected from {self.endpoint}")
+            # Don't suppress exceptions
+            return False
+        def send(self, payload: str) -> str:
+            if not self.open:
+                raise RuntimeError("not connected")
+            return f"ACK:{payload}"
+
+    try:
+        with Connection("api.service.local") as conn:
+            print(conn.send("PING"))
+            # raise ValueError("simulated error")
+    except Exception as e:
+        print("Error during connection:", e)
+
+
+def try_error_log_generator():
+    """
+    Try This: Efficient Log Processing with Generators
+
+    Yield only ERROR lines from a file without loading whole file.
+    """
+    print("\nTry This: Log ERROR generator")
+    print("=" * 50)
+
+    from pathlib import Path
+
+    def error_lines(path: str):
+        with open(path, 'r', encoding='utf-8', errors='ignore') as f:
+            for line in f:
+                if "ERROR" in line:
+                    yield line.rstrip("\n")
+
+    demo = Path("./demo.log")
+    if not demo.exists():
+        demo.write_text("""INFO start\nWARNING low disk\nERROR failed to open file\nINFO done\n""")
+    for e in error_lines(str(demo)):
+        print(e)
+
+
 # =============================================================================
 # EXERCISE SET 2: TRY THIS - Hands-on Application
 # =============================================================================
@@ -930,6 +1022,9 @@ def run_all_exercises():
     try_this_2_dictionary_usage()
     try_this_3_set_operations()
     try_this_4_string_processing()
+    try_decorator_auth()
+    try_custom_context_manager()
+    try_error_log_generator()
     
     # Lab Problems
     lab_1_data_analysis_system()
