@@ -101,3 +101,24 @@ True
 True
 >>> 2>=2
 True
+>>> "This is a string."
+'This is a string.'
+>>> 'This is also a string.'
+'This is also a string.'
+>>> "Hello "+"World!"
+'Hello World!'
+>>> "Hello " "World!"
+'Hello World!'
+>>> "Hello World"[3]
+'l'
+>>> len("Calculate length")
+16
+>>> name="Abi"
+>>> f"She said her name is {name}."
+'She said her name is Abi.'
+>>> f"{name} is {len(name)} characters long."
+'Abi is 3 characters long.'
+>>> "etc" ==None
+False
+>>> None is None
+True
