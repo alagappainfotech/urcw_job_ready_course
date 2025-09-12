@@ -1,0 +1,48 @@
+fruits = ['apple', 'banana', 'cherry']
+print(fruits)
+['apple', 'banana', 'cherry']
+fruits.append('orange')
+KeyboardInterrupt
+print(fruits)
+['apple', 'banana', 'cherry', 'orange']
+fruits.remove('banana')
+print(fruits)
+['apple', 'cherry', 'orange']
+print(fruits[0])
+apple
+coordinates = (10, 20)
+print(coordinates)
+(10, 20)
+print(coordinates[1])
+20
+unique_numbers = {1, 2, 3, 3}
+print(unique_numbers)
+{1, 2, 3}
+unique_numbers.add(4)
+print(unique_numbers)
+{1, 2, 3, 4}
+unique_numbers.remove(2)
+print(unique_numbers)
+{1, 3, 4}
+person = {'name': 'Alice', 'age': 25}
+print(person)
+{'name': 'Alice', 'age': 25}
+print(person['name'])
+Alice
+person['city'] = 'New York'
+print(person)
+{'name': 'Alice', 'age': 25, 'city': 'New York'}
+del person['age']
+print(person)
+{'name': 'Alice', 'city': 'New York'}
+text = "hello"
+print(text[1])
+e
+print(text[1:4])
+ell
+nested_list = [[1, 2], [3, 4]]
+print(nested_list[1][0])
+3
+nested_dict = {'person': {'name': 'Bob', 'age': 30}}
+print(nested_dict['person']['name'])
+Bob
