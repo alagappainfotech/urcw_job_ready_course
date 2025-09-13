@@ -1,3 +1,12 @@
+Welcome to Python! Let's explore the fundamentals.
+==================================================
+
+==================================================
+TRY THIS EXERCISES
+==================================================
+
+1. Getting Input and Type Conversion:
+----------------------------------------
 >>> 3
 3
 >>> 1+1
@@ -122,3 +131,157 @@ True
 False
 >>> None is None
 True
+
+2. Variable Manipulation:
+----------------------------------------
+Circle with radius 2.2 has area: 15.205295600000001
+200 meters = 656.0 feet
+After changing meters to 300, feet is still: 656.0
+We need to recalculate feet!
+
+3. String Operations:
+----------------------------------------
+Hello Python!
+--------------------
+Line 1
+Line 2  Tabbed
+He said "Hello World!"
+She said 'Python is great!'
+This is a
+multi-line string
+that spans several lines.
+
+4. Value Swapping:
+----------------------------------------
+Before swap: x = 10, y = 20
+After swap (method 1): x = 20, y = 10
+After swap (method 2): x = 10, y = 20
+
+==================================================
+QUICK CHECKS
+==================================================
+
+1. Type Identification:
+----------------------------------------
+1234 -> int
+8.99 -> float
+9.0 -> float
+True -> bool
+False -> bool
+hello -> str
+None -> NoneType
+
+2. Boolean Logic:
+----------------------------------------
+bool(0) = False
+bool(1) = True
+bool(-1) = True
+bool() = False
+bool(hello) = True
+bool([]) = False
+bool([1, 2]) = True
+bool({}) = False
+bool({'key': 'value'}) = True
+
+3. Operator Precedence:
+----------------------------------------
+2 + 3 * 4 = 14
+(2 + 3) * 4 = 20
+2 ** 3 ** 2 = 512
+(2 ** 3) ** 2 = 64
+10 / 3 * 3 = 10.0
+10 // 3 * 3 = 9
+
+==================================================
+LAB PROBLEMS
+==================================================
+
+1. Temperature Converter:
+----------------------------------------
+25°C = 77.0°F
+77°F = 25.0°C
+
+2. Simple Calculator:
+----------------------------------------
+Simple Calculator
+Operations: +, -, *, /, **
+10 + 3 = 13
+
+3. Grade Calculator:
+----------------------------------------
+Grades: [85, 92, 78, 96]
+Weights: [0.25, 0.25, 0.25, 0.25]
+Weighted Average: 87.75
+
+4. Password Validator:
+----------------------------------------
+Password: password
+  length: ✓
+  has_uppercase: ✗
+  has_lowercase: ✓
+  has_digit: ✗
+  has_special: ✗
+Overall: Invalid
+
+Password: Password123
+  length: ✓
+  has_uppercase: ✓
+  has_lowercase: ✓
+  has_digit: ✓
+  has_special: ✗
+Overall: Invalid
+
+Password: Password123!
+  length: ✓
+  has_uppercase: ✓
+  has_lowercase: ✓
+  has_digit: ✓
+  has_special: ✓
+Overall: Valid
+
+Password: P@ssw0rd
+  length: ✓
+  has_uppercase: ✓
+  has_lowercase: ✓
+  has_digit: ✓
+  has_special: ✓
+Overall: Valid
+
+
+==================================================
+ASSESSMENT CRITERIA
+==================================================
+
+For all exercises and labs, your code will be evaluated on:
+
+1. CODE QUALITY:
+   - PEP 8 compliance (indentation, spacing, naming)
+   - Meaningful variable and function names
+   - Clear and concise code structure
+
+2. FUNCTIONALITY:
+   - Correct implementation of requirements
+   - Handles edge cases appropriately
+   - Produces expected outputs
+
+3. ERROR HANDLING:
+   - Graceful handling of invalid inputs
+   - Appropriate use of try-except blocks
+   - Clear error messages
+
+4. DOCUMENTATION:
+   - Clear comments explaining complex logic
+   - Docstrings for functions
+   - Inline comments where helpful
+
+5. TESTING:
+   - Verification with multiple test cases
+   - Edge case testing
+   - Expected vs. actual output verification
+
+
+==================================================
+MODULE 1 COMPLETE!
+Next: Module 2 - Advanced Data Structures & Control Flow
+==================================================
+>>>
