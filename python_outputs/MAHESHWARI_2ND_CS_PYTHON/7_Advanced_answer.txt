@@ -1,0 +1,71 @@
+                                     7_ADVANCED_ANSWERS
+def double_numbers(iterable):
+    for i in iterable:
+        yield i + 1
+for i in double_numbers(range(1, 900000000)):  
+    print(i)
+    if i >= 30:
+        break
+values = (-x for x in [1,2,3,4,5])
+for x in values:
+    print(x) 
+values = (-x for x in [1,2,3,4,5])
+gen_to_list = list(values)
+print(gen_to_list)  
+def log_function(func):
+    def wrapper(*args, **kwargs):
+        print("Entering function", func.__name__)
+        result = func(*args, **kwargs)
+        print("Exiting function", func.__name__)
+        return result
+    return wrapper
+@log_function            
+def my_function(x,y):    
+    return x+y          
+my_function(1,2)  
+print(my_function.__name__) 
+print(my_function.__code__.co_argument)
+from functools import wraps
+def log_function(func):
+    @wraps(func)  
+    def wrapper(*args, **kwargs):
+        print("Entering function", func.__name__)
+        result = func(*args, **kwargs)
+        print("Exiting function", func.__name__)
+        return result
+    return wrapper
+@log_function
+def my_function(x,y):
+    return x+y
+my_function(1,2)  
+print(my_function.__name__) 
+print(my_function.__code__.co_argcount) 
+2
+4
+6
+8
+10
+12
+14
+16
+18
+20
+22
+24
+26
+28
+30
+-1
+-2
+-3
+-4
+-5
+[-1, -2, -3, -4, -5]
+Entering function my_function
+Exiting function my_function
+wrapper
+0
+Entering function my_function
+Exiting function my_function
+my_function
+0

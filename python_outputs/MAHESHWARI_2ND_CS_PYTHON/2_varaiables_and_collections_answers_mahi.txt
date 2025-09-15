@@ -1,0 +1,565 @@
+                             2_VARAIABLES_AND_COLLECTIONS_ANSWERS
+>>> print("Module 2: Advanced Data Structures & Control Flow")
+Module 2: Advanced Data Structures & Control Flow
+>>> Print("="*60)
+Traceback (most recent call last):
+  File "<python-input-1>", line 1, in <module>
+    Print("="*60)
+    ^^^^^
+NameError: name 'Print' is not defined. Did you mean: 'print'?
+>>> print("=" *60)
+============================================================
+>>> print("I'm mahesh.Nice to meet you!")
+I'm mahesh.Nice to meet you!
+>>> print("maheshwari,selvaraj",end="!")
+>>> shwari,selvaraj!
+>>> print("Maheshwari,Selvaraj.",end="!")
+>>> shwari,Selvaraj.!
+>>> input_string_var=input("enter some data:")
+enter some data:mahesh
+>>> some_var=7
+>>> some_var
+7
+>>> some_unknown_var
+Traceback (most recent call last):
+  File "<python-input-11>", line 1, in <module>
+    some_unknown_var
+NameError: name 'some_unknown_var' is not defined
+>>> "mahi"if 0>1 else "mahesh!"
+'mahesh!'
+>>> li=[]
+>>> other_li=[7,8,9]
+>>> li.append(6)
+>>> li.append(5)
+>>> li.append(4)
+>>> li.append(3)
+>>> li.pop()
+3
+>>> li.append(3)
+>>> li[0]
+6
+>>> li[-1]
+3
+>>> li[4]
+Traceback (most recent call last):
+  File "<python-input-23>", line 1, in <module>
+    li[4]
+    ~~^^^
+IndexError: list index out of range
+>>> li[1:3]
+[5, 4]
+>>> li[2:]
+[4, 3]
+>>> li[:3]
+[6, 5, 4]
+>>> li[::2]
+[6, 4]
+>>> li[::-1]
+[3, 4, 5, 6]
+>>> li2=li[:]
+>>> del li[2]
+>>> li.remove(8)
+Traceback (most recent call last):
+  File "<python-input-31>", line 1, in <module>
+    li.remove(8)
+    ~~~~~~~~~^^^
+ValueError: list.remove(x): x not in list
+>>> li.remove(5)
+>>> li.remove(5)
+Traceback (most recent call last):
+  File "<python-input-33>", line 1, in <module>
+    li.remove(5)
+    ~~~~~~~~~^^^
+ValueError: list.remove(x): x not in list
+>>> li.insert(5,4)
+>>> li.index(5)
+Traceback (most recent call last):
+  File "<python-input-35>", line 1, in <module>
+    li.index(5)
+    ~~~~~~~~^^^
+ValueError: 5 is not in list
+>>> li.index(2)
+Traceback (most recent call last):
+  File "<python-input-36>", line 1, in <module>
+    li.index(2)
+    ~~~~~~~~^^^
+ValueError: 2 is not in list
+>>> li.index(5)
+Traceback (most recent call last):
+  File "<python-input-37>", line 1, in <module>
+    li.index(5)
+    ~~~~~~~~^^^
+ValueError: 5 is not in list
+>>> li.index(7)
+Traceback (most recent call last):
+  File "<python-input-38>", line 1, in <module>
+    li.index(7)
+    ~~~~~~~~^^^
+ValueError: 7 is not in list
+>>> li.index(3)
+1
+>>> li.index(6)
+0
+>>> li+other_li
+[6, 3, 4, 7, 8, 9]
+>>> li.extend(other_li)
+>>> 7 in li
+True
+>>> len(li)
+6
+>>> tup=(7,8,9)
+>>> tup[0]
+7
+>>> type((1))
+<class 'int'>
+>>> type((1,))
+<class 'tuple'>
+>>> type(())
+<class 'tuple'>
+>>> len(tup)
+3
+>>> tup+(1,2,3)
+(7, 8, 9, 1, 2, 3)
+>>> tup[:2]
+(7, 8)
+>>> 8 in tup
+True
+>>> a,b,c=(7,8,9)
+>>> a,*b,c=(7,8,9,1)
+>>> d,e,f=1,2,3
+>>> e,d=d,e
+>>> empty_dict={}
+>>> filled_dict={"seven":7,"eight":8,"nine":9}
+>>> invalid_dict={[7,8,9]:"789"}
+Traceback (most recent call last):
+  File "<python-input-60>", line 1, in <module>
+    invalid_dict={[7,8,9]:"789"}
+                 ^^^^^^^^^^^^^^^
+TypeError: unhashable type: 'list'
+>>> valid_dict={(7,8,9):[7,8,9]}
+>>> filled_dict["seven"]
+7
+>>> list(filled_dict.keys())
+['seven', 'eight', 'nine']
+>>> list(filled_dict.keys())
+['seven', 'eight', 'nine']
+>>> list(filled_dict.values())
+[7, 8, 9]
+>>> "seven" in filled_dict
+True
+>>> 7 in filled_dict
+False
+>>> filled_dict["one"]
+Traceback (most recent call last):
+  File "<python-input-68>", line 1, in <module>
+    filled_dict["one"]
+    ~~~~~~~~~~~^^^^^^^
+KeyError: 'one'
+>>> filled_dict.get("seven")
+7
+>>> filled_dict.get("one")
+>>> filled_dict.get("seven",1)
+7
+>>> filled_dict.get("one",1)
+1
+>>> filled_dict.setdefault("two",2)
+2
+>>> filled_dict.setdefault("two",3)
+2
+>>> filled_dict.update({"one":1})
+>>> filled_dict["one"]=1
+>>> del filled_dict["seven"]
+>>> {"a":1,**{"b":2}}
+{'a': 1, 'b': 2}
+>>> {"a":1,**{"a":2}}
+{'a': 2}
+>>> empty_set=set()
+>>> some_set={7,7,8,8,9,1}
+>>> invalid_set={[7],7}
+Traceback (most recent call last):
+  File "<python-input-82>", line 1, in <module>
+    invalid_set={[7],7}
+                ^^^^^^^
+TypeError: unhashable type: 'list'
+>>> valid_set={(1,),1}
+>>> filled_set=some_set
+>>> filled_set.add(2)
+>>> filled_set.add(2)
+>>> other_set={3,4,5,6}
+>>> filled_set&other_set
+set()
+>>> filled_set|other_set
+{1, 2, 3, 4, 5, 6, 7, 8, 9}
+>>> {1,2,3,4}-{2,3,5}
+{1, 4}
+>>> {1,2,3,4}^{2,3,5}
+{1, 4, 5}
+>>> {1,2}>={1,2,3}
+False
+>>> {1,2}<={1,2,3}
+True
+>>> 2 in filled_set
+True
+>>> 10 in filled_set
+False
+>>> filled_set=some_set.copy()
+>>> filled_set is some_set
+False
+>>> print("\n"+"=" *60)
+
+============================================================
+>>> print("ADVANCED COLLECTION OPERATIONS")
+ADVANCED COLLECTION OPERATIONS
+>>> print("=" *60)
+============================================================
+>>> print("\n1. List comprehensions:")
+
+1. List comprehensions:
+>>> print("-" *40)
+----------------------------------------
+>>> squares=[x**2 for x in range(10)]
+>>> print(f"squares:{squares}")
+squares:[0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+>>> even_squares=[x**2 for x in range(10) if x%2==0]
+>>> print(f"Even squares:{even_squares}")
+Even squares:[0, 4, 16, 36, 64]
+>>> matrix=[[i+j for j in range(3)] for i in range(3)]
+>>> print(f"Matrix:{matrix}")
+Matrix:[[0, 1, 2], [1, 2, 3], [2, 3, 4]]
+>>> print("\n2.Dictionary comprehensions:")
+
+2.Dictionary comprehensions:
+>>> print("-" *40)
+----------------------------------------
+>>> square_dict={x:x**2 for x in range(5)}
+>>> print(f"square dictionary:{square_dict}")
+square dictionary:{0: 0, 1: 1, 2: 4, 3: 9, 4: 16}
+>>> even_square_dict={x:x**2 for x in range(10) if x%2==0}
+>>> print("\n3. set comprehensions:")
+
+3. set comprehensions:
+>>> print("-" *40)
+----------------------------------------
+>>> unique_lengths={len(word) for word in ["mahi","world","python","code"]}
+>>> print(f"Unique word lengths: {unique_lengths}")
+Unique word lengths: {4, 5, 6}
+>>> print("\n"+"=" *60)
+
+============================================================
+>>> print("STRING MANIPULATION AND FORMATTING")
+STRING MANIPULATION AND FORMATTING
+>>> PRINT("=" *60)
+Traceback (most recent call last):
+  File "<python-input-120>", line 1, in <module>
+    PRINT("=" *60)
+    ^^^^^
+NameError: name 'PRINT' is not defined
+>>> print("=" *60)
+============================================================
+>>> print("\n1. string methods:")
+
+1. string methods:
+>>> print("-" *40)
+---------------------------------------
+>>> text="Mahi,world!"
+>>> print(f"original:'{text}'")
+original:'Mahi,world!'
+>>> print(f"strip:'{text.strip()}'")
+strip:'Mahi,world!'
+>>> print(F"Lower:'{text.lower()}'")
+Lower:'mahi,world!'
+>>> print(f"Upper:'{text.upper()}'")
+Upper:'MAHI,WORLD!'
+>>> print(f"Replace:'{text.replace('world','mahesh')}'")
+Replace:'Mahi,mahesh!'
+>>> print(f"split:{text.split(',')}")
+split:['Mahi', 'world!']
+>>> print(f"startswith 'mahi':{text.strip().startswith('mahi')}")
+startswith 'mahi':False
+>>> print(f"Endswith'!':{text.strip().endswith('!')}")
+Endswith'!':True
+>>> print("\n2.string formatting:")
+
+2.string formatting:
+>>> print("-" *40)
+----------------------------------------
+>>> name="mahi"
+>>> age=18
+>>> score=99.9
+>>> print("\n3. string Joining:")
+
+3. string Joining:
+>>> print("-" *40)
+----------------------------------------
+>>> words=["mahesh","is","awesome","for","data","learning"]
+>>> sentence=" ".join(words)
+>>> print(f"Joined:{sentence}")
+Joined:mahesh is awesome for data learning
+>>> csv_line=",".join(["mahi","18","99.9","computer science"])
+>>> print(f"csv format:{csv_line}")
+csv format:mahi,18,99.9,computer science
+>>> print("\n"+"=" *60)
+
+============================================================
+>>> print("control flow with collections")
+control flow with collections
+>>> print("=" *60)
+============================================================
+>>> print("\n1. conditional expressions:")
+
+1. conditional expressions:
+>>> print("-" *40)
+----------------------------------------
+>>> numbers=[11,12,13,14,15,16,17,18,19,20]
+>>> even_numbers=[x for x in numbers if x % 2==0]
+>>> odd_numbers=[x for x in numbers if x % 2!=0]
+>>> print(f"Even numbers:{even_numbers}")
+Even numbers:[12, 14, 16, 18, 20]
+>>> print(f"odd numbers:{odd_numbers}")
+odd numbers:[11, 13, 15, 17, 19]
+>>> filtered_numbers=[x for x in numbers if x>3 and x<8]
+>>> print(f"numbers between 3 and 8:{filtered_numbers}")
+numbers between 3 and 8:[]
+>>> print("\n2. nested operations:")
+
+2. nested operations:
+>>> print("-" *40)
+----------------------------------------
+>>> nested_list=[[1,2,3],[4,5,6],[7,8,9]]
+>>> flattened=[item for sublist in nested_list for item in sublist]
+>>> print(f"nested list:{nested_list}")
+nested list:[[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+>>> print(f"flattened:{flattened}")
+flattened:[1, 2, 3, 4, 5, 6, 7, 8, 9]
+>>> print("\n"+"=" *60)
+
+============================================================
+>>> print("PRACTICAL EXAMPLES")
+PRACTICAL EXAMPLES
+>>> print("=" *60)
+============================================================
+>>> student_data=[{"name":"mahi","grades":[85,92,78,96]},{"name":"abi","grades\":[90,88,95,87]},{"name":"selva","grades":[70,75,80,72]},{"name":"v","grades":\[95,98,92,94]}]
+>>> for student in student_data:
+...     name=student["name"]
+...     grades=student["grades"]
+...     average=sum(grades)/len(grades)
+...     print(f"{name}:{grades}->average:{average:.1f}")
+...     high_achievers=[s["name"]for s in student_data
+...     if sum(s["grades"])/len(s["grades"])>85]
+...     print(f"high achievers(>85):{high_achievers}")
+...
+mahi:[85, 92, 78, 96]->average:87.8
+high achievers(>85):['mahi', 'abi', 'v']
+abi:[90, 88, 95, 87]->average:90.0
+high achievers(>85):['mahi', 'abi', 'v']
+selva:[70, 75, 80, 72]->average:74.2
+high achievers(>85):['mahi', 'abi', 'v']
+v:[95, 98, 92, 94]->average:94.8
+high achievers(>85):['mahi', 'abi', 'v']
+>>> print("/n2.text anaiysis example:")
+/n2.text anaiysis example:
+>>> print("\n2. text analysis example:")
+
+2. text analysis example:
+>>> print("-" *40)
+----------------------------------------
+>>> text="python is a powerful programming language.python is used for data science,wed d\evelopment and automation."
+>>> words=text.lower().replace(",","").replace(".","").split()
+>>> word_freq={}
+>>> for word in words:
+...     word_freq[word]=word_freq.get(word,0)+1
+...     print("word frequency:")
+...
+word frequency:
+word frequency:
+word frequency:
+word frequency:
+word frequency:
+word frequency:
+word frequency:
+word frequency:
+word frequency:
+word frequency:
+word frequency:
+word frequency:
+word frequency:
+word frequency:
+>>> for word, count in sorted(word_freq.items()):
+...     print(f"{word}:{count}")
+...
+a:1
+and:1
+automation:1
+data:1
+development:1
+for:1
+is:2
+languagepython:1
+powerful:1
+programming:1
+python:1
+sciencewed:1
+used:1
+>>> most_common=sorted(word_freq.items(),key=lambda x:x[1],reverse=true)[:3]
+Traceback (most recent call last):
+  File "<python-input-5>", line 1, in <module>
+    most_common=sorted(word_freq.items(),key=lambda x:x[1],reverse=true)[:3]
+                                                                   ^^^^
+NameError: name 'true' is not defined. Did you mean: 'True'?
+>>> most_common=sorted(word_freq.items(),key=lambda x:x[1],reverse=True)[:3]
+>>> print(f"most common words:{most_common}")
+most common words:[('is', 2), ('python', 1), ('a', 1)]
+>>> print("\n3. set operations example:")
+
+3. set operations example:
+>>> print("-" *40)
+----------------------------------------
+>>> group_a={"mahi","abi","selva","v"}
+>>> group_b={"jimin","jhope","jk","rm","jin"}
+>>> print(f"Group a:{group_a}")
+Group a:{'mahi', 'selva', 'v', 'abi'}
+>>> print(f"Group b:{group_b}")
+Group b:{'jhope', 'rm', 'jimin', 'jk', 'jin'}
+>>> both_groups=group_a&group_b
+>>> only_a=group_a-group_b
+>>> only_b=group_b-group_a
+>>> all_students=group_a|group_b
+>>> print(f"Students in both groups: {both_groups}")
+... print(f"Students only in Group A: {only_a}")
+... print(f"Students only in Group B: {only_b}")
+... print(f"All students: {all_students}")
+...
+Students in both groups: set()
+Students only in Group A: {'mahi', 'selva', 'v', 'abi'}
+Students only in Group B: {'jhope', 'rm', 'jimin', 'jk', 'jin'}
+All students: {'jin', 'jhope', 'rm', 'jimin', 'abi', 'jk', 'mahi', 'selva', 'v'}
+>>> print("\n"+"=" *60)
+
+============================================================
+>>> print("performance considerations")
+performance considerations
+>>> print("=" *60)
+============================================================
+>>> print("""
+... Collection Performance Characteristics:
+...
+... 1. LISTS:
+...    - Access by index: O(1)
+...    - Search: O(n)
+...    - Insert/Delete at end: O(1)
+...    - Insert/Delete at beginning: O(n)
+...
+... 2. TUPLES:
+...    - Access by index: O(1)
+...    - Search: O(n)
+...    - Immutable (no insert/delete)
+...
+... 3. SETS:
+...    - Add/Remove: O(1) average
+...    - Search: O(1) average
+...    - Union/Intersection: O(n+m)
+...
+... 4. DICTIONARIES:
+...    - Access by key: O(1) average
+...    - Add/Remove: O(1) average
+...    - Search: O(1) average
+...
+... Choose the right collection for your use case!
+... """)
+...
+
+Collection Performance Characteristics:
+
+1. LISTS:
+   - Access by index: O(1)
+   - Search: O(n)
+   - Insert/Delete at end: O(1)
+   - Insert/Delete at beginning: O(n)
+
+2. TUPLES:
+   - Access by index: O(1)
+   - Search: O(n)
+   - Immutable (no insert/delete)
+
+3. SETS:
+   - Add/Remove: O(1) average
+   - Search: O(1) average
+   - Union/Intersection: O(n+m)
+
+4. DICTIONARIES:
+   - Access by key: O(1) average
+   - Add/Remove: O(1) average
+   - Search: O(1) average
+
+Choose the right collection for your use case!
+
+>>>
+>>> print("\n"+"=" *60)
+
+============================================================
+>>> print("best practices")
+best practices
+>>> print("""
+... 1. COLLECTION SELECTION:
+...    - Use lists for ordered, mutable sequences
+...    - Use tuples for fixed, immutable data
+...    - Use sets for unique elements and fast membership testing
+...    - Use dictionaries for key-value mappings
+...
+... 2. COMPREHENSIONS:
+...    - Prefer comprehensions over loops for simple transformations
+...    - Keep comprehensions readable - use multiple lines if needed
+...    - Use generator expressions for large datasets
+...
+... 3. STRING OPERATIONS:
+...    - Use f-strings for most formatting needs
+...    - Use join() for concatenating multiple strings
+...    - Be aware of string immutability
+...
+... 4. PERFORMANCE:
+...    - Choose appropriate data structures
+...    - Use built-in methods when possible
+...    - Consider memory usage for large datasets
+...
+... 5. READABILITY:
+...    - Use meaningful variable names
+...    - Add comments for complex operations
+...    - Follow PEP 8 style guidelines
+... """)
+...
+
+1. COLLECTION SELECTION:
+   - Use lists for ordered, mutable sequences
+   - Use tuples for fixed, immutable data
+   - Use sets for unique elements and fast membership testing
+   - Use dictionaries for key-value mappings
+
+2. COMPREHENSIONS:
+   - Prefer comprehensions over loops for simple transformations
+   - Keep comprehensions readable - use multiple lines if needed
+   - Use generator expressions for large datasets
+
+3. STRING OPERATIONS:
+   - Use f-strings for most formatting needs
+   - Use join() for concatenating multiple strings
+   - Be aware of string immutability
+
+4. PERFORMANCE:
+   - Choose appropriate data structures
+   - Use built-in methods when possible
+   - Consider memory usage for large datasets
+
+5. READABILITY:
+   - Use meaningful variable names
+   - Add comments for complex operations
+   - Follow PEP 8 style guidelines
+
+>>> print("\n"+"=" *60)
+
+============================================================
+>>> print("Module 2 complete!")
+Module 2 complete!
+>>> print("Next:Module 3-code organization,functions& error handling")
+Next:Module 3-code organization,functions& error handling
+>>> print("=" *60)
+============================================================

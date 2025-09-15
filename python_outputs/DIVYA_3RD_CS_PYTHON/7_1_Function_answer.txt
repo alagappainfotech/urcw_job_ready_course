@@ -1,0 +1,78 @@
+>>> # Defining a function
+... def greet(name):
+...     print(f"Hello, {name}!")
+...
+... # Calling a function
+... greet("Alice")  # Output: Hello, Alice!
+...
+... # Function with return value
+... def add_numbers(a, b):
+...     return a + b
+...
+... # Using the return value
+... result = add_numbers(5, 3)
+... print(result)
+...
+... # Function with default arguments
+... def introduce(name, age=18):
+...     print(f"My name is {name} and I am {age} years old.")
+...
+... introduce("Bob")
+... introduce("Alice", 25)
+...
+... def print_numbers(*args):
+...     for num in args:
+...         print(num)
+...
+... print_numbers(1, 2, 3, 4)  # Output: 1 2 3 4 (each on a new line)
+...
+...
+... def print_details(**kwargs):
+...     for key, value in kwargs.items():
+...         print(f"{key}: {value}")
+...
+... print_details(name="Alice", age=25, city="New York")
+...
+... square = lambda x: x ** 2
+... print(square(4))
+...
+... # Exercise:
+... # 1. Write a function that calculates the factorial of a number.
+... def factorial(n):
+...     result = 1
+...     for i in range(1, n + 1):
+...         result *= i
+...     return result
+... num = 5
+... print(f"Factorial of {num} is:", factorial(num))
+...
+... # 2. Write a function that checks if a given string is a palindrome.
+... def is_palindrome(s):
+...     s = s.replace(" ", "").lower()
+...     return s == s[::-1]
+... word = "Madam"
+... if is_palindrome(word):
+...     print(f"'{word}' is a palindrome")
+... else:
+...     print(f"'{word}' is not a palindrome")
+...
+... # 3. Write a lambda function to find the maximum of two numbers.
+... maximum = lambda a, b: a if a > b else b
+... x, y = 15, 25
+... print("Maximum is:", maximum(x, y))
+
+Hello, Alice!
+8
+My name is Bob and I am 18 years old.
+My name is Alice and I am 25 years old.
+1
+2
+3
+4
+name: Alice
+age: 25
+city: New York
+16
+Factorial of 5 is: 120
+'Madam' is a palindrome
+Maximum is: 25

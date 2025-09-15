@@ -1,0 +1,154 @@
+                                   8_STRING_MANIPULATION_ANSWERS
+text = "Hello, World!"
+print(text)  
+first = "Hello"
+second = "World"
+result = first + ", " + second + "!"
+print(result)  
+dashes = "-" * 20
+print(dashes)  
+text = "  hello world  "
+print(text.upper())      
+print(text.lower())    
+print(text.title())      
+print(text.strip())   
+print(text.lstrip())     
+print(text.rstrip())     
+text = "Hello World"
+new_text = text.replace("World", "Python")
+print(new_text)  
+text = "apple,banana,cherry"
+fruits = text.split(",")
+print(fruits)  
+fruits_text = " and ".join(fruits)
+print(fruits_text)  
+name = "Alice"
+age = 30
+print("My name is %s and I am %d years old" % (name, age))
+print("My name is {} and I am {} years old".format(name, age))
+print("My name is {0} and I am {1} years old".format(name, age))
+print("My name is {n} and I am {a} years old".format(n=name, a=age))
+print(f"My name is {name} and I am {age} years old")
+pi = 3.14159
+print(f"Pi to 2 decimal places: {pi:.2f}")  
+text = "Python Programming"
+print(text[0])      
+print(text[-1])     
+print(text[0:6])    
+print(text[7:])     
+print(text[:6])     
+print(text[::2])    
+text = "Hello"
+print(text.isalpha())    
+print(text.isalnum())   
+print(text.isdigit())    
+print(text.startswith("Hello")) 
+print(text.endswith("123"))      
+text = "hello world hello python"
+print(text.count("hello"))  
+print(text.find("world"))   
+print(text.find("python"))  
+print(text.find("java"))    
+import string
+print(string.ascii_letters)  
+print(string.digits)      
+print(string.punctuation)    
+text = "Hello World!"
+translation_table = str.maketrans("aeiou", "12345")
+print(text.translate(translation_table))  
+multiline = """
+This is a multiline string.
+It can span multiple lines.
+Useful for documentation and long text.
+"""
+print(multiline)
+raw_string = r"C:\Users\Name\Documents"
+print(raw_string)  
+from string import Template
+template = Template("Hello, $name! You are $age years old.")
+result = template.substitute(name="Bob", age=25)
+print(result)  
+def is_valid_email(email):
+    return "@" in email and "." in email and email.count("@") == 1
+print(is_valid_email("user@example.com"))  
+print(is_valid_email("invalid-email"))     
+def check_password_strength(password):
+    if len(password) < 8:
+        return "Weak: Too short"
+    elif not any(c.isupper() for c in password):
+        return "Weak: No uppercase letters"
+    elif not any(c.islower() for c in password):
+        return "Weak: No lowercase letters"
+    elif not any(c.isdigit() for c in password):
+        return "Weak: No numbers"
+    else:
+        return "Strong password"
+print(check_password_strength("abc123"))      
+print(check_password_strength("Password123")) 
+def clean_text(text):
+    """Remove extra whitespace and normalize text"""
+    return " ".join(text.split())
+text = "  This   is    a    messy    text   "
+print(clean_text(text))  
+def title_case(sentence):
+    """Convert a sentence to title case"""
+    pass
+def is_palindrome(text):
+    """Check if a string is a palindrome (reads the same forwards and backwards)"""
+    pass
+def count_letters(text):
+    """Count vowels and consonants in a string"""
+    pass
+def format_phone_number(phone):
+    """Format a 10-digit phone number as (XXX) XXX-XXXX"""
+    pass
+
+Hello, World!
+Hello, World!
+--------------------
+  HELLO WORLD
+  hello world
+  Hello World
+hello world
+hello world
+  hello world
+Hello Python
+['apple', 'banana', 'cherry']
+apple and banana and cherry
+My name is Alice and I am 30 years old
+My name is Alice and I am 30 years old
+My name is Alice and I am 30 years old
+My name is Alice and I am 30 years old
+My name is Alice and I am 30 years old
+Pi to 2 decimal places: 3.14
+P
+g
+Python
+Programming
+Python
+Pto rgamn
+False
+True
+False
+True
+True
+2
+6
+18
+-1
+abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ
+0123456789
+!"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
+H2ll4 W4rld!
+
+This is a multiline string.
+It can span multiple lines.
+Useful for documentation and long text.
+
+C:\Users\Name\Documents
+Hello, Bob! You are 25 years old.
+True
+False
+Weak: Too short
+Strong password
+This is a messy text

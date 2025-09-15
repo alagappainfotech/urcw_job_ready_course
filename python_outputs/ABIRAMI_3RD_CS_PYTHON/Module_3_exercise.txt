@@ -1,0 +1,466 @@
+>>> """
+... Module 3: Control Flow and Iterables - Exercises
+... Complete these exercises to master Python's control flow and iteration concepts.
+... """
+...
+... import random
+... import time
+... from contextlib import contextmanager
+... from typing import Generator, List, Dict, Any, Optional
+...
+... # Exercise 1: Temperature Converter with Validation
+... def temperature_converter():
+...     """
+...     Create a temperature converter that handles both Celsius and Fahrenheit.
+...     Include proper error handling and user input validation.
+...
+...     Requirements:
+...     - Convert between Celsius and Fahrenheit
+...     - Validate user input
+...     - Handle conversion errors
+...     - Use match-case for conversion type selection
+...     """
+...     print("Temperature Converter")
+...     print("1. Celsius to Fahrenheit")
+...     print("2. Fahrenheit to Celsius")
+...
+...     try:
+...         choice = input("Select conversion type (1 or 2): ").strip()
+...         temperature = float(input("Enter temperature: "))
+...
+...     try:
+...         choice = input("Select conversion type (1 or 2): ").strip()
+...         temperature = float(input("Enter temperature: "))
+...
+...         match choice:
+...             case "1":
+...                 result = (temperature * 9/5) + 32
+...                 print(f"{temperature}°C = {result:.2f}°F")
+...             case "2":
+...                 result = (temperature - 32) * 5/9
+...                 print(f"{temperature}°F = {result:.2f}°C")
+...             case _:
+...                 print("Invalid choice. Please select 1 or 2.")
+...
+...     except ValueError:
+...         print("Error: Please enter a valid number.")
+...     except Exception as e:
+...         print(f"Unexpected error: {e}")
+...
+... # Exercise 2: File Processor with Error Recovery
+... def safe_file_processor(filename: str) -> List[str]:
+...     """
+...     Process a file line by line with comprehensive error handling.
+...
+...     Args:
+...         filename: Path to the file to process
+...
+...     Returns:
+...         List of processed lines
+...
+...     Handles:
+...         - File not found
+...         - Permission errors
+...         - Encoding issues
+...         - Empty files
+...     """
+...     processed_lines = []
+...
+...     try:
+...         with open(filename, 'r', encoding='utf-8') as file:
+...             for line_num, line in enumerate(file, 1):
+...                 try:
+...                     # Process the line (example: strip whitespace and convert to uppercase)
+...                     processed_line = line.strip().upper()
+...                     if processed_line:  # Skip empty lines
+...                         processed_lines.append(processed_line)
+...                 except UnicodeDecodeError:
+...                     print(f"Warning: Skipping line {line_num} due to encoding issue")
+...                     continue
+...                 except Exception as e:
+...                     print(f"Warning: Error processing line {line_num}: {e}")
+...                     continue
+...
+...     except FileNotFoundError:
+...         print(f"Error: File '{filename}' not found.")
+...         return []
+...     except PermissionError:
+...         print(f"Error: Permission denied to read '{filename}'.")
+...         return []
+...     except UnicodeDecodeError:
+...         print(f"Error: Unable to decode file '{filename}'. Try different encoding.")
+...         return []
+...     except Exception as e:
+...         print(f"Unexpected error processing file: {e}")
+...         return []
+...
+...     return processed_lines
+...
+... # Exercise 3: Configuration Manager with Match-Case
+... class ConfigManager:
+...     """Configuration manager using match-case for different environments."""
+...
+...     def __init__(self, environment: str):
+...         self.environment = environment
+...         self.config = self._load_config()
+...
+...     def _load_config(self) -> Dict[str, Any]:
+...         """Load configuration based on environment using match-case."""
+...         match self.environment.lower():
+...             case "development":
+...                 return {
+...                     "debug": True,
+...                     "database_url": "sqlite:///dev.db",
+...                     "log_level": "DEBUG",
+...                     "cache_enabled": False
+...                 }
+...             case "production":
+...                 return {
+...                     "debug": False,
+...                     "database_url": "postgresql://prod.db",
+...                     "log_level": "WARNING",
+...                     "cache_enabled": True
+...                 }
+...             case "testing":
+...                 return {
+...                     "debug": True,
+...                     "database_url": "sqlite:///test.db",
+...                     "log_level": "INFO",
+...                     "cache_enabled": False
+...                 }
+...             case _:
+...                 raise ValueError(f"Unknown environment: {self.environment}")
+...
+...     def get(self, key: str, default: Any = None) -> Any:
+...         """Get configuration value."""
+...         return self.config.get(key, default)
+...
+... # Exercise 4: Data Pipeline with Generators
+... def number_generator(start: int, end: int) -> Generator[int, None, None]:
+...     """Generate numbers from start to end."""
+...     for i in range(start, end + 1):
+...         yield i
+...
+... def filter_even(numbers: Generator[int, None, None]) -> Generator[int, None, None]:
+...     """Filter even numbers from a generator."""
+...     for num in numbers:
+...         if num % 2 == 0:
+...             yield num
+...
+... def square_numbers(numbers: Generator[int, None, None]) -> Generator[int, None, None]:
+...     """Square numbers from a generator."""
+...     for num in numbers:
+...         yield num ** 2
+...
+... def data_pipeline(start: int, end: int) -> Generator[int, None, None]:
+...     """Complete data pipeline: generate -> filter even -> square."""
+...     numbers = number_generator(start, end)
+...     evens = filter_even(numbers)
+...     squares = square_numbers(evens)
+...     return squares
+...
+... # Exercise 5: Custom Context Manager
+... @contextmanager
+... def timer_context(operation_name: str):
+...     """Context manager for timing operations."""
+...     start_time = time.time()
+...     print(f"Starting {operation_name}...")
+...     try:
+...         yield
+...     except Exception as e:
+...         print(f"Error in {operation_name}: {e}")
+...         raise
+...     finally:
+...         end_time = time.time()
+...         duration = end_time - start_time
+...         print(f"Completed {operation_name} in {duration:.4f} seconds")
+...
+... # Exercise 6: Exception Handling Patterns
+... class DataProcessor:
+...     """Data processor with comprehensive error handling."""
+...
+...     def __init__(self):
+...         self.processed_count = 0
+...         self.error_count = 0
+...
+...     def process_item(self, item: Any) -> Optional[Any]:
+...         """Process a single item with error handling."""
+...         try:
+...             # Simulate processing
+...             if isinstance(item, str):
+...                 result = item.upper()
+...             elif isinstance(item, (int, float)):
+...                 result = item * 2
+...             else:
+...                 raise TypeError(f"Unsupported type: {type(item)}")
+...
+...             self.processed_count += 1
+...             return result
+...
+...         except TypeError as e:
+...             print(f"Type error processing {item}: {e}")
+...             self.error_count += 1
+...             return None
+...         except Exception as e:
+...             print(f"Unexpected error processing {item}: {e}")
+...             self.error_count += 1
+...             return None
+...
+...     def process_batch(self, items: List[Any]) -> List[Any]:
+...         """Process a batch of items."""
+...         results = []
+...         for item in items:
+...             result = self.process_item(item)
+...             if result is not None:
+...                 results.append(result)
+...         return results
+...
+... # Exercise 7: Advanced Loop Patterns
+... def find_patterns_in_text(text: str, patterns: List[str]) -> Dict[str, List[int]]:
+...     """
+...     Find all occurrences of patterns in text using various loop patterns.
+...
+...     Args:
+...         text: Text to search in
+...         patterns: List of patterns to find
+...
+...     Returns:
+...         Dictionary mapping patterns to list of positions
+...     """
+...     results = {pattern: [] for pattern in patterns}
+...
+...     # Using enumerate for position tracking
+...     for i, char in enumerate(text):
+...         for pattern in patterns:
+...             if text[i:i+len(pattern)] == pattern:
+...                 results[pattern].append(i)
+...
+...     return results
+...
+... # Exercise 8: Generator with State
+... class CounterGenerator:
+...     """Generator that maintains state between calls."""
+...
+...     def __init__(self, start: int = 0, step: int = 1):
+...         self.current = start
+...         self.step = step
+...
+...     def __iter__(self):
+...         return self
+...
+...     def __next__(self):
+...         value = self.current
+...         self.current += self.step
+...         return value
+...
+...     def reset(self):
+...         """Reset the counter to start value."""
+...         self.current = 0
+...
+... # Exercise 9: Complex Exception Handling
+... def robust_calculator(operation: str, a: float, b: float) -> Optional[float]:
+...     """
+...     Robust calculator with comprehensive error handling.
+...
+...     Args:
+...         operation: Operation to perform (+, -, *, /, **)
+...         a: First number
+...         b: Second number
+...
+...     Returns:
+...         Result of operation or None if error
+...     """
+...     try:
+...         match operation:
+...             case "+":
+...                 return a + b
+...             case "-":
+...                 return a - b
+...             case "*":
+...                 return a * b
+...             case "/":
+...                 if b == 0:
+...                     raise ZeroDivisionError("Cannot divide by zero")
+...                 return a / b
+...             case "**":
+...                 return a ** b
+...             case _:
+...                 raise ValueError(f"Unknown operation: {operation}")
+...
+...     except ZeroDivisionError as e:
+...         print(f"Math error: {e}")
+...         return None
+...     except OverflowError as e:
+...         print(f"Overflow error: {e}")
+...         return None
+...     except ValueError as e:
+...         print(f"Value error: {e}")
+...         return None
+...     except Exception as e:
+...         print(f"Unexpected error: {e}")
+...         return None
+...
+... # Exercise 10: Advanced Iteration Patterns
+... def process_nested_data(data: List[Dict[str, Any]]) -> List[Dict[str, Any]]:
+...     """
+...     Process nested data structure with error handling.
+...
+...     Args:
+...         data: List of dictionaries with nested data
+...
+...     Returns:
+...         Processed data with error handling
+...     """
+...     processed = []
+...
+...     for i, item in enumerate(data):
+...         try:
+...             # Validate required fields
+...             if not isinstance(item, dict):
+...                 print(f"Warning: Item {i} is not a dictionary, skipping")
+...                 continue
+...
+...             # Process the item
+...             processed_item = {}
+...             for key, value in item.items():
+...                 if isinstance(value, str):
+...                     processed_item[key] = value.upper()
+...                 elif isinstance(value, (int, float)):
+...                     processed_item[key] = value * 2
+...                 else:
+...                     processed_item[key] = value
+...
+...             processed.append(processed_item)
+...
+...         except Exception as e:
+...             print(f"Error processing item {i}: {e}")
+...             continue
+...
+...     return processed
+...
+... # Test Functions
+... def test_exercises():
+...     """Test all exercises."""
+...     print("Testing Module 3 Exercises...")
+...
+...     # Test 1: Temperature Converter
+...     print("\n1. Testing Temperature Converter:")
+...     # Uncomment to test interactively
+...     # temperature_converter()
+...
+...     # Test 2: File Processor
+...     print("\n2. Testing File Processor:")
+...     # Create a test file
+...     with open("test_file.txt", "w") as f:
+...         f.write("Hello World\nPython Programming\n123\n")
+...
+...     lines = safe_file_processor("test_file.txt")
+...     print(f"Processed {len(lines)} lines")
+...
+...     # Test 3: Configuration Manager
+...     print("\n3. Testing Configuration Manager:")
+...     config = ConfigManager("development")
+...     print(f"Debug mode: {config.get('debug')}")
+...
+...     # Test 4: Data Pipeline
+...     print("\n4. Testing Data Pipeline:")
+...     pipeline = data_pipeline(1, 10)
+...     results = list(pipeline)
+...     print(f"Pipeline results: {results}")
+...
+...     # Test 5: Timer Context
+...     print("\n5. Testing Timer Context:")
+...     with timer_context("test operation"):
+...         time.sleep(0.1)
+...
+...     # Test 6: Data Processor
+...     print("\n6. Testing Data Processor:")
+...     processor = DataProcessor()
+...     test_data = ["hello", 123, "world", 45.6, None]
+...     results = processor.process_batch(test_data)
+...     print(f"Processed {len(results)} items successfully")
+...     print(f"Errors: {processor.error_count}")
+...
+...     # Test 7: Pattern Finding
+...     print("\n7. Testing Pattern Finding:")
+...     text = "hello world hello python"
+...     patterns = ["hello", "world", "python"]
+...     matches = find_patterns_in_text(text, patterns)
+...     print(f"Pattern matches: {matches}")
+...
+...     # Test 8: Counter Generator
+...     print("\n8. Testing Counter Generator:")
+...     counter = CounterGenerator(0, 2)
+...     for i, value in enumerate(counter):
+...         if i >= 5:
+...             break
+...         print(f"Counter value: {value}")
+...
+...     # Test 9: Robust Calculator
+...     print("\n9. Testing Robust Calculator:")
+...     print(f"5 + 3 = {robust_calculator('+', 5, 3)}")
+...     print(f"10 / 0 = {robust_calculator('/', 10, 0)}")
+...     print(f"2 ** 3 = {robust_calculator('**', 2, 3)}")
+...
+...     # Test 10: Nested Data Processing
+...     print("\n10. Testing Nested Data Processing:")
+...     test_data = [
+...         {"name": "alice", "age": 25, "score": 85.5},
+...         {"name": "bob", "age": 30, "score": 92.0},
+...         "invalid item",  # This should be skipped
+...         {"name": "charlie", "age": 35, "score": 78.5}
+...     ]
+...     processed = process_nested_data(test_data)
+...     print(f"Processed {len(processed)} items")
+...
+...     print("\nAll tests completed!")
+...
+... if __name__ == "__main__":
+...     test_exercises()
+
+Testing Module 3 Exercises...
+
+1. Testing Temperature Converter:
+
+2. Testing File Processor:
+Processed 3 lines
+
+3. Testing Configuration Manager:
+Debug mode: True
+
+4. Testing Data Pipeline:
+Pipeline results: [4, 16, 36, 64, 100]
+
+5. Testing Timer Context:
+Starting test operation...
+Completed test operation in 0.1008 seconds
+
+6. Testing Data Processor:
+Type error processing None: Unsupported type: <class 'NoneType'>
+Processed 4 items successfully
+Errors: 1
+
+7. Testing Pattern Finding:
+Pattern matches: {'hello': [0, 12], 'world': [6], 'python': [18]}
+
+8. Testing Counter Generator:
+Counter value: 0
+Counter value: 2
+Counter value: 4
+Counter value: 6
+Counter value: 8
+
+9. Testing Robust Calculator:
+5 + 3 = 8
+Math error: Cannot divide by zero
+10 / 0 = None
+2 ** 3 = 8
+
+10. Testing Nested Data Processing:
+Warning: Item 2 is not a dictionary, skipping
+Processed 3 items
+
+All tests completed!
+
+
+
