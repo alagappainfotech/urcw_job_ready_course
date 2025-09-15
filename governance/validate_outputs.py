@@ -54,7 +54,7 @@ if __name__ == "__main__":
     target_folder = r"/Users/acharyathiyagarajan/Applications/urcw_job_ready_course/python_outputs"
 
     # 2. SPECIFY THE OUTPUT EXCEL FILENAME
-    output_excel_file = "file_sizes_report.xlsx"
+    output_excel_file = "file_sizes_report_v0.xlsx"
 
     # Check if the folder exists
     if not os.path.isdir(target_folder):
