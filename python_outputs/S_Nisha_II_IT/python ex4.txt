@@ -1,0 +1,81 @@
+def max_of_numbers(*args: int) -> int:
+     """Returns the maximum of the given numbers."""
+     if not args:
+         raise ValueError("At least one number must be provided")
+         return max(args)
+
+print(max_of_numbers(1, 2, 3))
+None
+print(max_of_numbers(-1, -2, -3))
+None
+try:
+     print(max_of_numbers())
+Traceback (most recent call last):
+  File "<pyshell#20>", line 1, in <module>
+    print(max_of_numbers())
+  File "<pyshell#5>", line 4, in max_of_numbers
+    raise ValueError("At least one number must be provided")
+ValueError: At least one number must be provided
+print(f"ValueError: {e}")
+Traceback (most recent call last):
+  File "<pyshell#22>", line 1, in <module>
+    print(f"ValueError: {e}")
+NameError: name 'e' is not defined
+print(max_of_numbers("1", "2", "3"))
+None
+print(f"TypeError: {e}")
+Traceback (most recent call last):
+  File "<pyshell#24>", line 1, in <module>
+    print(f"TypeError: {e}")
+NameError: name 'e' is not defined
+
+print(max_of_numbers(1, 2, "3"))
+None
+print(f"TypeError: {e}")
+Traceback (most recent call last):
+  File "<pyshell#26>", line 1, in <module>
+    print(f"TypeError: {e}")
+NameError: name 'e' is not defined
+print(max_of_numbers(1, 2, 3.5))
+None
+print(f"TypeError: {e}")
+Traceback (most recent call last):
+  File "<pyshell#28>", line 1, in <module>
+    print(f"TypeError: {e}")
+NameError: name 'e' is not defined
+print(max_of_numbers([1, 2, 3]))
+None
+print(f"TypeError: {e}")
+Traceback (most recent call last):
+  File "<pyshell#30>", line 1, in <module>
+    print(f"TypeError: {e}")
+NameError: name 'e' is not defined
+print(max_of_numbers(None))
+None
+print(f"TypeError: {e}")
+Traceback (most recent call last):
+  File "<pyshell#34>", line 1, in <module>
+    print(f"TypeError: {e}")
+NameError: name 'e' is not defined
+print(max_of_numbers({1: 'one', 2: 'two'}))
+None
+print(f"TypeError: {e}")
+Traceback (most recent call last):
+  File "<pyshell#38>", line 1, in <module>
+    print(f"TypeError: {e}")
+NameError: name 'e' is not defined
+print(max_of_numbers((1, 2, 3)))
+None
+print(f"TypeError: {e}")
+Traceback (most recent call last):
+  File "<pyshell#40>", line 1, in <module>
+    print(f"TypeError: {e}")
+NameError: name 'e' is not defined
+print(max_of_numbers({1, 2, 3}))
+None
+print(f"TypeError: {e}")
+Traceback (most recent call last):
+  File "<pyshell#42>", line 1, in <module>
+    print(f"TypeError: {e}")
+NameError: name 'e' is not defined
+
