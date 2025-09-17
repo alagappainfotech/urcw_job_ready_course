@@ -1,0 +1,52 @@
+try:
+    result = 10 / 0
+except ZeroDivisionError:
+    print("Error: Division by zero is not allowed.")
+
+    
+Error: Division by zero is not allowed.
+try:
+    num = int("abc")
+except ValueError:
+    print("Error: Invalid input. Please enter a number.")
+except ZeroDivisionError:
+    print("Error: Division by zero is not allowed.")
+
+    
+Error: Invalid input. Please enter a number.
+try:
+    result = 10 / 2
+except ZeroDivisionError:
+    print("Error: Division by zero is not allowed.")
+else:
+    print(f"Result: {result}")
+
+    
+Result: 5.0
+try:
+    file = open("example.txt", "r")
+except FileNotFoundError:
+    print("Error: File not found.")
+finally:
+    print("Execution completed.")
+
+    
+Error: File not found.
+Execution completed.
+try:
+    age=-1
+    if age<0:
+        raise ValueError("Age cannot be negative.")
+except ValueError as e:
+    print(f"Error: {e}")
+Error: Age cannot be negative.
+class CustomError(Exception):
+    """Custom exception class."""
+    pass
+try:
+    raise CustomError("This is a custom error.")
+except CustomError as e:
+    print(f"Caught custom exception: {e}")
+
+    
+Caught custom exception: This is a custom error.
