@@ -1,0 +1,196 @@
+def title_case(sentence):
+...     """
+...     Convert a sentence to title case (capitalize first lette\r of each word)
+...     Args:
+...         sentence(str): The sentence to convert
+...     Returns:
+...         str: The sentence in title case
+...     Example:
+...         >>>title_case("hello world")
+...         'Hello World'
+...         >>>title_case("python programming language")
+...         'Python Programming Language'
+...     """
+...
+>>>
+>>> def is_palindrome(text):
+...     """                                                        and backwards) if a string is a palindrome (reads the same forwards \...     Ignore case and non-alphanumeric characters
+...
+...     Args:
+...         text (str): The text to check
+...
+...     Returns:
+...         bool: True if palindrome, False otherwise
+...
+...     Example:
+...         >>> is_palindrome("racecar")
+...         True
+...         >>> is_palindrome("A man a plan a canal Panama")
+...         True
+...         >>> is_palindrome("hello")
+...         False
+...     """
+...
+>>> def count_letters(text):
+...     """
+...     Count vowels and consonants in a string
+...
+...     Args:
+...         text (str): The text to analyze
+...
+...     Returns:
+...         dict: Dictionary with 'vowels' and 'consonants' counts
+...
+...     Example:
+...         >>> count_letters("hello world")
+...         {'vowels': 3, 'consonants': 7}
+...         >>> count_letters("PYTHON")
+...         {'vowels': 1, 'consonants': 5}
+...     """
+...
+>>> def format_phone_number(phone):
+...     """
+...     Format a 10-digit phone number as (XXX) XXX-XXXX
+...
+...     Args:                                                      dashes, dots)phone (str): Phone number (can contain digits, spaces, \...
+...     Returns:
+...         str: Formatted phone number
+...
+...     Example:
+...         >>> format_phone_number("1234567890")
+...         '(123) 456-7890'
+...         >>> format_phone_number("123-456-7890")
+...         '(123) 456-7890'
+...         >>> format_phone_number("123.456.7890")
+...         '(123) 456-7890'
+...     """
+...
+>>> def extract_words(text):
+...     """                                                        verting to lowercase words from a text, removing punctuation and con\...
+...     Args:
+...         text (str): The text to process
+...
+...     Returns:
+...         list: List of words
+...
+...     Example:
+...         >>> extract_words("Hello, World! How are you?")
+...         ['hello', 'world', 'how', 'are', 'you']
+...     """
+...
+>>> def word_frequency(text):
+...     """
+...     Count the frequency of each word in a text
+...
+...     Args:
+...         text (str): The text to analyze
+...
+...     Returns:                                                   values       dict: Dictionary with words as keys and frequencies as \...
+...     Example:
+...         >>> word_frequency("hello world hello python")
+...         {'hello': 2, 'world': 1, 'python': 1}
+...     """
+...
+>>> def validate_password(password):
+...     """
+...     Validate password strength
+...
+...     Requirements:
+...     - At least 8 characters long
+...     - Contains at least one uppercase letter
+...     - Contains at least one lowercase letter
+...     - Contains at least one digit
+...     - Contains at least one special character (!@#$%^&*)
+...
+...     Args:
+...         password (str): The password to validate
+...
+...     Returns:
+...         dict: Dictionary with validation results
+...
+...     Example:
+...         >>> validate_password("abc123")                        , 'No special character']}se, 'errors': ['Too short', 'No uppercase'\...         >>> validate_password("Password123!")
+...         {'valid': True, 'errors': []}
+...     """
+...
+>>> def caesar_cipher(text, shift):
+...     """
+...     Implement Caesar cipher encryption/decryption
+...
+...     Args:
+...         text (str): The text to encrypt/decrypt                 negative for decryption) The shift amount (positive for encryption,\...
+...     Returns:
+...         str: The encrypted/decrypted text
+...
+...     Example:
+...         >>> caesar_cipher("hello", 3)
+...         'khoor'
+...         >>> caesar_cipher("khoor", -3)
+...         'hello'
+...     """
+...
+>>> if __name__ == "__main__":
+...     print("Testing title_case:")
+...
+Testing title_case:
+>>> print(title_case("hello world"))
+None
+>>> print(title_case("python programming language"))
+None
+>>> print()
+
+>>> print("Testing is_palindrome:")
+Testing is_palindrome:
+>>> print(is_palindrome("racecar"))
+None
+>>> print(is_palindrome("A man a plan a canal Panama"))
+None
+>>> print(is_palindrome("hello"))
+None
+>>> print()
+
+>>> print("Testing count_letters:")
+Testing count_letters:
+>>> print(count_letters("hello world"))
+None
+>>> print(count_letters("PYTHON"))
+None
+>>> print()
+
+>>> print("Testing format_phone_number:")
+Testing format_phone_number:
+>>> print(format_phone_number("1234567890"))
+None
+>>> print(format_phone_number("123-456-7890"))
+None
+>>> print(format_phone_number("123.456.7890"))
+None
+>>> print()
+
+>>> print("Testing extract_words:")
+Testing extract_words:
+>>> print(extract_words("Hello, World! How are you?"))
+None
+>>> print()
+
+>>> print("Testing word_frequency:")
+Testing word_frequency:
+>>> print(word_frequency("hello world hello python"))
+None
+>>> print()
+
+>>> print("Testing validate_password:")
+Testing validate_password:
+>>> print(validate_password("abc123"))
+None
+>>> print(validate_password("Password123!"))
+None
+>>> print()
+
+>>> print("Testing caesar_cipher:")
+Testing caesar_cipher:
+>>> print(caesar_cipher("hello", 3))
+None
+>>> print(caesar_cipher("khoor", -3))
+None
+>>> print()

@@ -1,0 +1,63 @@
+ def first_digit(n: int) -> int:
+...     """Returns the first digit of an integer."""
+...     n = abs(n)
+...     while n >= 10:
+...         n //= 10
+...     return n
+... print(first_digit(100034))
+...
+1
+>>> print(first_digit(-12345))
+1
+>>> print(first_digit(12345))
+1
+>>> print(first_digit(0))
+0
+>>> print(first_digit((True))
+1
+>>> print(first_digit(False))
+0
+try:
+    print(first_digit("12345"))  
+	TypeError
+    print(first_digit("Hi There 123"))  
+	TypeError
+    print(first_digit(3.14))      
+	TypeError
+    print(first_digit([1, 2, 3]))  
+	TypeError
+    print(first_digit(None)) 
+	TypeError
+    print(first_digit({1: 'one', 2: 'two'}))  
+	TypeError
+    print(first_digit((1, 2, 3))) 
+	TypeError
+    print(first_digit({1, 2, 3}))  
+	TypeError
+    print(first_digit(bytearray(b'12345'))) 
+	TypeError 
+    print(first_digit(b'12345')) 
+	TypeError
+    print(first_digit(range(5))) 
+	TypeError 
+    print(first_digit(3 + 4j))  
+	TypeError
+    print(first_digit(float('inf')))  
+	TypeError
+    print(first_digit(float('nan')))  
+	TypeError
+    print(first_digit(float(3.14))) 
+	TypeError
+    print(first_digit(complex(1, 2))) 
+	TypeError 
+    print(first_digit(True))  
+	1
+    print(first_digit(False)) 
+	0
+    print(first_digit(None))   
+	TypeError
+    print(first_digit("12345"))  
+	TypeError
+
+except TypeError as e:
+    print(f"TypeError: {e}")
