@@ -1,0 +1,216 @@
+some_var = "string"
+
+if type(some_var) is  int:
+    if some_var > 10:
+        print("some_var is totally bigger than 10.")
+    elif some_var < 10:
+        print("some_var is smaller than 10.")
+    else:
+        print("some_var is indeed 10.")
+else:
+    print("some_var is not an integer")
+
+    
+some_var is not an integer
+if type(some_var) is  int:
+    if some_var > 10:
+        print("some_var is totally bigger than 10.")
+
+        
+elif some_var < 10:
+print("some_var is smaller than 10.")
+SyntaxError: invalid syntax
+command = "say_hi"
+match command:
+    case "run":
+        print("The robot started to run 🏃‍♂️")
+    case "speak" | "say_hi":
+        print("The robot said hi 🗣️")
+    case code if command.isdigit():
+        print(f"The robot execute code: {code}")
+    case _:
+        print("Invalid command ❌")
+
+        
+The robot said hi 🗣️
+"""
+For loops iterate over lists
+prints:
+    dog is a mammal
+    cat is a mammal
+    mouse is a mammal
+"""
+'\nFor loops iterate over lists\nprints:\n    dog is a mammal\n    cat is a mammal\n    mouse is a mammal\n'
+for animal in ["dog", "cat", "mouse"]:
+    print("{} is a mammal".format(animal))
+
+    
+dog is a mammal
+cat is a mammal
+mouse is a mammal
+"""
+"range(number)" returns an iterable of numbers
+from zero up to (but excluding) the given number
+prints:
+    0
+    1
+    2
+    3
+"""
+'\n"range(number)" returns an iterable of numbers\nfrom zero up to (but excluding) the given number\nprints:\n    0\n    1\n    2\n    3\n'
+for i in range(4):
+    print(i)
+
+    
+0
+1
+2
+3
+"""
+"range(lower, upper)" returns an iterable of numbers
+from the lower number to the upper number
+prints:
+    4
+    5
+    6
+    7
+"""
+'\n"range(lower, upper)" returns an iterable of numbers\nfrom the lower number to the upper number\nprints:\n    4\n    5\n    6\n    7\n'
+for i in range(4,8):
+    print(i)
+
+    
+4
+5
+6
+7
+"""
+"range(lower, upper, step)" returns an iterable of numbers
+from the lower number to the upper number, while incrementing
+by step. If step is not indicated, the default value is 1.
+prints:
+    4
+    6
+"""
+'\n"range(lower, upper, step)" returns an iterable of numbers\nfrom the lower number to the upper number, while incrementing\nby step. If step is not indicated, the default value is 1.\nprints:\n    4\n    6\n'
+for i in range(4, 8, 2):
+    print(i)
+
+    
+4
+6
+"""
+Loop over a list to retrieve both the index and the value of each list item:
+    0 dog
+    1 cat
+    2 mouse
+"""
+'\nLoop over a list to retrieve both the index and the value of each list item:\n    0 dog\n    1 cat\n    2 mouse\n'
+KeyboardInterrupt
+animals = ["dog", "cat", "mouse"]
+for i, value in enumerate(animals):
+    print(i, value)
+
+    
+0 dog
+1 cat
+2 mouse
+"""
+While loops go until a condition is no longer met.
+prints:
+    0
+    1
+    2
+    3
+"""
+'\nWhile loops go until a condition is no longer met.\nprints:\n    0\n    1\n    2\n    3\n'
+x=0
+while x<4:
+    print(x)
+    x+=1
+
+    
+0
+1
+2
+3
+try:
+    raise IndexError("This is an index error")
+except IndexError as e:
+    pass
+except (TypeError, NameError):
+    pass
+else:
+    print("All good!")
+finally:
+    print("We can clean up resources here")
+
+    
+We can clean up resources here
+with open("myfile.txt") as f:
+    for line in f:
+        print(line)
+contents = {"aa": 12, "bb": 21}
+with open("myfile1.txt", "w") as file:
+    file.write(str(contents))
+
+    
+20
+import json
+with open("myfile2.txt", "w") as file:
+    file.write(json.dumps(contents))
+
+    
+20
+with open("myfile1.txt") as file:
+    contents = file.read()
+
+    
+print(contents)
+{'aa': 12, 'bb': 21}
+with open("myfile2.txt", "r") as file:
+    contents = json.load(file)
+
+    
+print(contents)
+{'aa': 12, 'bb': 21}
+filled_dict = {"one": 1, "two": 2, "three": 3}
+our_iterable = filled_dict.keys()
+print(our_iterable)
+dict_keys(['one', 'two', 'three'])
+for i in our_iterable:
+    print(i)
+
+    
+one
+two
+three
+our_iterable[1]
+Traceback (most recent call last):
+  File "<pyshell#104>", line 1, in <module>
+    our_iterable[1]
+TypeError: 'dict_keys' object is not subscriptable
+our_iterator = iter(our_iterable)
+next(our_iterator)
+'one'
+next(our_iterator)
+'two'
+next(our_iterator)
+'three'
+next(our_iterator)
+Traceback (most recent call last):
+  File "<pyshell#109>", line 1, in <module>
+    next(our_iterator)
+StopIteration
+our_iterator = iter(our_iterable)
+for i in our_iterator:
+    print(i)
+
+    
+one
+two
+three
+list(our_iterable)
+['one', 'two', 'three']
+list(our_iterator)
+[]
