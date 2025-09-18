@@ -1,0 +1,78 @@
+def max_of_numbers(*args: int) -> int:
+    """Returns the maximum of the given numbers."""
+    if not args:
+        raise ValueError("At least one number must be provided")
+    return max(args)
+
+print(max_of_numbers(1, 2, 3))
+3
+print(max_of_numbers(-1, -2, -3))
+-1
+try:
+  print(max_of_numbers())
+except ValueError as e:
+  print(f"ValueError: {e}")
+
+  
+ValueError: At least one number must be provided
+
+try:
+    print(max_of_numbers("1", "2", "3"))except TypeError as e:
+        
+SyntaxError: invalid syntax
+try:
+    print(max_of_numbers("1", "2", "3"))
+except TypeError as e:
+    print(f"TypeError: {e}")
+
+    
+3
+try:
+   print(max_of_numbers(1, 2, "3"))
+except TypeError as e:
+      print(f"TypeError: {e}")
+
+      
+TypeError: '>' not supported between instances of 'str' and 'int'
+try:
+   print(max_of_numbers(1, 2, 3.5))
+except TypeError as e:
+    print(f"TypeError: {e}")
+
+    
+3.5
+try:
+  print(max_of_numbers([1, 2, 3]))
+except TypeError as e:
+   print(f"TypeError: {e}")
+
+   
+[1, 2, 3]
+try:
+  print(max_of_numbers(None))
+except TypeError as e:
+  print(f"TypeError: {e}")
+
+  
+None
+try:
+    print(max_of_numbers({1: 'one', 2: 'two'}))
+except TypeError as e:
+    print(f"TypeError: {e}")
+
+    
+{1: 'one', 2: 'two'}
+try:
+    print(max_of_numbers((1, 2, 3)))
+except TypeError as e:
+    print(f"TypeError: {e}")
+
+    
+(1, 2, 3)
+try:
+   print(max_of_numbers({1, 2, 3}))
+except TypeError as e:
+  print(f"TypeError: {e}")
+
+  
+{1, 2, 3}
