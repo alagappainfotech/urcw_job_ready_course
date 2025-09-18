@@ -1,0 +1,182 @@
+print("Module 3: Code Organization, Functions & Error Handling")
+Module 3: Code Organization, Functions & Error Handling
+print("=" * 60)
+
+============================================================
+
+def add(x, y):
+    print("x is {} and y is {}".format(x, y))
+    return x + y
+
+add(5, 6)
+x is 5 and y is 6
+11
+add(y=6, x=5)
+x is 5 and y is 6
+11
+def varargs(*args):
+    return args
+
+varargs(1, 2, 3)
+(1, 2, 3)
+def keyword_args(**kwargs):
+    return kwargs
+
+keyword_args(big="foot", loch="ness")
+{'big': 'foot', 'loch': 'ness'}
+def all_the_args(*args, **kwargs):
+    print(args)
+    print(kwargs)
+
+    
+"""
+all_the_args(1, 2, a=3, b=4) prints:
+    (1, 2)
+    {"a": 3, "b": 4}
+"""
+'\nall_the_args(1, 2, a=3, b=4) prints:\n    (1, 2)\n    {"a": 3, "b": 4}\n'
+args = (1, 2, 3, 4)
+kwargs = {"a": 3, "b": 4}
+SyntaxError: multiple statements found while compiling a single statement
+args = (1, 2, 3, 4)
+kwargs = {"a": 3, "b": 4}
+all_the_args(*args)
+(1, 2, 3, 4)
+{}
+all_the_args(**kwargs)
+()
+{'a': 3, 'b': 4}
+all_the_args(*args, **kwargs)
+(1, 2, 3, 4)
+{'a': 3, 'b': 4}
+def swap(x, y):
+    return y, x
+
+x = 1
+y = 2
+
+x, y = swap(x, y)
+x = 5
+def set_x(num):
+     x = num
+     print(x)
+
+     
+def set_global_x(num):
+    global x
+    print(x)
+    x = num
+    print(x)
+
+    
+set_x(43)
+43
+set_global_x(6)
+"""
+prints:
+    43
+    5
+    6
+"""
+set_global_x(6)
+5
+6
+"""
+prints:
+    43
+    5
+    6
+"""
+'\nprints:\n    43\n    5\n    6\n'
+def create_adder(x):
+    def adder(y):
+        return x + y
+    return adder
+
+add_10 = create_adder(10)
+add_10(3)
+SyntaxError: invalid syntax
+def avg(n):
+        nonlocal total, count
+        total += n
+        count += 1
+        return total/count
+return avg
+SyntaxError: invalid syntax
+def avg(n):
+        nonlocal total, count
+        total += n
+        count += 1
+        return total/count
+print("\n" + "="*60)
+
+============================================================
+print("ADVANCED FUNCTION FEATURES")
+ADVANCED FUNCTION FEATURES
+print("="*60)
+============================================================
+def calculate_area(length: float, width: float) -> float:
+    """
+    Calculate the area of a rectangle.
+    
+    Args:
+        length: The length of the rectangle
+        width: The width of the rectangle
+    
+    Returns:
+        The area of the rectangle
+    """
+    return length * width
+def greet(name: str, greeting: str = "Hello", punctuation: str = "!") -> str:
+    """Create a personalized greeting."""
+    return f"{greeting}, {name}{punctuation}"
+
+print(f"Area: {calculate_area(5.0, 3.0)}")
+Area: 15.0
+print(f"Greeting: {greet('Alice')}")
+Greeting: Hello, Alice!
+
+print(f"Custom greeting: {greet('Bob', 'Hi', '!!!')}")
+Custom greeting: Hi, Bob!!!
+print(f"Custom greeting: {greet('Bob', 'Hi', '!!!')}")
+Custom greeting: Hi, Bob!!!
+print("\n" + "="*60)
+
+============================================================
+print("EXCEPTION HANDLING")
+EXCEPTION HANDLING
+print("="*60)
+============================================================
+def safe_divide(a: float, b: float) -> float:
+    """
+    Safely divide two numbers with error handling.
+    
+    Args:
+        a: Dividend
+        b: Divisor
+    
+    Returns:
+        Result of division
+    
+    Raises:
+        ValueError: If divisor is zero
+        TypeError: If inputs are not numbers
+    """
+try:
+        if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
+            raise TypeError("Both arguments must be numbers")
+        if b == 0:
+            raise ValueError("Cannot divide by zero")
+        return a / b
+except (TypeError, ValueError) as e:
+        print(f"Error: {e}")     
+        return None
+    
+SyntaxError: 'return' outside function
+
+print(f"10 / 3 = {safe_divide(10, 3)}")
+10 / 3 = None
+print(f"10 / 0 = {safe_divide(10, 0)}")
+10 / 0 = None
+print(f"'10' / 3 = {safe_divide('10', 3)}")
+'10' / 3 = None
