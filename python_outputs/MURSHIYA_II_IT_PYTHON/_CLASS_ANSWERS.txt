@@ -1,0 +1,470 @@
+                  _CLASS_ANSWERS
+
+print("Module 5: Object-Oriented Programming & Advanced Features")
+print("=" * 60)
+class Person:
+    """
+    A simple class to represent a person.
+    """
+    def __init__(self, name, age):
+        self.name = name  
+        self.age = age    
+    def greet(self):
+        print(f"Hello, my name is {self.name} and I am {self.age} years old.")
+person1 = Person("Alice", 30)
+person1.greet()  
+class Circle:
+    """
+    A class to represent a circle.
+    """
+    pi = 3.14159 
+def __init__(self, radius):
+        self.radius = radius  
+ def area(self):
+        return Circle.pi * self.radius ** 2
+circle1 = Circle(5)
+print(circle1.area())  
+class Animal:
+    def __init__(self, species):
+        self.species = species
+def make_sound(self):
+        print("Some generic sound")
+class Dog(Animal):  # Dog inherits from Animal
+    def __init__(self, name, breed):
+        super().__init__("Dog")  # Call the parent class constructor
+        self.name = name
+        self.breed = breed
+def make_sound(self):
+        print("Woof!")
+dog1 = Dog("Buddy", "Golden Retriever")
+dog1.make_sound()  
+class BankAccount:
+    def __init__(self, balance):
+        self.__balance = balance
+def deposit(self, amount):
+        self.__balance += amount
+   def withdraw(self, amount):
+        if amount <= self.__balance:
+            self.__balance -= amount
+        else:
+            print("Insufficient funds")
+ def get_balance(self):
+        return self.__balance
+account = BankAccount(1000)
+account.deposit(500)
+print(account.get_balance())  
+class Cat(Animal):
+    def make_sound(self):
+        print("Meow!")
+animals = [Dog("Buddy", "Golden Retriever"), Cat("Whiskers")]
+for animal in animals:
+    animal.m
+=============================================================================
+ ADVANCED OOP FEATURES
+ =============================================================================
+print("\n" + "="*60)
+print("ADVANCED OOP FEATURES")
+print("="*60)
+class Vector:
+    """A 2D vector class demonstrating special methods."""
+ def __init__(self, x, y):
+        self.x = x
+        self.y = y
+    def __str__(self):
+        return f"Vector({self.x}, {self.y})"
+  def __repr__(self):
+        return f"Vector({self.x}, {self.y})"
+   def __add__(self, other):
+        return Vector(self.x + other.x, self.y + other.y)
+   def __mul__(self, scalar):
+        return Vector(self.x * scalar, self.y * scalar)
+    def __eq__(self, other):
+        return self.x == other.x and self.y == other.y
+    def __len__(self):
+        return 2
+    def __getitem__(self, index):
+        if index == 0:
+            return self.x
+        elif index == 1:
+            return self.y
+        else:
+            raise IndexError("Vector index out of range")
+v1 = Vector(3, 4)
+v2 = Vector(1, 2)
+print(f"Vector 1: {v1}")
+print(f"Vector 2: {v2}")
+print(f"Addition: {v1 + v2}")
+print(f"Multiplication: {v1 * 2}")
+print(f"Equality: {v1 == v2}")
+print(f"Length: {len(v1)}")
+print(f"Indexing: v1[0] = {v1[0]}, v1[1] = {v1[1]}")
+class Temperature:
+    """Temperature class with property decorators."""
+    def __init__(self, celsius=0):
+        self._celsius = celsius
+     @property
+    def celsius(self):
+        return self._celsius
+    @celsius.setter
+    def celsius(self, value):
+        if value < -273.15:
+            raise ValueError("Temperature cannot be below absolute zero")
+        self._celsius = value
+    @property
+    def fahrenheit(self):
+        return self._celsius * 9/5 + 32
+    @fahrenheit.setter
+    def fahrenheit(self, value):
+        self.celsius = (value - 32) * 5/5
+temp = Temperature(25)
+print(f"\nTemperature: {temp.celsius}°C = {temp.fahrenheit}°F")
+temp.fahrenheit = 100
+print(f"After setting to 100°F: {temp.celsius}°C")
+class Date:
+    """Date class demonstrating class and static methods."""
+    def __init__(self, day, month, year):
+        self.day = day
+        self.month = month
+        self.year = year
+     @classmethod
+    def from_string(cls, date_string):
+        """Create Date object from string like '25-12-2023'."""
+        day, month, year = map(int, date_string.split('-'))
+        return cls(day, month, year)
+    @staticmethod
+    def is_leap_year(year):
+        """Check if a year is a leap year."""
+        return year % 4 == 0 and (year % 100 != 0 or year % 400 == 0)
+    def __str__(self):
+        return f"{self.day:02d}-{self.month:02d}-{self.year}"
+date1 = Date(25, 12, 2023)
+date2 = Date.from_string("01-01-2024")
+print(f"\nDate 1: {date1}")
+print(f"Date 2: {date2}")
+print(f"Is 2024 a leap year? {Date.is_leap_year(2024)}")
+class Flyable:
+    """Mixin class for flying capability."""
+    def fly(self):
+        return "Flying through the air"
+class Swimmable:
+    """Mixin class for swimming capability."""
+    def swim(self):
+        return "Swimming in water"
+class Duck(Animal, Flyable, Swimmable):
+    """Duck class with multiple inheritance."""
+     def __init__(self, name):
+        super().__init__("Duck")
+        self.name = name
+    def make_sound(self):
+        return "Quack!"
+duck = Duck("Donald")
+print(f"\nDuck: {duck.make_sound()}")
+print(f"Flying: {duck.fly()}")
+print(f"Swimming: {duck.swim()}")
+from abc import ABC, abstractmethod
+class Shape(ABC):
+    """Abstract base class for shapes."""
+    @abstractmethod
+    def area(self):
+        """Calculate area of the shape."""
+        pass
+    @abstractmethod
+    def perimeter(self):
+        """Calculate perimeter of the shape."""
+        pass
+    def description(self):
+        return f"This is a {self.__class__.__name__}"
+class Rectangle(Shape):
+    """Rectangle implementation of Shape."""
+    def __init__(self, width, height):
+        self.width = width
+        self.height = height
+    def area(self):
+        return self.width * self.height
+    def perimeter(self):
+        return 2 * (self.width + self.height)
+class Circle(Shape):
+    """Circle implementation of Shape."""
+    def __init__(self, radius):
+        self.radius = radius
+    def area(self):
+       return 3.14159 * self.radius ** 2
+    def perimeter(self):
+        return 2 * 3.14159 * self.radius
+shapes = [Rectangle(5, 3), Circle(4)]
+for shape in shapes:
+    print(f"\n{shape.description()}")
+    print(f"Area: {shape.area():.2f}")
+    print(f"Perimeter: {shape.perimeter():.2f}")
+=============================================================================
+REGULAR EXPRESSIONS
+=============================================================================
+print("\n" + "="*60)
+print("REGULAR EXPRESSIONS")
+print("="*60)
+import re
+text = "Contact us at support@example.com or call (555) 123-4567 for assistance."
+email_pattern = r'\b[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Z|a-z]{2,}\b'
+emails = re.findall(email_pattern, text)
+print(f"Emails found: {emails}")
+phone_pattern = r'\((\d{3})\)\s(\d{3})-(\d{4})'
+phone_match = re.search(phone_pattern, text)
+if phone_match:
+    print(f"Phone found: {phone_match.group()}")
+new_text = re.sub(email_pattern, '[EMAIL]', text)
+print(f"Text with emails replaced: {new_text}")
+log_line = "2024-01-15 10:30:45 ERROR Database connection failed"
+log_pattern = r'(\d{4}-\d{2}-\d{2})\s(\d{2}:\d{2}:\d{2})\s(\w+)\s(.+)'
+match = re.match(log_pattern, log_line)
+if match:
+    date, time, level, message = match.groups()
+    print(f"Log entry - Date: {date}, Time: {time}, Level: {level}, Message: {message}")
+ =============================================================================
+ DUCK TYPING AND TYPE CHECKING
+ =============================================================================
+print("\n" + "="*60)
+print("DUCK TYPING AND TYPE CHECKING")
+print("="*60)
+class Duck:
+    def quack(self):
+        return "Quack!"
+    def fly(self):
+        return "Flying"
+class Airplane:
+    def quack(self):
+        return "Engine noise"
+    def fly(self):
+        return "Flying"
+def make_it_quack_and_fly(thing):
+    """Function that works with any object that has quack() and fly() methods."""
+    print(f"Quacking: {thing.quack()}")
+    print(f"Flying: {thing.fly()}")
+duck = Duck()
+airplane = Airplane()
+make_it_quack_and_fly(duck)
+make_it_quack_and_fly(airplane)
+print(f"\nType checking:")
+print(f"duck is instance of Duck: {isinstance(duck, Duck)}")
+print(f"duck is instance of Airplane: {isinstance(duck, Airplane)}")
+print(f"Duck is subclass of object: {issubclass(Duck, object)}")
+ =============================================================================
+ COMPREHENSIVE EXAMPLE: BANKING SYSTEM
+=============================================================================
+print("\n" + "="*60)
+print("COMPREHENSIVE EXAMPLE: BANKING SYSTEM")
+print("="*60)
+class BankAccount:
+    """Base bank account class."""
+     def __init__(self, account_number, initial_balance=0):
+        self.account_number = account_number
+        self._balance = initial_balance
+        self.transactions = []
+    @property
+    def balance(self):
+        return self._balance
+    def deposit(self, amount):
+        if amount > 0:
+            self._balance += amount
+            self.transactions.append(f"Deposit: +${amount}")
+            return True
+        return False
+    def withdraw(self, amount):
+        if 0 < amount <= self._balance:
+            self._balance -= amount
+            self.transactions.append(f"Withdrawal: -${amount}")
+            return True
+        return False
+     def get_transactions(self):
+        return self.transactions.copy()
+class SavingsAccount(BankAccount):
+    """Savings account with interest."""
+    def __init__(self, account_number, initial_balance=0, interest_rate=0.01):
+        super().__init__(account_number, initial_balance)
+        self.interest_rate = interest_rate
+    def add_interest(self):
+        interest = self._balance * self.interest_rate
+        self._balance += interest
+        self.transactions.append(f"Interest: +${interest:.2f}")
+class CheckingAccount(BankAccount):
+    """Checking account with overdraft protection."""
+    def __init__(self, account_number, initial_balance=0, overdraft_limit=100):
+        super().__init__(account_number, initial_balance)
+        self.overdraft_limit = overdraft_limit
+    def withdraw(self, amount):
+        if 0 < amount <= (self._balance + self.overdraft_limit):
+            self._balance -= amount
+            self.transactions.append(f"Withdrawal: -${amount}")
+            return True
+        return False
+savings = SavingsAccount("SAV001", 1000, 0.02)
+checking = CheckingAccount("CHK001", 500, 200)
+print("Banking System Demo:")
+print(f"Savings balance: ${savings.balance}")
+print(f"Checking balance: ${checking.balance}")
+savings.deposit(200)
+checking.withdraw(100)
+savings.add_interest()
+print(f"After operations:")
+print(f"Savings balance: ${savings.balance:.2f}")
+print(f"Checking balance: ${checking.balance}")
+print(f"Savings transactions: {savings.get_transactions()}")
+print(f"Checking transactions: {checking.get_transactions()}")
+ ============================================================================= 
+BEST PRACTICES
+=============================================================================
+print("\n" + "="*60)
+print("BEST PRACTICES")
+print("="*60)
+print("""
+1. CLASS DESIGN:
+   - Use meaningful class and method names
+   - Follow single responsibility principle
+   - Use composition over inheritance when appropriate
+   - Implement proper encapsulation
+2. INHERITANCE:
+   - Use inheritance for "is-a" relationships
+   - Avoid deep inheritance hierarchies
+   - Use abstract base classes for interfaces
+   - Understand method resolution order (MRO)
+3. SPECIAL METHODS:
+   - Implement __str__ and __repr__ for debugging
+   - Use __eq__ and __hash__ together
+   - Implement context managers with __enter__ and __exit__
+   - Use __getitem__ and __setitem__ for container-like behavior
+4. PROPERTIES:
+   - Use @property for computed attributes
+   - Use setters for validation
+   - Keep properties simple and fast
+   - Document property behavior
+5. REGULAR EXPRESSIONS:
+   - Use raw strings (r'') for patterns
+   - Compile patterns for repeated use
+   - Use groups for extracting data
+   - Test patterns thoroughly
+6. DUCK TYPING:
+   - Focus on behavior, not type
+   - Use protocols for informal interfaces
+   - Document expected methods
+   - Use type hints for clarity
+""")
+print("\n" + "="*60)
+print("MODULE 5 COMPLETE!")
+print("Next: Module 6 - Packages & Ecosystem")
+print("=" *60)
+Module 5: Object-Oriented Programming & Advanced Features
+============================================================
+Hello, my name is Alice and I am 30 years old.
+78.53975
+Woof!
+1500
+Woof!
+Meow!
+
+============================================================
+ADVANCED OOP FEATURES
+============================================================
+Vector 1: Vector(3, 4)
+Vector 2: Vector(1, 2)
+Addition: Vector(4, 6)
+Multiplication: Vector(6, 8)
+Equality: False
+Length: 2
+Indexing: v1[0] = 3, v1[1] = 4
+
+Temperature: 25°C = 77.0°F
+After setting to 100°F: 37.77777777777778°C
+
+Date 1: 25-12-2023
+Date 2: 01-01-2024
+Is 2024 a leap year? True
+
+Duck: Quack!
+Flying: Flying through the air
+Swimming: Swimming in water
+
+This is a Rectangle
+Area: 15.00
+Perimeter: 16.00
+
+This is a Circle
+Area: 50.27
+Perimeter: 25.13
+
+============================================================
+REGULAR EXPRESSIONS
+============================================================
+Emails found: ['support@example.com']
+Phone found: (555) 123-4567
+Text with emails replaced: Contact us at [EMAIL] or call (555) 123-4567 for assistance.
+Log entry - Date: 2024-01-15, Time: 10:30:45, Level: ERROR, Message: Database connection failed
+
+============================================================
+DUCK TYPING AND TYPE CHECKING
+============================================================
+Quacking: Quack!
+Flying: Flying
+Quacking: Engine noise
+Flying: Flying
+
+Type checking:
+duck is instance of Duck: True
+duck is instance of Airplane: False
+Duck is subclass of object: True
+
+============================================================
+COMPREHENSIVE EXAMPLE: BANKING SYSTEM
+============================================================
+Banking System Demo:
+Savings balance: $1000
+Checking balance: $500
+After operations:
+Savings balance: $1224.00
+Checking balance: $400
+Savings transactions: ['Deposit: +$200', 'Interest: +$24.00']
+Checking transactions: ['Withdrawal: -$100']
+
+============================================================
+BEST PRACTICES
+============================================================
+
+1. CLASS DESIGN:
+   - Use meaningful class and method names
+   - Follow single responsibility principle
+   - Use composition over inheritance when appropriate
+   - Implement proper encapsulation
+
+2. INHERITANCE:
+   - Use inheritance for "is-a" relationships
+   - Avoid deep inheritance hierarchies
+   - Use abstract base classes for interfaces
+   - Understand method resolution order (MRO)
+
+3. SPECIAL METHODS:
+   - Implement __str__ and __repr__ for debugging
+   - Use __eq__ and __hash__ together
+   - Implement context managers with __enter__ and __exit__
+   - Use __getitem__ and __setitem__ for container-like behavior
+
+4. PROPERTIES:
+   - Use @property for computed attributes
+   - Use setters for validation
+   - Keep properties simple and fast
+   - Document property behavior
+
+5. REGULAR EXPRESSIONS:
+   - Use raw strings (r'') for patterns
+   - Compile patterns for repeated use
+   - Use groups for extracting data
+   - Test patterns thoroughly
+
+6. DUCK TYPING:
+   - Focus on behavior, not type
+   - Use protocols for informal interfaces
+   - Document expected methods
+   - Use type hints for clarity
+
+
+============================================================
+MODULE 5 COMPLETE!
+Next: Module 6 - Packages & Ecosystem
+============================================================
