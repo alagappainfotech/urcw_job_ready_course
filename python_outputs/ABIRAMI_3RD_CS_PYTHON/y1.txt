@@ -1,0 +1,14 @@
+def last_digit(n: int) -> int:
+     """Returns the last digit of an integer."""
+     try:
+         n = int(n)
+     except ValueError:
+          raise TypeError("Input must be an integer or convertible to an integer.")
+     return abs(n) % 10
+     print(last_digit(100034))
+     print(last_digit(-12345))
+     print(last_digit("12345"))
+     print(last_digit(0))
+     print(last_digit(True))
+     print(last_digit(False))
+     print(last_digit("Hi There 123"))
