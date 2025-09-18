@@ -1,0 +1,130 @@
+
+import re
+from collections import Counter
+
+def title_case(sentence):
+    return sentence.title()
+
+def is_palindrome(text):
+    cleaned = re.sub(r'[^a-zA-Z0-9]', '', text).lower()
+    return cleaned == cleaned[::-1]
+
+def count_letters(text):
+    vowels = set('aeiouAEIOU')
+    text = re.sub(r'[^a-zA-Z]', '', text)
+    v_count = sum(1 for char in text if char in vowels)
+    c_count = sum(1 for char in text if char not in vowels)
+    return {'vowels': v_count, 'consonants': c_count}
+
+def format_phone_number(phone):
+    digits = re.sub(r'\D', '', phone)
+    if len(digits) != 10:
+        raise ValueError("Phone number must contain exactly 10 digits")
+    return f"({digits[:3]}) {digits[3:6]}-{digits[6:]}"
+
+def extract_words(text):
+    return re.findall(r'\b\w+\b', text.lower())
+
+def word_frequency(text):
+    words = extract_words(text)
+    return dict(Counter(words))
+
+def validate_password(password):
+    errors = []
+    if len(password) < 8:
+        errors.append("Too short")
+    if not re.search(r'[A-Z]', password):
+        errors.append("No uppercase")
+    if not re.search(r'[a-z]', password):
+        errors.append("No lowercase")
+    if not re.search(r'\d', password):
+        errors.append("No digit")
+    if not re.search(r'[!@#$%^&*]', password):
+        errors.append("No special character")
+    return {'valid': not errors, 'errors': errors}
+
+def caesar_cipher(text, shift):
+    result = []
+    for char in text:
+        if char.isalpha():
+            base = ord('A') if char.isupper() else ord('a')
+            result.append(chr((ord(char) - base + shift) % 26 + base))
+        else:
+            result.append(char)
+    return ''.join(result)
+
+# Test your functions
+if __name__ == "__main__":
+    print("Testing title_case:")
+    print(title_case("hello world"))
+    print(title_case("python programming language"))
+    print()
+
+    print("Testing is_palindrome:")
+    print(is_palindrome("racecar"))
+    print(is_palindrome("A man a plan a canal Panama"))
+    print(is_palindrome("hello"))
+    print()
+
+    print("Testing count_letters:")
+    print(count_letters("hello world"))
+    print(count_letters("PYTHON"))
+    print()
+
+    print("Testing format_phone_number:")
+    print(format_phone_number("1234567890"))
+    print(format_phone_number("123-456-7890"))
+    print(format_phone_number("123.456.7890"))
+    print()
+
+    print("Testing extract_words:")
+    print(extract_words("Hello, World! How are you?"))
+    print()
+
+    print("Testing word_frequency:")
+    print(word_frequency("hello world hello python"))
+    print()
+
+    print("Testing validate_password:")
+    print(validate_password("abc123"))
+    print(validate_password("Password123!"))
+    print()
+
+    print("Testing caesar_cipher:")
+    print(caesar_cipher("hello", 3))
+    print(caesar_cipher("khoor", -3))
+    print()
+
+Output
+Testing title_case:
+Hello World
+Python Programming Language
+
+Testing is_palindrome:
+True
+True
+False
+
+Testing count_letters:
+{'vowels': 3, 'consonants': 7}
+{'vowels': 1, 'consonants': 5}
+
+Testing format_phone_number:
+(123) 456-7890
+(123) 456-7890
+(123) 456-7890
+
+Testing extract_words:
+['hello', 'world', 'how', 'are', 'you']
+
+Testing word_frequency:
+{'hello': 2, 'world': 1, 'python': 1}
+
+Testing validate_password:
+{'valid': False, 'errors': ['Too short', 'No uppercase', 'No special character']}
+{'valid': True, 'errors': []}
+
+Testing caesar_cipher:
+khoor
+hello
+

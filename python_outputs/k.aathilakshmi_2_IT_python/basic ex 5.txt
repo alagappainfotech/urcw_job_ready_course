@@ -1,0 +1,75 @@
+
+def list_example():
+    return [1, 2, 3]
+
+def tuple_example():
+    return (1, 2, 3)
+
+def set_example():
+    return {1, 2, 3}
+
+def dict_example():
+    return {'a': 1, 'b': 2}
+
+class Stack:
+    def __init__(self):
+        self._data = []
+    def push(self, item):
+        self._data.append(item)
+    def pop(self):
+        if not self._data:
+            raise IndexError("pop from empty stack")
+        return self._data.pop()
+    def is_empty(self):
+        return not self._data
+
+from collections import deque
+class Queue:
+    def __init__(self):
+        self._data = deque()
+    def enqueue(self, item):
+        self._data.append(item)
+    def dequeue(self):
+        if not self._data:
+            raise IndexError("dequeue from empty queue")
+        return self._data.popleft()
+    def is_empty(self):
+        return not self._data
+
+class TreeNode:
+    def __init__(self, value):
+        self.value = value
+        self.left = None
+        self.right = None
+print(list_example())
+print(tuple_example())
+print(set_example())
+print(dict_example())
+
+s = Stack()
+s.push(1)
+s.push(2)
+print(s.pop())
+print(s.is_empty())
+
+q = Queue()
+q.enqueue('x')
+q.enqueue('y')
+print(q.dequeue())
+print(q.is_empty())
+
+root = TreeNode(10)
+root.left = TreeNode(5)
+root.right = TreeNode(15)
+print(root.value, root.left.value, root.right.value)
+
+
+[1, 2, 3]
+(1, 2, 3)
+{1, 2, 3}
+{'a': 1, 'b': 2}
+2
+False
+x
+False
+10 5 15
