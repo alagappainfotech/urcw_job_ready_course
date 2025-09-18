@@ -17,7 +17,15 @@
 # To import functions from other files use the following format
 # from "filename-without-extension" import "function-or-class"
 
-from human import Human
+try:
+    # Try relative import first (when run as module)
+    from ..Human import Human
+except ImportError:
+    # Fall back to absolute import (when run directly)
+    import sys
+    import os
+    sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+    from Human import Human
 
 
 # Specify the parent class(es) as parameters to the class definition

@@ -1,7 +1,7 @@
 # And yet another class definition that inherits from Superhero and Bat
 # superhero.py
 from human.superhero.Superhero import Superhero
-from bat import Bat
+from bat.Bat import Bat
 
 # Define Batman as a child that inherits from both Superhero and Bat
 class Batman(Superhero, Bat):
