@@ -1,0 +1,41 @@
+import unittest
+def add(a, b):
+    return a + b
+
+class TestMathOperations(unittest.TestCase):
+    def test_add(self):
+        self.assertEqual(add(2, 3), 5)
+        self.assertNotEqual(add(2, 2), 5)
+
+if __name__ == "__main__":
+    unittest.main()
+
+    
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.043s
+
+OK
+def multiply(a, b):
+    return a * b
+
+def test_multiply():
+    assert multiply(2, 3) == 6
+    assert multiply(0, 5) == 0
+
+    
+def test_multiply():
+    assert multiply(2, 3) == 6
+
+    
+from unittest.mock import MagicMock
+
+class Service:
+    def fetch_data(self):
+        return "Real Data"
+
+    
+service = Service()
+service.fetch_data = MagicMock(return_value="Mocked Data")
+print(service.fetch_data())
+Mocked Data
