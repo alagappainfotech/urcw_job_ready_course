@@ -1,0 +1,262 @@
+4_FUCTIONS_ANSWRERS
+print("Module 3: Code Organization, Functions & Error Handling")
+print("=" * 60)
+def add(x, y):
+    print("x is {} and y is {}".format(x, y))
+    return x + y  
+add(5, 6)  
+add(y=6, x=5)  
+def varargs(*args):
+    return args
+varargs(1, 2, 3)  
+def keyword_args(**kwargs):
+    return kwargs
+keyword_args(big="foot", loch="ness")  
+def all_the_args(*args, **kwargs):
+    print(args)
+    print(kwargs)
+"""
+all_the_args(1, 2, a=3, b=4) prints:
+    (1, 2)
+    {"a": 3, "b": 4}
+"""
+args = (1, 2, 3, 4)
+kwargs = {"a": 3, "b": 4}
+all_the_args(*args)            
+all_the_args(**kwargs)        
+all_the_args(*args, **kwargs)  
+def swap(x, y):
+    return y, x
+x = 1
+y = 2
+x, y = swap(x, y)     
+x = 5
+def set_x(num):
+    x = num    
+    print(x)
+def set_global_x(num):
+    global x
+    print(x)  
+    x = num    
+    print(x)  
+set_x(43)
+set_global_x(6)
+"""
+prints:
+    43
+    5
+    6
+"""
+def create_adder(x):
+    def adder(y):
+        return x + y
+    return adder
+add_10 = create_adder(10)
+add_10(3)   
+def create_avg():
+    total = 0
+    count = 0
+    def avg(n):
+        nonlocal total, count
+        total += n
+        count += 1
+        return total/count
+    return avg
+avg = create_avg()
+avg(3)  
+avg(5) 
+avg(7)  
+(lambda x: x > 2)(3)                  
+(lambda x, y: x ** 2 + y ** 2)(2, 1)  
+list(map(add_10, [1, 2, 3]))       
+list(map(max, [1, 2, 3], [4, 2, 1]))  
+list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  
+[add_10(i) for i in [1, 2, 3]]        
+[x for x in [3, 4, 5, 6, 7] if x > 5]  
+{x for x in "abcddeef" if x not in "abc"}  
+{x: x**2 for x in range(5)}  
+=============================================================================
+ ADVANCED FUNCTION FEATURES
+=============================================================================
+print("\n" + "="*60)
+print("ADVANCED FUNCTION FEATURES")
+print("="*60)
+def calculate_area(length: float, width: float) -> float:
+    """
+    Calculate the area of a rectangle.
+    Args:
+        length: The length of the rectangle
+        width: The width of the rectangle
+    Returns:
+        The area of the rectangle
+    """
+    return length * width
+def greet(name: str, greeting: str = "Hello", punctuation: str = "!") -> str:
+    """Create a personalized greeting."""
+    return f"{greeting}, {name}{punctuation}"
+print(f"Area: {calculate_area(5.0, 3.0)}")
+print(f"Greeting: {greet('Alice')}")
+print(f"Custom greeting: {greet('Bob', 'Hi', '!!!')}")
+=============================================================================
+EXCEPTION HANDLING
+ =============================================================================
+print("\n" + "="*60)
+print("EXCEPTION HANDLING")
+print("="*60)
+def safe_divide(a: float, b: float) -> float:
+    """
+    Safely divide two numbers with error handling.
+    Args:
+        a: Dividend
+        b: Divisor
+   Returns:
+        Result of division
+   Raises:
+        ValueError: If divisor is zero
+        TypeError: If inputs are not numbers
+    """
+    try:
+        if not isinstance(a, (int, float)) or not isinstance(b, (int, float)):
+            raise TypeError("Both arguments must be numbers")
+        if b == 0:
+            raise ValueError("Cannot divide by zero")
+        return a / b
+    except (TypeError, ValueError) as e:
+        print(f"Error: {e}")
+        return None
+print(f"10 / 3 = {safe_divide(10, 3)}")
+print(f"10 / 0 = {safe_divide(10, 0)}")
+print(f"'10' / 3 = {safe_divide('10', 3)}")
+=============================================================================
+CONTEXT MANAGERS
+=============================================================================
+print("\n" + "="*60)
+print("CONTEXT MANAGERS")
+print("="*60)
+class Timer:
+    """Context manager for timing code execution."""
+    def __init__(self, name: str = "Operation"):
+        self.name = name
+        self.start_time = None
+    def __enter__(self):
+        import time
+        self.start_time = time.time()
+        print(f"Starting {self.name}...")
+        return self
+   def __exit__(self, exc_type, exc_val, exc_tb):
+        import time
+        elapsed = time.time() - self.start_time
+        print(f"{self.name} completed in {elapsed:.4f} seconds")
+with Timer("List comprehension"):
+    squares = [x**2 for x in range(1000)]
+=============================================================================
+DECORATORS
+=============================================================================
+print("\n" + "="*60)
+print("DECORATORS")
+print("="*60)
+def timing_decorator(func):
+    """Decorator to time function execution."""
+    import time
+    import functools
+    @functools.wraps(func)
+    def wrapper(*args, **kwargs):
+        start_time = time.time()
+        result = func(*args, **kwargs)
+        elapsed = time.time() - start_time
+        print(f"{func.__name__} executed in {elapsed:.4f} seconds")
+        return result
+     return wrapper
+@timing_decorator
+def slow_function(n: int) -> int:
+    """A function that takes some time to execute."""
+    import time
+    time.sleep(0.1)  # Simulate slow operation
+    return sum(range(n))
+result = slow_function(1000)
+print(f"Result: {result}")
+=============================================================================
+GENERATOR FUNCTIONS
+=============================================================================
+print("\n" + "="*60)
+print("GENERATOR FUNCTIONS")
+print("="*60)
+def fibonacci_generator(n: int):
+    """
+    Generate Fibonacci numbers up to n.
+    Args:
+        n: Maximum number of Fibonacci numbers to generate
+    Yields:
+        Fibonacci numbers
+    """
+    a, b = 0, 1
+    count = 0
+    while count < n:
+        yield a
+        a, b = b, a + b
+        count += 1
+print("First 10 Fibonacci numbers:")
+for num in fibonacci_generator(10):
+    print(num, end=" ")
+print()
+=============================================================================
+MODULE CREATION EXAMPLE
+=============================================================================
+print("\n" + "="*60)
+print("MODULE CREATION EXAMPLE")
+print("="*60)
+class MathUtils:
+    """A collection of mathematical utility functions."""
+    @staticmethod
+    def is_prime(n: int) -> bool:
+        """Check if a number is prime."""
+        if n < 2:
+            return False
+        for i in range(2, int(n ** 0.5) + 1):
+            if n % i == 0:
+                return False
+        return True
+    @staticmethod
+    def factorial(n: int) -> int:
+        """Calculate factorial of n."""
+        if n < 0:
+            raise ValueError("Factorial is not defined for negative numbers")
+        if n <= 1:
+            return 1
+        return n * MathUtils.factorial(n - 1)
+    @staticmethod
+    def gcd(a: int, b: int) -> int:
+        """Calculate greatest common divisor."""
+        while b:
+            a, b = b, a % b
+        return a
+print(f"Is 17 prime? {MathUtils.is_prime(17)}")
+print(f"Factorial of 5: {MathUtils.factorial(5)}")
+print(f"GCD of 48 and 18: {MathUtils.gcd(48, 18)}")
+ =============================================================================
+ ERROR HANDLING BEST PRACTICES
+=============================================================================
+print("\n" + "="*60)
+print("ERROR HANDLING BEST PRACTICES")
+print("="*60)
+class CustomError(Exception):
+    """Custom exception for our application."""
+    pass
+class ValidationError(CustomError):
+    """Raised when input validation fails."""
+    pass
+def validate_age(age: int) -> bool:
+    """Validate age input."""
+    if not isinstance(age, int):
+        raise TypeError("Age must be an integer")
+    if age < 0:
+        raise ValidationError("Age cannot be negative")
+    if age > 150:
+        raise ValidationError("Age seems unrealistic")
+    return True
+test_ages = [25, -5, 200, "thirty"]
+for age in test_ages:
+    try:
+        validate_age(age)
+        print(f"Age {age} is valid")
+    except ValidationError as e:
