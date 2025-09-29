@@ -1,0 +1,803 @@
+def quick_check_1_pythonic_style():
+    """
+    Quick Check: Pythonic Style Evaluation
+    Evaluate the following variable and function names against PEP 8 conventions.
+    Identify which are good and which need improvement.
+    """
+
+    
+print("Quick Check 1: Pythonic Style Evaluation")
+Quick Check 1: Pythonic Style Evaluation
+print("=" * 50)
+==================================================
+names_to_evaluate = [
+    "userName",
+    "total_count",
+    "MAX_SIZE",
+    "getUserData",
+    "X",
+    "calculate_average_grade",
+    "temp_var",
+    "is_valid",
+    "data_list",
+    "process_data"
+]
+print("Evaluate these names for PEP 8 compliance:")
+Evaluate these names for PEP 8 compliance:
+for name in names_to_evaluate:
+    print(f"  {name}")
+
+    
+  userName
+  total_count
+  MAX_SIZE
+  getUserData
+  X
+  calculate_average_grade
+  temp_var
+  is_valid
+  data_list
+  process_data
+print("\nGood names follow these rules:")
+
+Good names follow these rules:
+print("- Use snake_case for variables and functions")
+- Use snake_case for variables and functions
+print("- Use UPPER_CASE for constants")
+- Use UPPER_CASE for constants
+print("- Be descriptive but concise")
+- Be descriptive but concise
+print("- Avoid single letters (except in loops)")
+- Avoid single letters (except in loops)
+print("- Avoid redundant words (like 'data_list')")
+- Avoid redundant words (like 'data_list')
+def quick_check_2_type_identification():
+    """
+    Quick Check: Type Identification
+    
+    Given various objects, determine their types and understand
+    the implications of different data types.
+    """
+
+    
+print("\nQuick Check 2: Type Identification")
+
+Quick Check 2: Type Identification
+print("=" * 50)
+==================================================
+test_objects = [
+    1234,
+    8.99,
+    9.0,
+    True,
+    False,
+    "hello",
+    None,
+    [1,2,3],
+    (1,2,3),
+    {1,2,3},
+    {"a": 1},
+    3 + 4j,
+]
+
+print("Object -> Type -> Truthiness")
+Object -> Type -> Truthiness
+print("-" * 30)
+------------------------------
+for obj in test_objects:
+    obj_type = type(obj).__name__
+    truthiness = bool(obj)
+
+    
+print(f"{obj!r:>10} -> {obj_type:<10} -> {truthiness}")
+    (3+4j) -> complex    -> True
+def quick_check_3_operator_precedence():
+    """
+    Quick Check: Operator Precedence
+    
+    Predict the results of complex expressions before running them.
+    This helps develop intuition about Python's operator precedence.
+    """
+
+    
+print("\nQuick Check 3: Operator Precedence")
+
+Quick Check 3: Operator Precedence
+print("=" * 50)
+==================================================
+expressions = [
+    ("2 + 3 * 4", "Multiplication before addition"),
+    ("(2 + 3) * 4", "Parentheses override precedence"),
+    ("2 ** 3 ** 2", "Right-associative exponentiation"),
+    ("(2 ** 3) ** 2", "Parentheses change associativity"),
+    ("10 / 3 * 3", "Left-to-right for same precedence"),
+    ("10 // 3 * 3", "Floor division vs regular division"),
+    ("not True and False", "not has higher precedence than and"),
+    ("not (True and False)", "Parentheses change evaluation order"),
+]
+print("Expression -> Result -> Explanation")
+Expression -> Result -> Explanation
+print("-" * 50)
+--------------------------------------------------
+for expr, explanation in expressions:
+    try:
+        result = eval(expr)
+        print(f"{expr:<20} -> {result:<8} -> {explanation}")
+    except Exception as e:
+        print(f"{expr:<20} -> ERROR: {e}")
+
+        
+2 + 3 * 4            -> 14       -> Multiplication before addition
+(2 + 3) * 4          -> 20       -> Parentheses override precedence
+2 ** 3 ** 2          -> 512      -> Right-associative exponentiation
+(2 ** 3) ** 2        -> 64       -> Parentheses change associativity
+10 / 3 * 3           -> 10.0     -> Left-to-right for same precedence
+10 // 3 * 3          -> 9        -> Floor division vs regular division
+not True and False   -> 0        -> not has higher precedence than and
+not (True and False) -> 1        -> Parentheses change evaluation order
+def try_this_1_input_and_conversion():
+    """
+    Try This: Getting Input and Type Conversion
+    
+    Experiment with input() function and type conversion.
+    Handle different input scenarios gracefully.
+    """
+
+    
+print("\nTry This 1: Getting Input and Type Conversion")
+
+Try This 1: Getting Input and Type Conversion
+print("=" * 50)
+==================================================
+test_inputs = ["123", "45.67", "hello", "", "  42  "]
+for user_input in test_inputs:
+    print(f"\nTesting input: '{user_input}'")
+
+    
+
+Testing input: '123'
+
+Testing input: '45.67'
+
+Testing input: 'hello'
+
+Testing input: ''
+
+Testing input: '  42  '
+print(f"Original type: {type(user_input).__name__}")
+Original type: str
+try:
+    int_value = int(user_input)
+    print(f"As integer: {int_value}")
+except ValueError:
+    print("Cannot convert to integer")
+
+    
+As integer: 42
+try:
+    float_value = float(user_input)
+    print(f"As float: {float_value}")
+except ValueError:
+    print("Cannot convert to float")
+
+    
+As float: 42.0
+stripped = user_input.strip()
+if stripped.isdigit():
+    print("Contains only digits")
+elif stripped.replace('.', '').isdigit():
+    print("Contains only digits and one decimal point")
+else:
+    print("Contains non-numeric characters")
+
+    
+Contains only digits
+def try_this_2_variable_manipulation():
+    """
+    Try This: Variable Manipulation
+    
+    Practice binding values to variables and observe how changes
+    affect different variables.
+    """
+
+    
+print("\nTry This 2: Variable Manipulation")
+
+Try This 2: Variable Manipulation
+print("=" * 50)
+==================================================
+pi = 3.14159
+radius = 2.2
+area = pi * radius ** 2
+circumference = 2 * pi * radius
+print(f"Circle with radius {radius}:")
+Circle with radius 2.2:
+print(f"  Area: {area:.2f}")
+  Area: 15.21
+print(f"  Circumference: {circumference:.2f}")
+  Circumference: 13.82
+print(f"\nChanging radius to 5.0...")
+
+Changing radius to 5.0...
+radius = 5.0
+print(f"New radius: {radius}")
+New radius: 5.0
+print(f"Area is still: {area:.2f} (not recalculated!)")
+Area is still: 15.21 (not recalculated!)
+print(f"Circumference is still: {circumference:.2f} (not recalculated!)")
+Circumference is still: 13.82 (not recalculated!)
+area = pi * radius ** 2
+circumference = 2 * pi * radius
+print(f"After recalculation:")
+After recalculation:
+print(f"  Area: {area:.2f}")
+  Area: 78.54
+print(f"  Circumference: {circumference:.2f}")
+
+  Circumference: 31.42
+def try_this_3_string_operations():
+    """
+    Try This: String Operations
+    
+    Practice string manipulation, formatting, and escape sequences.
+    """
+
+    
+print("\nTry This 3: String Operations")
+
+Try This 3: String Operations
+print("=" * 50)
+==================================================
+first_name = "John"
+last_name = "Doe"
+age = 25
+full_name = first_name + " " + last_name
+print(f"Full name: {full_name}")
+Full name: John Doe
+separator = "=" * 30
+print(separator)
+==============================
+print("Escape sequences:")
+Escape sequences:
+print("New line: Line 1\\nLine 2")
+New line: Line 1\nLine 2
+print("Tab: Column1\\tColumn2")
+Tab: Column1\tColumn2
+print("Quote: He said \\\"Hello\\\"")
+Quote: He said \"Hello\"
+print("Backslash: Path: C:\\\\Users\\\\Name")
+Backslash: Path: C:\\Users\\Name
+multi_line = """
+This is a multi-line string.
+It can span multiple lines.
+Perfect for documentation!
+"""
+
+print("Multi-line string:")
+Multi-line string:
+print(multi_line)
+
+This is a multi-line string.
+It can span multiple lines.
+Perfect for documentation!
+print("String formatting examples:")
+String formatting examples:
+print(f"f-string: {first_name} is {age} years old")
+f-string: John is 25 years old
+print("format(): {} is {} years old".format(first_name, age))
+format(): John is 25 years old
+print("% formatting: %s is %d years old" % (first_name, age))
+Traceback (most recent call last):
+  File "<pyshell#22>", line 1, in <module>
+    print("% formatting: %s is %d years old" % (first_name, age))
+TypeError: must be real number, not str
+def try_this_4_value_swapping():
+    """
+    Try This: Value Swapping
+    
+    Practice different methods of swapping variable values.
+    """
+
+    
+print("\nTry This 4: Value Swapping")
+
+Try This 4: Value Swapping
+print("=" * 50)
+==================================================
+a = 10
+b = 20
+print(f"Initial values: a = {a}, b = {b}")
+Initial values: a = 10, b = 20
+temp = a
+a = b
+b = temp
+print(f"After temp swap: a = {a}, b = {b}")
+After temp swap: a = 20, b = 10
+a, b = b, a
+print(f"After tuple unpacking: a = {a}, b = {b}")
+After tuple unpacking: a = 10, b = 20
+a = a + b
+b = a - b
+a = a - b
+print(f"After arithmetic swap: a = {a}, b = {b}")
+After arithmetic swap: a = 20, b = 10
+a = a ^ b
+b = a ^ b
+a = a ^ b
+print(f"After XOR swap: a = {a}, b = {b}")
+After XOR swap: a = 10, b = 20
+def lab_1_temperature_converter():
+    """
+    Lab Problem 1: Temperature Converter
+    
+    Create a comprehensive temperature conversion system that handles
+    Celsius, Fahrenheit, and Kelvin scales.
+    """
+
+    
+print("\nLab Problem 1: Temperature Converter")
+
+Lab Problem 1: Temperature Converter
+print("=" * 50)
+==================================================
+def celsius_to_fahrenheit(celsius):
+    """Convert Celsius to Fahrenheit."""
+    return (celsius * 9/5) + 32
+
+def fahrenheit_to_celsius(fahrenheit):
+    """Convert Fahrenheit to Celsius."""
+    return (fahrenheit - 32) * 5/9
+
+def celsius_to_kelvin(celsius):
+    """Convert Celsius to Kelvin."""
+    return celsius + 273.15
+
+def kelvin_to_celsius(kelvin):
+    """Convert Kelvin to Celsius."""
+    return kelvin - 273.15
+
+def fahrenheit_to_kelvin(fahrenheit):
+    """Convert Fahrenheit to Kelvin."""
+    return celsius_to_kelvin(fahrenheit_to_celsius(fahrenheit))
+
+def kelvin_to_fahrenheit(kelvin):
+    """Convert Kelvin to Fahrenheit."""
+    return celsius_to_fahrenheit(kelvin_to_celsius(kelvin))
+
+test_temperatures = [0, 25, 100, -40, 37]
+print("Temperature Conversion Table:")
+Temperature Conversion Table:
+print("Celsius | Fahrenheit | Kelvin")
+Celsius | Fahrenheit | Kelvin
+print("-" * 35)
+-----------------------------------
+for celsius in test_temperatures:
+    fahrenheit = celsius_to_fahrenheit(celsius)
+    kelvin = celsius_to_kelvin(celsius)
+
+    
+print(f"{celsius:7.1f} | {fahrenheit:10.1f} | {kelvin:6.1f}")
+   37.0 |       98.6 |  310.1
+print(f"\nSpecial cases:")
+
+Special cases:
+print(f"Absolute zero: {kelvin_to_celsius(0):.2f}°C")
+Absolute zero: -273.15°C
+print(f"Water freezing: {celsius_to_fahrenheit(0):.1f}°F")
+Water freezing: 32.0°F
+print(f"Water boiling: {celsius_to_fahrenheit(100):.1f}°F")
+Water boiling: 212.0°F
+print(f"Body temperature: {celsius_to_fahrenheit(37):.1f}°F")
+Body temperature: 98.6°F
+def lab_2_enhanced_calculator():
+    """
+    Lab Problem 2: Enhanced Calculator
+    
+    Create a calculator that handles basic arithmetic operations
+    with proper error handling and input validation.
+    """
+
+    
+print("\nLab Problem 2: Enhanced Calculator")
+
+Lab Problem 2: Enhanced Calculator
+print("=" * 50)
+==================================================
+def get_number(prompt):
+    """Get a valid number from user input."""
+    while True:
+        try:
+            value = float(input(prompt))
+            return value
+        except ValueError:
+            print("Invalid input! Please enter a number.")
+
+            
+def get_operation():
+    """Get a valid operation from user."""
+    valid_ops = ['+', '-', '*', '/', '**', '%']
+    while True:
+        op = input("Enter operation (+, -, *, /, **, %): ").strip()
+        if op in valid_ops:
+            return op
+        print(f"Invalid operation! Choose from: {', '.join(valid_ops)}")
+
+        
+def calculate(num1, num2, operation):
+    """Perform calculation with error handling."""
+    try:
+        if operation == '+':
+            return num1 + num2
+        elif operation == '-':
+            return num1 - num2
+        elif operation == '*':
+            return num1 * num2
+        elif operation == '/':
+            if num2 == 0:
+                raise ZeroDivisionError("Cannot divide by zero!")
+            return num1 / num2
+        elif operation == '**':
+            return num1 ** num2
+        elif operation == '%':
+            if num2 == 0:
+                raise ZeroDivisionError("Cannot modulo by zero!")
+            return num1 % num2
+    except Exception as e:
+        return f"Error: {e}"
+
+    
+print("Enhanced Calculator")
+Enhanced Calculator
+print("Enter 'quit' to exit")
+Enter 'quit' to exit
+test_cases = [
+    (10, 3, '+'),
+    (10, 3, '-'),
+    (10, 3, '*'),
+    (10, 3, '/'),
+    (10, 3, '**'),
+    (10, 3, '%'),
+    (10, 0, '/'),
+]
+for num1, num2, op in test_cases:
+    result = calculate(num1, num2, op)
+    print(f"{num1} {op} {num2} = {result}")
+
+    
+10 + 3 = 13
+10 - 3 = 7
+10 * 3 = 30
+10 / 3 = 3.3333333333333335
+10 ** 3 = 1000
+10 % 3 = 1
+10 / 0 = Error: Cannot divide by zero!
+def lab_3_grade_management_system():
+    """
+    Lab Problem 3: Grade Management System
+    
+    Create a system to calculate weighted averages and determine
+    letter grades based on different criteria.
+    """
+
+    
+print("\nLab Problem 3: Grade Management System")
+
+Lab Problem 3: Grade Management System
+print("=" * 50)
+==================================================
+def calculate_weighted_average(grades, weights):
+    """Calculate weighted average of grades."""
+    if len(grades) != len(weights):
+        raise ValueError("Grades and weights must have the same length")
+        
+    if abs(sum(weights) - 1.0) > 0.01:  # Allow small floating point errors
+        raise ValueError("Weights must sum to 1.0")
+        
+    return sum(grade * weight for grade, weight in zip(grades, weights))
+
+def get_letter_grade(percentage):
+        """Convert percentage to letter grade."""
+        if percentage >= 90:
+            return 'A'
+        elif percentage >= 80:
+            return 'B'
+        elif percentage >= 70:
+            return 'C'
+        elif percentage >= 60:
+            return 'D'
+        else:
+            return 'F'
+def get_grade_point(letter_grade):
+        """Convert letter grade to grade point."""
+        grade_points = {'A': 4.0, 'B': 3.0, 'C': 2.0, 'D': 1.0, 'F': 0.0}
+        return grade_points.get(letter_grade, 0.0)
+
+    
+students = [
+        {
+            'name': 'Alice',
+            'grades': [85, 92, 78, 96],
+            'weights': [0.25, 0.25, 0.25, 0.25]
+        },
+        {
+            'name': 'Bob',
+            'grades': [90, 88, 95, 87],
+            'weights': [0.2, 0.3, 0.2, 0.3]
+        },
+        {
+            'name': 'Charlie',
+            'grades': [70, 75, 80, 72],
+            'weights': [0.25, 0.25, 0.25, 0.25]
+        }
+    ]
+print("Grade Management System")
+Grade Management System
+print("=" * 30)
+==============================
+for student in students:
+        name = student['name']
+        grades = student['grades']
+        weights = student['weights']
+try:
+    average = calculate_weighted_average(grades, weights)
+    letter_grade = get_letter_grade(average)
+    grade_point = get_grade_point(letter_grade)
+            
+    print(f"\n{name}:")
+    print(f"  Grades: {grades}")
+    print(f"  Weights: {weights}")
+    print(f"  Average: {average:.2f}%")
+    print(f"  Letter Grade: {letter_grade}")
+    print(f"  Grade Point: {grade_point}")
+except ValueError as e:
+    print(f"\n{name}: Error - {e}")
+
+    
+
+Charlie:
+  Grades: [70, 75, 80, 72]
+  Weights: [0.25, 0.25, 0.25, 0.25]
+  Average: 74.25%
+  Letter Grade: C
+  Grade Point: 2.0
+def lab_4_password_security_validator():
+    """
+    Lab Problem 4: Password Security Validator
+    
+    Create a comprehensive password validation system that checks
+    multiple security criteria and provides detailed feedback.
+    """
+
+    
+print("\nLab Problem 4: Password Security Validator")
+
+Lab Problem 4: Password Security Validator
+print("=" * 50)
+==================================================
+def display_password_analysis(password, analysis):
+        """Display detailed password analysis."""
+        print(f"\nPassword Analysis: '{password}'")
+        print("-" * 40)
+        
+        criteria_descriptions = {
+            'length': 'At least 8 characters',
+            'has_uppercase': 'Contains uppercase letter',
+            'has_lowercase': 'Contains lowercase letter',
+            'has_digit': 'Contains digit',
+            'has_special': 'Contains special character',
+            'no_common_patterns': 'No common patterns',
+            'no_repeated_chars': 'Sufficient character variety',
+            'length_12_plus': 'At least 12 characters (bonus)'
+        }
+        
+        for criterion, passed in analysis['criteria'].items():
+            status = "✓" if passed else "✗"
+            description = criteria_descriptions.get(criterion, criterion)
+            print(f"  {status} {description}")
+        
+        print(f"\nStrength Score: {analysis['score']}/{analysis['max_score']} "
+              f"({analysis['percentage']:.1f}%)")
+        print(f"Overall Strength: {analysis['strength']}")
+        if analysis['strength'] in ['Weak', 'Medium']:
+            print("\nRecommendations:")
+            for criterion, passed in analysis['criteria'].items():
+                if not passed and criterion != 'length_12_plus':
+                    description = criteria_descriptions.get(criterion, criterion)
+
+
+                    print(f"  - {description}")
+
+                    
+test_passwords = [
+        "password",          
+        "Password123",       
+        "Password123!",       
+        "MyStr0ng!P@ssw0rd",  
+        "123456",          
+        "qwerty",         
+        "a",                 
+        "Abc123!@#",      
+    ]
+print("Password Security Validator")
+Password Security Validator
+print("=" * 30)
+==============================
+for password in test_passwords:
+        analysis = validate_password_strength(password)
+        display_password_analysis(password, analysis)
+
+                          
+
+Password Analysis: 'password'
+----------------------------------------
+  ✓ At least 8 characters
+  ✗ Contains uppercase letter
+  ✓ Contains lowercase letter
+  ✗ Contains digit
+  ✗ Contains special character
+  ✗ No common patterns
+  ✓ Sufficient character variety
+  ✗ At least 12 characters (bonus)
+
+Strength Score: 3/8 (37.5%)
+Overall Strength: Medium
+
+Recommendations:
+  - Contains uppercase letter
+  - Contains digit
+  - Contains special character
+  - No common patterns
+
+Password Analysis: 'Password123'
+----------------------------------------
+  ✓ At least 8 characters
+  ✓ Contains uppercase letter
+  ✓ Contains lowercase letter
+  ✓ Contains digit
+  ✗ Contains special character
+  ✗ No common patterns
+  ✓ Sufficient character variety
+  ✗ At least 12 characters (bonus)
+
+Strength Score: 5/8 (62.5%)
+Overall Strength: Strong
+
+Password Analysis: 'Password123!'
+----------------------------------------
+  ✓ At least 8 characters
+  ✓ Contains uppercase letter
+  ✓ Contains lowercase letter
+  ✓ Contains digit
+  ✓ Contains special character
+  ✗ No common patterns
+  ✓ Sufficient character variety
+  ✓ At least 12 characters (bonus)
+
+Strength Score: 7/8 (87.5%)
+Overall Strength: Very Strong
+
+Password Analysis: 'MyStr0ng!P@ssw0rd'
+----------------------------------------
+  ✓ At least 8 characters
+  ✓ Contains uppercase letter
+  ✓ Contains lowercase letter
+  ✓ Contains digit
+  ✓ Contains special character
+  ✓ No common patterns
+  ✓ Sufficient character variety
+  ✓ At least 12 characters (bonus)
+
+Strength Score: 8/8 (100.0%)
+Overall Strength: Very Strong
+
+Password Analysis: '123456'
+----------------------------------------
+  ✗ At least 8 characters
+  ✗ Contains uppercase letter
+  ✗ Contains lowercase letter
+  ✓ Contains digit
+  ✗ Contains special character
+  ✗ No common patterns
+  ✓ Sufficient character variety
+  ✗ At least 12 characters (bonus)
+
+Strength Score: 2/8 (25.0%)
+Overall Strength: Weak
+
+Recommendations:
+  - At least 8 characters
+  - Contains uppercase letter
+  - Contains lowercase letter
+  - Contains special character
+  - No common patterns
+
+Password Analysis: 'qwerty'
+----------------------------------------
+  ✗ At least 8 characters
+  ✗ Contains uppercase letter
+  ✓ Contains lowercase letter
+  ✗ Contains digit
+  ✗ Contains special character
+  ✗ No common patterns
+  ✓ Sufficient character variety
+  ✗ At least 12 characters (bonus)
+
+Strength Score: 2/8 (25.0%)
+Overall Strength: Weak
+
+Recommendations:
+  - At least 8 characters
+  - Contains uppercase letter
+  - Contains digit
+  - Contains special character
+  - No common patterns
+
+Password Analysis: 'a'
+----------------------------------------
+  ✗ At least 8 characters
+  ✗ Contains uppercase letter
+  ✓ Contains lowercase letter
+  ✗ Contains digit
+  ✗ Contains special character
+  ✓ No common patterns
+  ✓ Sufficient character variety
+  ✗ At least 12 characters (bonus)
+
+Strength Score: 3/8 (37.5%)
+Overall Strength: Medium
+
+Recommendations:
+  - At least 8 characters
+  - Contains uppercase letter
+  - Contains digit
+  - Contains special character
+
+Password Analysis: 'Abc123!@#'
+----------------------------------------
+  ✓ At least 8 characters
+  ✓ Contains uppercase letter
+  ✓ Contains lowercase letter
+  ✓ Contains digit
+  ✓ Contains special character
+  ✗ No common patterns
+  ✓ Sufficient character variety
+  ✗ At least 12 characters (bonus)
+
+Strength Score: 6/8 (75.0%)
+Overall Strength: Strong
+def run_all_exercises():
+    """Run all exercises in sequence."""
+    print("MODULE 1: PYTHON ABSOLUTE BASICS & FOUNDATIONAL DATA TYPES")
+    print("COMPREHENSIVE EXERCISES")
+    print("=" * 60)
+    quick_check_1_pythonic_style()
+    quick_check_2_type_identification()
+    quick_check_3_operator_precedence()
+    try_this_1_input_and_conversion()
+    try_this_2_variable_manipulation()
+    try_this_3_string_operations()
+    try_this_4_value_swapping()
+    lab_1_temperature_converter()
+    lab_2_enhanced_calculator()
+    lab_3_grade_management_system()
+    lab_4_password_security_validator()
+
+    
+print("\n" + "=" * 60)
+
+============================================================
+print("MODULE 1 EXERCISES COMPLETE!")
+MODULE 1 EXERCISES COMPLETE!
+print("Review your solutions and ensure they follow Pythonic best practices.")
+Review your solutions and ensure they follow Pythonic best practices.
+print("Next: Module 2 - Advanced Data Structures & Control Flow")
+Next: Module 2 - Advanced Data Structures & Control Flow
+print("=" * 60)
+============================================================
+if __name__ == "__main__":
+    run_all_exercises()
+
+    
+MODULE 1: PYTHON ABSOLUTE BASICS & FOUNDATIONAL DATA TYPES
+COMPREHENSIVE EXERCISES
+============================================================
