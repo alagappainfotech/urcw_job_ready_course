@@ -1,0 +1,199 @@
+                               7_4_EXCEPTION_HANDLING_ANSWERS
+try:
+    result = 10 / 0 
+except ZeroDivisionError:
+    print("Error: Division by zero is not allowed.")
+try:
+    num = int("abc")  
+except ValueError:
+    print("Error: Invalid input. Please enter a number.")
+except ZeroDivisionError:
+    print("Error: Division by zero is not allowed.")
+try:
+    result = 10 / 2
+except ZeroDivisionError:
+    print("Error: Division by zero is not allowed.")
+else:
+    print(f"Result: {result}")
+try:
+    file = open("example.txt", "r")
+except FileNotFoundError:
+    print("Error: File not found.")
+finally:
+    print("Execution completed.")
+try:
+    age = -1
+    if age < 0:
+        raise ValueError("Age cannot be negative.")
+except ValueError as e:
+    print(f"Error: {e}")
+class CustomError(Exception):
+    """Custom exception class."""
+    pass
+try:
+    raise CustomError("This is a custom error.")
+except CustomError as e:
+    print(f"Caught custom exception: {e}")
+Error: Division by zero is not allowed.
+Error: Invalid input. Please enter a number.
+Result: 5.0
+Error: File not found.
+Execution completed.
+Error: Age cannot be negative.
+Caught custom exception: This is a custom error.
+Exercise:
+ 1. Write a program to handle a `KeyError` when accessing a dictionary.
+>>> my_dict = {"name": "Alice", "age": 30, "city": "New York"}
+...
+... try:
+...     # Attempt to access a key that might not exist
+...     occupation = my_dict["occupation"]
+...     print(f"Occupation: {occupation}")
+... except KeyError as e:
+...     # Handle the KeyError if it occurs
+...     print(f"Error: The key '{e}' was not found in the dictionary.")
+...
+... try:
+...     # Attempt to access an existing key
+...     name = my_dict["name"]
+...     print(f"Name: {name}")
+... except KeyError as e:
+...     print(f"Error: The key '{e}' was not found in the dictionary.")
+...
+Error: The key ''occupation'' was not found in the dictionary.
+Name: Alice
+
+ 2. Create a custom exception for invalid email addresses.
+>>> class InvalidEmailError(Exception):
+...     """Custom exception raised for invalid email addresses."""
+...
+...     def __init__(self, email, message="The provided email address is invalid."):
+...         self.email = email
+...         self.message = message
+...         super().__init__(self.message)
+...
+...     def __str__(self):
+...         return f"InvalidEmailError: '{self.email}' - {self.message}"
+...
+... def validate_email(email_address):
+...     """
+...     Validates an email address.
+...     Raises InvalidEmailError if the email address is considered invalid.
+...     """
+...     if "@" not in email_address or "." not in email_address.split("@")[-1]:
+...         raise InvalidEmailError(email_address, "Email must contain '@' and a domain with a dot.")
+...     # More sophisticated validation could be added here (e.g., regex, domain check)
+...     print(f"Email '{email_address}' is valid.")
+...
+... # Example usage:
+... try:
+...     validate_email("test@example.com")
+...     validate_email("invalid-email")
+... except InvalidEmailError as e:
+...     print(e)
+...
+Email 'test@example.com' is valid.
+InvalidEmailError: 'invalid-email' - Email must contain '@' and a domain with a dot.
+
+
+ 3. Write a program that uses `finally` to close a file after reading.
+try:
+    f = open("sample.txt", "r")   # Open the file for reading
+    content = f.read()
+    print("File contents:\n", content)
+except FileNotFoundError:
+    print("Error: File not found.")
+finally:
+    try:
+        f.close()
+        print("File closed successfully.")
+    except NameError:
+        # f was never opened
+        print("No file was opened, so nothing to close.")
+Error: File not found.
+No file was opened, so nothing to close.
+
+ 4. Create a function that raises a `TypeError` if the input is not a string.
+>>> def check_for_string(value):
+...     """
+...     Raises a TypeError if the input 'value' is not a string.
+...
+...     Args:
+...         value: The input to be checked.
+...
+...     Raises:
+...         TypeError: If 'value' is not an instance of str.
+...     """
+...     if not isinstance(value, str):
+...         raise TypeError("Input must be a string.")
+...
+... # Example usage:
+... try:
+...     check_for_string("This is a string.")
+...     print("Input is a string.")
+... except TypeError as e:
+...     print(f"Error: {e}")
+...
+... try:
+...     check_for_string(123)
+...     print("Input is a string.")
+... except TypeError as e:
+...     print(f"Error: {e}")
+...
+... try:
+...     check_for_string([1, 2, 3])
+...     print("Input is a string.")
+... except TypeError as e:
+...     print(f"Error: {e}")
+...
+Input is a string.
+Error: Input must be a string.
+Error: Input must be a string.
+
+ 5. Implement a custom exception for validating email addresses.
+...     pattern = r"^[\w.-]+@[\w.-]+\.[a-zA-Z]{2,}$"
+...     if not re.fullmatch(pattern, email):
+...         raise InvalidEmailError(f"Invalid email format: '{email}'")
+...     print(f"'{email}' is a valid email address.")
+... if __name__ == "__main__":
+...     test_emails_valid = [
+...         "test.email@example.com",
+...         "another-user123@sub.domain.co.uk",
+...     ]
+...     for email in test_emails_valid:
+...         try:
+...             validate_email(email)
+...         except InvalidEmailError as e:
+...             print(f"Caught an exception: {e}")
+...         print("-" * 30)
+...     test_emails_invalid = [
+...         "invalid-email.com",    
+...         "user@.com",               
+...         "user@domain",           
+...         "user@domain..com",        
+...         "user with space@domain.com",
+...         12345                      
+...     ]
+...     for email in test_emails_invalid:
+...         try:
+...             validate_email(email)
+...         except InvalidEmailError as e:
+...             print(f"Caught an exception: {e}")
+...         print("-" * 30)
+
+'test.email@example.com' is a valid email address.
+------------------------------
+'another-user123@sub.domain.co.uk' is a valid email address.
+------------------------------
+Caught an exception: Invalid email format: 'invalid-email.com'
+------------------------------
+Caught an exception: Invalid email format: 'user@.com'
+------------------------------
+Caught an exception: Invalid email format: 'user@domain'
+------------------------------
+'user@domain..com' is a valid email address.
+------------------------------
+Caught an exception: Invalid email format: 'user with space@domain.com'
+------------------------------
+Caught an exception: Input must be a string.
+------------------------------
