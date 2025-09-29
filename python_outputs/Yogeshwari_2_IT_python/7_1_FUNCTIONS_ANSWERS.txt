@@ -1,0 +1,119 @@
+                               7_1_FUNCTIONS_ANSWERS
+def greet(name):
+    """
+    This function takes a name as input and prints a greeting message.
+    :param name: str
+    """
+    print(f"Hello, {name}!")
+greet("Alice")
+def add_numbers(a, b):
+    """
+    This function takes two numbers as input and returns their sum.
+    :param a: int or float
+    :param b: int or float
+    :return: int or float
+    """
+    return a + b
+result = add_numbers(5, 3)
+print(result)  
+def introduce(name, age=18):
+    """
+    This function introduces a person with a default age of 18.
+    :param name: str
+    :param age: int
+    """
+    print(f"My name is {name} and I am {age} years old.")
+introduce("Bob")  
+introduce("Alice", 25)  
+def print_numbers(*args):
+    """
+    This function takes a variable number of arguments and prints them.
+    :param args: tuple
+    """
+    for num in args:
+        print(num)
+print_numbers(1, 2, 3, 4)
+def print_details(**kwargs):
+    """
+    This function takes keyword arguments and prints them as key-value pairs.
+    :param kwargs: dict
+    """
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+print_details(name="Alice", age=25, city="New York")
+square = lambda x: x ** 2
+print(square(4))  
+Hello, Alice!
+8
+My name is Bob and I am 18 years old.
+My name is Alice and I am 25 years old.
+1
+2
+3
+4
+name: Alice
+age: 25
+city: New York
+16
+1. Write a function that calculates the factorial of a number.
+
+>>> def find_factorial(number):
+...   Calculates the factorial of a non-negative integer.
+...   Args:
+...     number: An integer for which to calculate the factorial.
+...   Returns:
+...     The factorial of the number if it's non-negative,
+...     otherwise, an error message.
+...   if number < 0:
+...     return "Factorial does not exist for negative numbers."
+...   elif number == 0:
+...     return 1
+...   else:
+...     factorial = 1
+...     for i in range(1, number + 1):
+...       factorial *= i
+...     return factorial
+... try:
+...   num = int(input("Enter a non-negative integer: "))
+...   result = find_factorial(num)
+...   print(f"The factorial of {num} is: {result}")
+... except ValueError:
+...   print("Invalid input. Please enter an integer.")
+Enter a non-negative integer: 7
+The factorial of 7 is: 5040
+2. Write a function that checks if a given string is a palindrome.
+>>> def is_palindrome(s):
+...   Checks if a given string is a palindrome.
+...   A palindrome is a word, phrase, number, or other sequence of characters
+...   which reads the same backward as forward. This function ignores case
+...   and non-alphanumeric characters.
+...   Args:
+...     s: The input string to check.
+...
+...   Returns:
+...     True if the string is a palindrome, False otherwise.
+...   processed_s = "".join(char.lower() for char in s if char.isalnum())
+...   return processed_s == processed_s[::-1]
+... string1 = "Maheshwari"
+... string2 = "Hello Sir"
+... string3 = "python learning,skill develop,course"
+... print(f"'{string1}' is a palindrome: {is_palindrome(string1)}")
+... print(f"'{string2}' is a palindrome: {is_palindrome(string2)}")
+... print(f"'{string3}' is a palindrome: {is_palindrome(string3)}")
+Example 1:
+'Maheshwari' is a palindrome: False
+'Hello Sir' is a palindrome: False
+'python learning,skill develop,course' is a palindrome: False
+Example 2:
+'Racecar' is a palindrome: True
+'Hello World' is a palindrome: False
+'A man, a plan, a canal: Panama' is a palindrome: True
+3. Write a lambda function to find the maximum of two numbers.
+>>> find_max = lambda x, y: x if x > y else y
+>>> result1 = find_max(10, 20)
+... print(f"The maximum of 10 and 20 is: {result1}")
+...
+... result2 = find_max(50, 15)
+... print(f"The maximum of 50 and 15 is: {result2}")
+The maximum of 10 and 20 is: 20
+The maximum of 50 and 15 is: 50
