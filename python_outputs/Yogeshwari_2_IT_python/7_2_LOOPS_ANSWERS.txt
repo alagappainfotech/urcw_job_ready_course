@@ -1,0 +1,92 @@
+                                 7_2_LOOPS_ANSWERS
+fruits = ['apple', 'banana', 'cherry']
+for fruit in fruits:
+    print(fruit)
+for i in range(5):  
+    print(i)
+count = 5
+while count > 0:
+    print(count)
+    count -= 1
+for i in range(1, 4):  
+    for j in range(1, 4):  
+        print(f"{i} x {j} = {i * j}")
+for num in range(1, 10):
+    if num == 5:
+        break
+    print(num)
+for num in range(1, 6):
+    if num == 3:
+        continue
+    print(num)
+for num in range(1, 4):
+    print(num)
+else:
+    print("Loop completed!")
+apple
+banana
+cherry
+0
+1
+2
+3
+4
+5
+4
+3
+2
+1
+1 x 1 = 1
+1 x 2 = 2
+1 x 3 = 3
+2 x 1 = 2
+2 x 2 = 4
+2 x 3 = 6
+3 x 1 = 3
+3 x 2 = 6
+3 x 3 = 9
+1
+2
+3
+4
+1
+2
+4
+5
+1
+2
+3
+Loop completed!
+1. Write a program to calculate the sum of all even numbers from 1 to 100.
+>>>
+... total_sum = 0
+... for number in range(1, 101):
+...     if number % 2 == 0:
+...         total_sum += number
+... print(f"The sum of all even numbers from 1 to 100 is: {total_sum}")
+The sum of all even numbers from 1 to 100 is: 2550
+2. Create a nested loop to print a pattern like:
+  *
+  **
+  ***
+>>> def print_star_pattern(rows):
+...     for i in range(1, rows + 1):  
+...         for j in range(i):  
+...             print("*", end="")
+...         print()  
+... print_star_pattern(3)
+...
+*
+**
+***
+3. Write a program to find the first number divisible by 7 in a range of 1 to 50.
+>>> def find_first_divisible_by_7():
+...     """
+...     Finds the first number divisible by 7 in the range of 1 to 50.
+...     """
+...     for number in range(1, 51): 
+...         if number % 7 == 0:
+...             print(f"The first number divisible by 7 in the range 1 to 50 is: {number}")
+...             return  
+... find_first_divisible_by_7()
+The first number divisible by 7 in the range 1 to 50 is: 7
