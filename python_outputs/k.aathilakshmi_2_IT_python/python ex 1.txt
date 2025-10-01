@@ -1,0 +1,35 @@
+>>> def last_digit(n: int) -> int:
+...     """Returns the last digit of an integer."""
+...     try:
+...         n = int(n)
+...     except ValueError:
+...         raise TypeError("Input must be an integer.")
+...     return abs(n) % 10
+...
+>>> print(last_digit(100034))
+4
+>>> print(last_digit(-12345))
+5
+>>> print(last_digit("12345"))
+5
+>>> print(last_digit(0))
+0
+>>> print(last_digit(True))
+1
+>>> print(last_digit(False))
+0
+>>> print(last_digit("Hi There 123"))
+Traceback (most recent call last):
+  File "<python-input-1>", line 4, in last_digit
+    n = int(n)
+ValueError: invalid literal for int() with base 10: 'Hi There 123'
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "<python-input-8>", line 1, in <module>
+    print(last_digit("Hi There 123"))
+          ~~~~~~~~~~^^^^^^^^^^^^^^^^
+  File "<python-input-1>", line 6, in last_digit
+    raise TypeError("Input must be an integer.")
+TypeError: Input must be an integer.
