@@ -1,0 +1,149 @@
+7_3_DATA_STRUCTURES
+
+fruits = ['apple', 'banana', 'cherry']
+print(fruits)
+fruits.append('orange')
+print(fruits)  
+fruits.remove('banana')
+print(fruits)
+print(fruits[0])
+coordinates = (10, 20)
+print(coordinates)  
+print(coordinates[1])  
+unique_numbers = {1, 2, 3, 3}
+print(unique_numbers) 
+unique_numbers.add(4)
+print(unique_numbers)  
+unique_numbers.remove(2)
+print(unique_numbers)  
+person = {'name': 'Alice', 'age': 25}
+print(person)  
+print(person['name'])  
+person['city'] = 'New York'
+print(person)  
+del person['age']
+print(person)  
+text = "hello"
+print(text[1])  
+print(text[1:4])  
+nested_list = [[1, 2], [3, 4]]
+print(nested_list[1][0])  
+nested_dict = {'person': {'name': 'Bob', 'age': 30}}
+print(nested_dict['person']['name']) 
+['apple', 'banana', 'cherry']
+['apple', 'banana', 'cherry', 'orange']
+['apple', 'cherry', 'orange']
+apple
+(10, 20)
+20
+{1, 2, 3}
+{1, 2, 3, 4}
+{1, 3, 4}
+{'name': 'Alice', 'age': 25}
+Alice
+{'name': 'Alice', 'age': 25, 'city': 'New York'}
+{'name': 'Alice', 'city': 'New York'}
+e
+ell
+3
+Bob
+1. Create a list of dictionaries to store information about three students (name, age, grade).
+>>> students = [
+... {
+...    "name":"v",
+...    "age":"18",
+...    "grade":10
+... },
+... {
+...   "name":"jk",
+...   "age":"19",
+...   "grade":11
+... }
+... {
+...   "name":"suga",
+...   "age":"20",
+...   "grade":12
+... }
+... ]
+>>> print("student Information:")
+>>> for student in students:
+...    print(f"name:{student['name']},age:{student['age']},grade:{student['grade']}")
+name:v,age:18,grade:10
+name:jk,age:19,grade:11
+name:suga,age:20,grade:12
+
+ 2. Write a program to find the union and intersection of two sets.
+>>> def find_union_intersection(set1, set2):
+...   """
+...   Calculates the union and intersection of two sets.
+...
+...   Args:
+...     set1: The first set.
+...     set2: The second set.
+...
+...   Returns:
+...     A tuple containing two sets: (union_set, intersection_set).
+...   """
+...   union_set = set1.union(set2)
+...   intersection_set = set1.intersection(set2)
+...   return union_set, intersection_set
+...
+... # Example usage:
+... set_a = {1, 2, 3, 4, 5}
+... set_b = {4, 5, 6, 7, 8}
+...
+... union_result, intersection_result = find_union_intersection(set_a, set_b)
+...
+... print(f"Set A: {set_a}")
+... print(f"Set B: {set_b}")
+... print(f"Union of Set A and Set B: {union_result}")
+... print(f"Intersection of Set A and Set B: {intersection_result}")
+...
+... # Another example:
+... set_c = {"apple", "banana", "orange"}
+... set_d = {"banana", "grape", "kiwi"}
+...
+... union_result_2, intersection_result_2 = find_union_intersection(set_c, set_d)
+...
+... print(f"\nSet C: {set_c}")
+... print(f"Set D: {set_d}")
+... print(f"Union of Set C and Set D: {union_result_2}")
+... print(f"Intersection of Set C and Set D: {intersection_result_2}")
+...
+Set A: {1, 2, 3, 4, 5}
+Set B: {4, 5, 6, 7, 8}
+Union of Set A and Set B: {1, 2, 3, 4, 5, 6, 7, 8}
+Intersection of Set A and Set B: {4, 5}
+
+Set C: {'orange', 'banana', 'apple'}
+Set D: {'kiwi', 'banana', 'grape'}
+Union of Set C and Set D: {'orange', 'banana', 'kiwi', 'apple', 'grape'}
+Intersection of Set C and Set D: {'banana'}
+3. Create a nested dictionary to represent a company's departments and employees.
+>>> company_data = {
+...     "Human Resources": {
+...         "E001": {"name": "Alice Smith", "position": "HR Manager", "email": "alice.s@example.com"},
+...         "E002": {"name": "Bob Johnson", "position": "HR Assistant", "email": "bob.j@example.com"}
+...     },
+...     "Engineering": {
+...         "E003": {"name": "Charlie Brown", "position": "Software Engineer", "email": "charlie.b@example.com"},
+...         "E004": {"name": "Diana Prince", "position": "Lead Developer", "email": "diana.p@example.com"},
+...         "E005": {"name": "Eve Adams", "position": "QA Tester", "email": "eve.a@example.com"}
+...     },
+...     "Finance": {
+...         "E006": {"name": "Frank White", "position": "Accountant", "email": "frank.w@example.com"}
+...     }
+... }
+...
+... # Example of accessing data
+... print("Engineering Department Employees:")
+... for employee_id, details in company_data["Engineering"].items():
+...     print(f"  ID: {employee_id}, Name: {details['name']}, Position: {details['position']}")
+...
+... print("\nHR Manager's Name:", company_data["Human Resources"]["E001"]["name"])
+...
+Engineering Department Employees:
+  ID: E003, Name: Charlie Brown, Position: Software Engineer
+  ID: E004, Name: Diana Prince, Position: Lead Developer
+  ID: E005, Name: Eve Adams, Position: QA Tester
+HR Manager's Name: Alice Smith
