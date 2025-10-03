@@ -1,0 +1,286 @@
+BATMAN 6:
+class Bat:
+
+    species = "Baty"
+
+    def _init_(self, can_fly=True):
+        self.fly = can_fly
+
+    # This class also has a say method
+    def say(self, msg):
+        msg = "... ... ..."
+        return msg
+
+    # And its own method as well
+def sonar(self):
+        return "))) ... ((("
+
+     
+if _name_ == "_main_":
+    b = Bat()
+    print(b.say("hello"))
+    print(b.fly)
+O/p
+#... ... ...
+True
+
+
+class Human:
+
+    # A class attribute. It is shared by all instances of this class
+    species = "H. sapiens"
+# Basic initializer, this is called when this class is instantiated.
+    # Note that the double leading and trailing underscores denote objects
+    # or attributes that are used by Python but that live in user-controlled
+    # namespaces. Methods(or objects or attributes) like: _init, __str_,
+    # _repr_ etc. are called special methods (or sometimes called dunder
+    # methods). You should not invent such names on your own.
+    def _init_(self, name):
+        # Assign the argument to the instance's name attribute
+        self.name = name
+
+        # Initialize property
+        self._age = 0   # the leading underscore indicates the "age" property is
+                        # intended to be used internally
+                        # do not rely on this to be enforced: it's a hint to other devs
+
+    # An instance method. All methods take "self" as the first argument
+    def say(self, msg):
+print("{name}: {message}".format(name=self.name, message=msg))
+
+    # Another instance method
+    def sing(self):
+        return "yo... yo... microphone check... one two... one two..."
+
+    # A class method is shared among all instances
+    # They are called with the calling class as the first argument
+    @classmethod
+    def get_species(cls):
+return cls.species
+
+    # A static method is called without a class or instance reference
+    @staticmethod
+    def grunt():
+        return "grunt"
+
+    # A property is just like a getter.
+    # It turns the method age() into a read-only attribute of the same name.
+    # There's no need to write trivial getters and setters in Python, though.
+    @property
+    def age(self):
+        return self._age
+
+    # This allows the property to be set
+ @age.setter
+    def age(self, age):
+        self._age = age
+
+    # This allows the property to be deleted
+    @age.deleter
+    def age(self):
+        del self._age
+
+
+# When a Python interpreter reads a source file it executes all its code.
+# This _name_ check makes sure this code block is only executed when this
+# module is the main program.
+if _name_ == "_main_":
+    # Instantiate a class
+    i = Human(name="Ian")
+    i.say("hi")                    
+    j = Human("Joel")
+    j.say("hello")                  
+
+    # Call our class method
+    i.say(et_species())         
+    # Change the shared attribute
+    Human.species = "H. neanderthalensis"
+    i.say(i.get_species())          
+    j.say(j.get_species())
+
+O/P 
+
+Ian: hi
+Joel: hello
+Ian: H. sapiens
+Ian: H. neanderthalensis
+Joel: H. neanderthalensis
+
+class Person:
+"""
+    A simple class to represent a person.
+    """
+    # Constructor method to initialize attributes
+    def _init_(self, name, age):
+        self.name = name  # Instance attribute
+        self.age = age    # Instance attribute
+
+    # Method to display a greeting
+    def greet(self):
+        print(f"Hello, my name is {self.name} and I am {self.age} years old.")
+
+# Creating an object (instance) of the class
+person1 = Person("Alice", 30)
+person1.greet()  # Output: Hello, my name is Alice and I am 30 years old.
+
+O/p
+
+Hello, my name is Alice and I am 30 years old.
+
+class Circle:
+    """
+    A class to represent a circle.
+"""
+    pi = 3.14159  # Class attribute (shared by all instances)
+
+    def _init_(self, radius):
+        self.radius = radius  # Instance attribute
+
+    def area(self):
+        return Circle.pi * self.radius ** 2
+
+circle1 = Circle(5)
+print(circle1.area())  
+
+O/p
+78.53975
+
+class Animal:
+    def _init_(self, species):
+        self.species = species
+
+    def make_sound(self):
+        print("Some generic sound")
+
+class Dog(Animal):  # Dog inherits from Animal
+    def _init_(self, name, breed):
+        super()._init_("Dog")  # Call the parent class constructor
+        self.name = name
+        self.breed = breed
+
+    def make_sound(self):
+        print("Woof!")
+
+dog1 = Dog("Buddy", "Golden Retriever")
+dog1.make_sound()  
+O/p
+Woof!
+class BankAccount:
+    def _init_(self, balance):
+        self.__balance = balance  # Private attribute
+
+    def deposit(self, amount):
+        self.__balance += amount
+
+    def withdraw(self, amount):
+        if amount <= self.__balance:
+            self.__balance -= amount
+        else:
+            print("Insufficient funds")
+
+    def get_balance(self):
+        return self.__balance
+
+account = BankAccount(1000)
+account.deposit(500)
+print(account.get_balance()) 
+ 
+O/p
+1500
+class Cat(Animal):
+    def make_sound(self):
+        print("Meow!")
+
+animals = [Dog("Buddy", "Golden Retriever"), Cat("Whiskers")]
+for animal in animals:
+    animal.make_sound()
+O/p
+Woof!
+Meow
+class Car:
+    def _init_(self, make, model, year):
+        self.make = make
+        self.model = model
+        self.year = year
+
+    def display_details(self):
+ print(f"Make: {self.make}")
+        print(f"Model: {self.model}")
+        print(f"Year: {self.year}")
+
+# Example usage
+my_car = Car("Toyota", "Corolla", 2020)
+my_car.display_details()
+
+O/p
+Make: Toyota
+Model: Corolla
+Year: 2020
+
+class Rectangle:
+    def _init_(self, length, width):
+        self.length = length
+        self.width = width
+def calculate_area(self):
+        return self.length * self.width
+
+    def calculate_perimeter(self):
+        return 2 * (self.length + self.width)
+
+# Example usage
+my_rectangle = Rectangle(5, 3)
+print(f"Area: {my_rectangle.calculate_area()}")
+print(f"Perimeter: {my_rectangle.calculate_perimeter()}")
+
+O/p
+Area:15
+Perimeter:16
+
+
+class Shape:
+    def _init_(self):
+        pass
+
+    def calculate_area(self):
+        pass
+
+    def calculate_perimeter(self):
+        pass
+
+class Square(Shape):
+    def _init_(self, side):
+        self.side = side
+
+    def calculate_area(self):
+        return self.side ** 2
+
+    def calculate_perimeter(self):
+        return 4 * self.side
+
+class Triangle(Shape):
+    def _init_(self, side1, side2, side3):
+        self.side1 = side1
+        self.side2 = side2
+        self.side3 = side3
+def calculate_perimeter(self):
+        return self.side1 + self.side2 + self.side3
+
+    # For simplicity, let's assume it's a right-angled triangle
+    def calculate_area(self, base, height):
+        return 0.5 * base * height
+
+# Example usage
+my_square = Square(4)
+print(f"Square Area: {my_square.calculate_area()}")
+print(f"Square Perimeter: {my_square.calculate_perimeter()}")
+
+my_triangle = Triangle(3, 4, 5)
+print(f"Triangle Perimeter: {my_triangle.calculate_perimeter()}")
+print(f"Triangle Area: {my_triangle.calculate_area(3, 4)}")
+
+O/p
+
+Square Area: 16
+Square Perimeter: 16
+Triangle Perimeter: 12
+Triangle Area: 6.0
