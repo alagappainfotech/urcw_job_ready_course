@@ -1,0 +1,30 @@
+ MODULE-10
+1. Testing Basic Pattern Matcher:
+Emails found: ['support@company.com']
+Phone numbers found: [('', '555', '123', '4567')]
+URLs found: ['https://example.com']
+
+2. Testing Advanced Pattern Matcher:
+Name groups: [('John', 'Doe'), ('Jane', 'Smith'), ('Bob', 'Johnson')]
+Repeated words: ['hello', 'world']
+
+3. Testing Text Validator:
+Email 'test@example.com' is valid: True
+Phone '(555) 123-4567' is valid: True
+
+4. Testing Data Extractor:
+Extracted data: {'emails': ['test@example.com'], 'phones': ['5551234567'], 'urls': ['https://example.com'], 'dates': [], 'times': [], 'ip_addresses': [], 'mac_addresses': [], 'hashtags': [], 'mentions': ['@example'], 'html_tags': [], 'currency': [], 'numbers': ['555', '123', '4567'], 'words': ['Email', 'test', 'example', 'com', 'Phone', '555', '123', '4567', 'URL', 'https', 'example', 'com']}
+
+5. Testing Text Manipulator:
+Normalized text: 'Hello world! This is a test.'
+Masked text: My email is ***@***.*** and my SSN is ***-**-****
+
+6. Testing Optimized Regex:
+Pattern performance: 0.000003 seconds per iteration
+
+7. Testing Regex Tester:
+Test results: 3/3 passed
+
+8. Testing Log Processor:
+Parsed log: {'ip': '192.168.1.1', 'timestamp': '25/Dec/2023:10:00:00 +0000', 'request': 'GET /index.html HTTP/1.1', 'status': 200, 'size': 1234}
+All exercise completed!
