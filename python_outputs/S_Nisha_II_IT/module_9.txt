@@ -1,0 +1,42 @@
+ Module 9 
+
+1. Testing File Operations:
+Permission denied to write test_file.txt
+File test_file.txt not found
+File content:
+Error reading lines from test_file.txt: [Errno 2] No such file or directory: 'test_file.txt'
+File lines: []
+
+2. Testing File System Manager:
+Error creating directory: [WinError 5] Access is denied: 'test_dir'
+File info: {}
+
+3. Testing CSV Handler:
+Error writing CSV: [Errno 13] Permission denied: 'test_data.csv'
+Error reading CSV: [Errno 2] No such file or directory: 'test_data.csv'
+CSV data: []
+4. Testing JSON Handler:
+Error writing JSON: [Errno 13] Permission denied: 'test_data.json'
+File test_data.json not found
+JSON data: None
+
+5. Testing XML Handler:
+Error writing XML: [Errno 13] Permission denied: 'test_data.xml'
+Error reading XML: [Errno 2] No such file or directory: 'test_data.xml'
+
+6. Testing Archive Manager:
+Error creating ZIP: [Errno 13] Permission denied: 'test_archive.zip'
+Error listing ZIP contents: [Errno 2] No such file or directory: 'test_archive.zip'
+ZIP contents: []
+
+7. Testing File Security:
+Error calculating hash: [Errno 2] No such file or directory: 'test_file.txt'
+File hash:
+8. Testing Batch Processing:
+Processing batch 1: 2 files
+Processing batch 2: 1 files
+Batch processing results: {'processed': 3, 'failed': 0, 'total': 3}
+
+Cleaning up test files...
+
+All exercises completed!
