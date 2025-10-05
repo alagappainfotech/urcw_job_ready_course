@@ -1,0 +1,23 @@
+    MODULE-14
+- Move a file: shutil.move
+- Walk directories: pathlib.Path.rglob / os.walk
+- Parse CSV: csv
+- Parse JSON: json
+- Fetch HTTP JSON: requests.get().json()
+- SQLite DB: sqlite3
+Rows: [{'name': 'Alice', 'age': 25, 'score': 91.0}, {'name': 'Bob', 'age': 30, 'score': 88.0}]
+Top-level keys: ['slideshow']
+First 5 records: [{'time': '2025-10-03T06:00:00Z', 'temperature_c': 8.1}, ...]
+Totals in 2024-01: [('Alice', 120.5), ('Bob', 80.0)]
+Excel rows: [['name', 'age'], ['Alice', 25], ['Bob', 30]]
+XML root keys: ['breakfast_menu']
+Aggregated:
+       name     month  amount
+0    Alice  2024-01   120.5
+1    Alice  2024-02    99.9
+2      Bob  2024-01    80.0
+3      Bob  2024-02   110.0
+Saved plot to module7_plot.png
+Before sentinel: ['A', 'B']
+Redis: caching, session storage, rate limits; not for complex relational queries.
+MongoDB: flexible document storage; schema evolution; not ideal for multi-document transactions.
