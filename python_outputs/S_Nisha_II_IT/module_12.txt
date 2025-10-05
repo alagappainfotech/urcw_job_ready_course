@@ -1,0 +1,12 @@
+MODULE-12
+Script name: module4_script.py
+Args: []
+CWD: /home/user/projects
+Exists: True
+Entries (first 5): ['module4.py', 'module11.py', '__pycache__', 'README.md', 'data']
+usage: module4_script.py [-h] [-a] path
+module4_script.py: error: the following arguments are required: path
+Copied: m4_tmp/sample.txt -> m4_tmp/backup.txt
+Streamed lines: 0
+Total across .py files: {'lines': XXXX, 'words': YYYY, 'chars': ZZZZ}
+Moved 0 .test files to backup_test
