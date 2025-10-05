@@ -1,0 +1,11 @@
+          MODULE-13
+Top 5 sys.path entries:
+  /data/data/com.kvassyu.coding.py/files
+  /data/user/0/com.kvassyu.coding.py/files/PYROOT3/lib/python313.zip
+  /data/user/0/com.kvassyu.coding.py/files/PYROOT3/lib/python3.13
+  /data/user/0/com.kvassyu.coding.py/files/PYROOT3/lib/python3.13/lib-dynload
+  /data/user/0/com.kvassyu.coding.py/files/PYROOT3/lib/python3.13/site-packages
+Installed (first 20): ['__future__', '__hello__', '__phello__', '_aix_support', '_android_support', '_apple_support', '_asyncio', '_bisect', '_blake2', '_bz2', '_codecs_cn', '_codecs_hk', '_codecs_iso2022', '_codecs_jp', '_codecs_kr', '_codecs_tw', '_collections_abc', '_colorize', '_compat_pickle', '_compression']
+Package skeleton created at /data/data/com.kvassyu.coding.py/files/home/demo_pkg
+Public API: ['utils']
+No requirements.txt found.
