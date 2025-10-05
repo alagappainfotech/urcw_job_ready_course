@@ -1,0 +1,5 @@
+     MODULE 6
+<html><body><p>Hello</p><p>World</p></body></html>
+TypedList length: 3
+StringDict: {'a': '1'}
+1-212-555-1212
