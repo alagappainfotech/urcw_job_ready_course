@@ -1,0 +1,44 @@
+  MODULE-11
+Testing Module 11 Exercises...
+
+1. Testing Metaclasses:
+Same instance: True
+
+2. Testing Descriptors:
+Name: Alice, Age: 30
+
+3. Testing Design Patterns:
+Buddy says Woof!
+Observer1 received update: New state
+Observer2 received update: New state
+Paid $100 using credit card
+Paid $200 using PayPal
+4. Testing Threading:
+Final counter value: 500
+
+5. Testing Asynchronous Programming:
+Processed 5 items asynchronously
+Connecting to database: postgresql://localhost/db
+Using connection: Connection to postgresql://localhost/db
+Closing database connection
+Async generated value: 0
+Async generated value: 1
+Async generated value: 2
+
+6. Testing Memory Management:
+Current memory: 0.10 MB
+Peak memory: 0.11 MB
+
+7. Testing Advanced Decorators:
+Function result: Result: 5 + test
+
+8. Testing Context Managers and Generators:
+Connecting to database: postgresql://localhost/mydb
+Using connection: Connection to postgresql://localhost/mydb
+Closing database connection
+Fibonacci numbers: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+Even numbers: [2, 4, 6, 8, 10]
+Squared numbers: [1, 4, 9, 16, 25, 36, 49, 64, 81, 100]
+Batches: [[1, 2, 3], [4, 5, 6], [7, 8, 9], [10]]
+
+All exercises completed!
