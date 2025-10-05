@@ -1,0 +1,237 @@
+                MODULE-4
+Quick Check 1: Function Design
+==================================================
+
+Good Function:
+  Code: def calculate_rectangle_area(length: float, width: float) -> float:
+  Description: Clear name, specific parameters, type hints, single responsibility
+  Rating: Good
+
+Poor Function:
+  Code: def do_stuff(x, y, z):
+  Description: Vague name, unclear parameters, no type hints, unclear purpose
+  Rating: Poor
+
+Good Function:
+  Code: def validate_email(email: str) -> bool:
+  Description: Clear purpose, specific parameter, type hints, boolean return
+  Rating: Good
+Poor Function:
+  Code: def process_data(data, config, options, flags, settings):
+  Description: Too many parameters, unclear what each does, complex interface
+  Rating: Poor
+
+Quick Check 2: Scope Analysis
+==================================================
+Local: I'm local
+Enclosing: I'm in enclosing scope
+Global: I'm global
+Built-in: 4
+
+Counter examples:
+First call: 1
+Second call: 2
+Third call: 3
+
+Quick Check 3: Exception HandlingQuick Check 3: Exception Handling
+==================================================
+Scenario: File not found
+Exception: FileNotFoundError
+  Reason: Specific exception for missing files
+
+Scenario: Division by zero
+  Exception: ZeroDivisionError
+  Reason: Specific exception for mathematical errors
+
+Scenario: Invalid user input
+  Exception: ValueError
+  Reason: General exception for invalid values
+
+Scenario: Network connection failed
+  Exception: ConnectionError
+  Reason: Specific exception for network issues
+
+Scenario: Index out of range
+  Exception: IndexError
+  Reason: Specific exception for sequence index errors
+
+Scenario: Key not found in dictionary
+  Exception: KeyError
+  Reason: Specific exception for missing dictionary keys
+
+
+Quick Check 4: Module Structure
+==================================================
+Recommended module structure:
+
+    my_package/
+    ├── __init__.py          # Package initialization
+    ├── core/                # Core functionality
+    │   ├── __init__.py
+    │   ├── models.py        # Data models
+    │   └── utils.py         # Utility functions
+    ├── api/                 # API interface
+├── api/                 # API interface
+├── api/                 # API interfaces
+    │   ├── __init__.py
+    │   └── endpoints.py
+    ├── tests/               # Test modules
+    │   ├── __init__.py
+    │   ├── test_models.py
+    │   └── test_utils.py
+     └── docs/                # Documentation
+        └── README.md
+
+Import best practices:
+1. Use absolute imports: from my_package.core import utils
+2. Import specific functions: from my_package.core.utils import helper_func
+3. Use __all__ in __init__.py to control public API
+4. Avoid circular imports
+5. Use relative imports within packages: from .utils import helper
+
+Try This 1: Function Creation
+==================================================
+Currency formatting:
+  $$1,234.56
+  €1,234.56
+  ¥1,235
+
+Percentage calculation:
+  25 out of 100 = 25.0%
+  3 out of 10 = 30.0%
+
+Email validation:
+  user@example.com: True
+  invalid.email: False
+test@domain.co.uk: True
+  not-an-email: False
+
+Try This 2: Parameter Handling
+==================================================
+Call 1 - Basic usage:
+Required argument: hello
+Variable args: (1, 2, 3)
+Keyword argument: custom
+Variable kwargs: {}
+
+Call 2 - With kwargs:
+Required argument: world
+Variable args: (4, 5)
+Keyword argument: test
+Variable kwargs: {'extra1': 'value1', 'extra2': 'value2'}
+
+Call 3 - All defaults:
+Required argument: defaults
+Variable args: ()
+Keyword argument: default
+Variable kwargs: {}
+
+Number processing:
+Sum: 15
+Average: 3.0
+Max: 5
+Min: 1
+
+Try This 3: Error Handling
+==================================================
+File operations:
+  Error: File 'nonexistent.txt' not found
+  Successfully wrote to test.txt
+  Sample content
+  Unexpected error: ValueError: Unknown operation: invalid
+User validation:
+  ✓ Valid: Alice, 25, alice@example.com
+  ✗ Invalid: , 25, alice@example.com - Name must be at least 2 characters long
+  ✗ Invalid: Bob, -5, bob@example.com - Age must be an integer between 0 and 150
+  ✗ Invalid: Charlie, 30, invalid-email - Email must contain '@' symbol
+
+Try This 4: Module Development
+==================================================
+String utilities:
+ Original: Hello World
+  Reversed: dlroW olleH
+  Word count: 2
+  Is palindrome: True
+
+Math utilities:
+  Is 17 prime: True
+  Is 15 prime: False
+  First 10 Fibonacci numbers: [0, 1, 1, 2, 3, 5, 8, 13, 21, 34]
+Try This 5: assert and generators
+==================================================
+count_up_to(5): [0, 1, 2, 3, 4, 5]
+Assertion triggered: n must be non-negative
+
+Lab Problem 1: Text Processing Library
+==================================================
+Text Processing Library Demo
+----------------------------------------
+Cleaned text: python is a powerful programming language python is widely used for web development data science and...
+Extracted words: ['python', 'is', 'a', 'powerful', 'programming', 'language', 'python', 'is', 'widely', 'used']...
+Word frequency: {'python': 4, 'is': 2, 'a': 2, 'powerful': 2, 'programming': 1}
+Most common words: [('python', 4), ('for', 3), ('is', 2)]
+Text statistics:
+  character_count: 340
+  word_count: 47
+  sentence_count: 5
+  unique_words: 37
+  avg_word_length: 5.45
+  avg_sentence_length: 9.40
+Found keywords: {'python': 5, 'programming': 1, 'development': 1}
+Lab Problem 2: Data Validation System
+==================================================
+Data Validation System Demo
+----------------------------------------
+✓ Valid email: user@example.com
+✗ Invalid email: invalid-email - Invalid email format: invalid-email
+✓ Valid email: test@domain.co.uk
+
+User data validation:
+
+User 1: Alice Johnson
+  ✓ Valid user data
+
+User 2: Bob Smith
+  ✗ Invalid user data
+  Errors:
+    - Invalid email format: invalid-email
+    - Age must be between 0 and 150: -5
+    - Password must be at least 8 characters long
+
+User 3: Charlie Brown
+  ✓ Valid user data
+Lab Problem 3: Configuration Manager
+==================================================
+Configuration Manager Demo
+----------------------------------------
+Current configuration:
+  database_host: prod-db.example.com
+  database_port: 5432
+  database_name: myapp
+  debug_mode: True
+  max_connections: 200
+  api_timeout: 30
+
+✓ All configuration values are valid
+
+Loading from JSON:
+✓ JSON configuration loaded successfully
+  Database host: test-db.example.com
+Database port: 3306
+
+Lab Problem 4: Logging Framework
+==================================================
+Logging Framework Demo
+----------------------------------------
+[2025-10-03 11:22:17] DEBUG: This is a debug message
+[2025-10-03 11:22:17] INFO: Application started successfully
+[2025-10-03 11:22:17] WARNING: This is a warning message
+[2025-10-03 11:22:17] ERROR: An error occurred
+[2025-10-03 11:22:17] CRITICAL: Critical system failure
+
+Testing with WARNING level:
+[2025-10-03 11:22:17] WARNING: This warning will be shown
+[2025-10-03 11:22:17] ERROR: This error will be shown
+
+Testing file handler:
+[2025-10-03 11:22:17] INFO: This message will be written to file
