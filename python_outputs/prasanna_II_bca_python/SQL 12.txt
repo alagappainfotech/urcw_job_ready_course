@@ -1,0 +1,23 @@
+SELECT director, COUNT(*) AS num_movies FROM movies GROUP BY director;
+director	num_movies
+Andrew Stanton	2
+Brad Bird	2
+Brenda Chapman	1
+Dan Scanlon	1
+John Lasseter	5
+Lee Unkrich	1
+Pete Docter	2
+
+SELECT director, SUM(domestic_sales + international_sales) as Cumulative_sales_from_all_movies
+FROM movies
+    INNER JOIN boxoffice
+        ON movies.id = boxoffice.movie_id
+GROUP BY director;
+director	Cumulative_sales_from_all_movies
+Andrew Stanton	1458055121
+Brad Bird	1255164910
+Brenda Chapman	538983207
+Dan Scanlon	743559607
+John Lasseter	2232208025
+Lee Unkrich	1063171911
+Pete Docter	1294159000

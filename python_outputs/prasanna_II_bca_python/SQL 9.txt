@@ -1,0 +1,50 @@
+SELECT 
+    m.title,
+    (b.domestic_sales + b.international_sales)/1000000 AS combined_sales_millions
+FROM movies m
+JOIN boxoffice b
+  ON m.id = b.movie_id;
+title	combined_sales_millions
+Finding Nemo	936.743261
+Monsters University	743.559607
+Ratatouille	623.722818
+Cars 2	559.852396
+Toy Story 2	485.015179
+The Incredibles	631.442092
+WALL-E	521.31186
+Toy Story 3	1063.171911
+Toy Story	361.958736
+Cars	461.983149
+Up	731.342744
+Monsters, Inc.	562.816256
+A Bug's Life	363.398565
+Brave	538.983207
+RESET
+
+
+SELECT m.title , b.rating * 10 AS rating_percent FROM movies m JOIN boxoffice b ON m.id = b.movie_id;
+title	rating_percent
+Finding Nemo	82
+Monsters University	74
+Ratatouille	80
+Cars 2	64
+Toy Story 2	79
+The Incredibles	80
+WALL-E	85
+Toy Story 3	84
+Toy Story	83
+Cars	72
+Up	83
+Monsters, Inc.	81
+A Bug's Life	72
+Brave	72
+
+
+SELECT title, year FROM movies WHERE year % 2 = 0 ORDER BY year;
+title	year
+A Bug's Life	1998
+The Incredibles	2004
+Cars	2006
+WALL-E	2008
+Toy Story 3	2010
+Brave	2012

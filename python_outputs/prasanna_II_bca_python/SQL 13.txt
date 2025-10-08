@@ -1,0 +1,16 @@
+INSERT INTO movies VALUES(4,'Toy Story 4','El Directore',2015,90);
+id	title	director	year	length_minutes
+1	Toy Story	John Lasseter	1995	81
+2	A Bug's Life	John Lasseter	1998	95
+3	Toy Story 2	John Lasseter	1999	93
+4	Toy Story 4	El Directore	2015	90
+
+
+INSERT INTO boxoffice
+(movie_id, rating, Domestic_sales, Inetrnational_sales)
+VALUES (4,8.7,340000000,270000000);
+movie_id	rating	domestic_sales	international_sales
+3	7.9	245852179	239163000
+1	8.3	191796233	170162503
+2	7.2	162798565	200600000
+4	8.7	340000000	270000000

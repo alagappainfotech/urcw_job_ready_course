@@ -1,0 +1,14 @@
+SELECT COUNT(*) AS num_artists FROM employees WHERE role = 'Artist';
+num_artists
+5
+
+SELECT role, COUNT(*) AS num_employees FROM employees GROUP BY role;
+role	num_employees
+Artist	5
+Engineer	5
+Manager	3
+
+SELECT SUM(years_employed) AS total_engineer_years FROM employees 
+WHERE role = 'Engineer';
+total_engineer_years
+17

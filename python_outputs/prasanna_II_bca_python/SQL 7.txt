@@ -1,0 +1,25 @@
+SELECT DISTINCT Building_name FROM buildings JOIN employees ON building_id = building_id;
+building_name
+1e
+1w
+2e
+2w
+
+SELECT building_name, capacity FROM buildings ;
+building_name	capacity
+1e	24
+1w	32
+2e	16
+2w	20
+
+SELECT DISTINCT building_name, role 
+FROM buildings 
+  LEFT JOIN employees
+    ON building_name = building;
+building_name	role
+1e	Engineer
+1e	Manager
+1w	
+2e	
+2w	Artist
+2w	Manager

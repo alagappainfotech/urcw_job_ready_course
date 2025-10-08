@@ -1,0 +1,10 @@
+CREATE TABLE Database (
+    Name TEXT,
+    Version REAL,
+    Download_count INTEGER
+);
+
+Name	Version	Download_count
+SQLite	3.9	92000000
+MySQL	5.5	512000000
+Postgres	9.4	384000000

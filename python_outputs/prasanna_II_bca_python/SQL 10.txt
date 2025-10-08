@@ -1,0 +1,14 @@
+SELECT MAX(years_employed) AS longest_years FROM employees;
+longest_years
+9
+
+SELECT role, AVG(years_employed) AS avg_years FROM employees GROUP BY role;
+role	avg_years
+Artist	6
+Engineer	3.4
+Manager	6
+
+SELECT building, SUM(years_employed) AS total_years FROM employees GROUP BY building;
+building	total_years
+1e	29
+2w	36

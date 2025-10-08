@@ -1,0 +1,10 @@
+SELECT name, role FROM employees WHERE building IS NULL;
+name	role
+Yancy I.	Engineer
+Oliver P.	Artist
+
+
+SELECT building_name FROM buildings LEFT JOIN employees ON building_name = building WHERE building IS NULL;
+building_name
+1w
+2e
