@@ -1,0 +1,149 @@
+>>> some_var="string"
+>>> if type(some_var) is int:
+...     if some_var > 10:
+...         print("some_var is totally bigger than 10.")
+...     elif some_var < 10:
+...         print("some_var is smaller than 10.")
+...     else:
+...         print("some_var is indeed 10.")
+... else:
+...     print("some_var is not an integer.")
+...
+some_var is not an integer.
+>>> command="say_hi"
+>>> match command:
+...     case "run":
+...         print("The robot started to run.")
+...     case "speak" | "say_hi":
+...         print("The robot said hi.")
+...     case code if command.isdigit():
+...         print(f"The robot execute code: {code}")
+...     case _:
+...         print("Invalid command")
+...
+The robot said hi.
+>>> """
+... for loops iterate over lists
+... prints:
+...     dog is a mammal
+...     cat is a mammal
+...     mouse is a mammal
+... """
+'\nfor loops iterate over lists\nprints:\n    dog is a mammal\n    cat is a mammal\n    mouse is a mammal\n'
+>>> """
+... for animal in ["dog","cat","mouse"]:
+...     print("{} is a mammal".format(animal))
+... """
+'\nfor animal in ["dog","cat","mouse"]:\n    print("{} is a mammal".format(animal))\n'
+>>> """
+... "range(number)"returns an iterable of numbers
+... from zero up to (but excluding) the given number
+... prints:
+...     0
+...     1
+...     2
+...     3
+... """
+'\n"range(number)"returns an iterable of numbers\nfrom zero up to (but excluding) the given number\nprints:\n    0\n    1\n    2\n    3\n'
+>>> for i in range(4):
+...     print(i)
+... """
+... "range(lower,upper)"returns an iterable of numbers
+... from the lower number to the upper number
+... prints:
+...     4
+...     5
+...     6
+...     7
+... """
+... for i in range(4,8):
+...     print(i)
+... """
+... "range(lower,upper,step)"returns an iterable of numbers
+... from the lower number to the upper number, while incrementing
+... by step. If step is not indicated, the default value is 1.
+... prints:
+...     4
+...     6
+... """
+... for i in range(4,8,2):
+...     print(i)
+... """
+... Loop over a list to retrieve both the index and the value of each list item:
+...     0 dog
+...     1 cat
+...     2 mouse
+... """
+... animals=["dog","cat","mouse"]
+... for i, value in enumerate(animals):
+...     print(i,value)
+... """
+... While loops go until a condition is no longer met.
+... prints:
+...     0
+...     1
+...     2
+...     3
+... """
+... x=0
+... while x < 4:
+...     print(x)
+...     x += 1
+...
+0
+1
+2
+3
+4
+5
+6
+7
+4
+6
+0 dog
+1 cat
+2 mouse
+0
+1
+2
+3
+>>> filled_dict={"one":1,"two":2,"three":3}
+>>> our_iterable=filled_dict.keys()
+>>> print(our_iterable)
+dict_keys(['one', 'two', 'three'])
+>>> for i in our_iterable:
+...     print(i)
+...
+one
+two
+three
+>>> our_iterable[1]
+Traceback (most recent call last):
+  File "<python-input-20>", line 1, in <module>
+    our_iterable[1]
+    ~~~~~~~~~~~~^^^
+TypeError: 'dict_keys' object is not subscriptable
+>>> our_iterator=iter(our_iterable)
+>>> next(our_iterator)
+'one'
+>>> next(our_iterator)
+'two'
+>>> next(our_iterator)
+'three'
+>>> next(our_iterator)
+Traceback (most recent call last):
+  File "<python-input-26>", line 1, in <module>
+    next(our_iterator)
+    ~~~~^^^^^^^^^^^^^^
+StopIteration
+>>> our_iterator=iter(our_iterable)
+>>> for i in our_iterator:
+...     print(i)
+...
+one
+two
+three
+>>> list(our_iterable)
+['one', 'two', 'three']
+>>> list(our_iterator)
+[]
