@@ -1,0 +1,94 @@
+>>> def greet(name):
+...     """
+...     This function takes a name as input and prints and a greeting message.
+...     :param name: str
+...     """
+...     print(f"Hello, {name}!")
+... greet("Alice")
+...
+Hello, Alice!
+>>> def add_numbers(a,b):
+...     """
+...     This function takes two numbers as input and returns their sum.
+...     :param a: int or float
+...     :param b: int or float
+...     :return: int or float
+...     """
+...     return a+b
+... result=add_numbers(5,3)
+... print(result)
+...
+8
+>>> def introduce(name, age=18):
+...     """
+...     This function introduces a person witha default age of 18.
+...     :param name: str
+...     :param age: int
+...     """
+...     print(f"My name is {name} and I am {age} years old.")
+... introduce("Bob")
+... introduce("Alice",25)
+...
+My name is Bob and I am 18 years old.
+My name is Alice and I am 25 years old.
+>>> def print_numbers(*args):
+...     """
+...     This function takes a variable number of arguments and prints them.
+...     :param args: tuple
+...     """
+...     for num in args:
+...         print(num)
+... print_numbers(1,2,3,4)
+...
+1
+2
+3
+4
+>>> def print_details(**kwargs):
+...     """
+...     This function takes a keyword arguments and prints them as key-value pairs.
+...     :param kwargs: dict
+...     """
+...     for key, value in kwargs.items():
+...         print(f"{key}: {value}")
+... print_details(name="Alice", age=25, city="New York")
+...
+name: Alice
+age: 25
+city: New York
+>>> square = lambda x: x ** 2
+>>> print(square(4))
+16
+
+EXERCISES
+1.Write a function that calculates the factorial of a number.
+>>> def factorial(n):
+...     if n < 0:
+...         return "Factorial is not defined for negative numbers"
+...     elif n == 0 or n == 1:
+...         return 1
+...     else:
+...         result = 1
+...         for i in range(2, n + 1): 
+...             result *= i
+...         return result
+... print(factorial(5))
+...
+120
+2. Write a function that checks if a given string is a palindrome.
+>>> def is_palindrome(s):
+...     cleaned = s.replace(" ", "").lower()
+...     return cleaned == cleaned[::-1]
+... print(is_palindrome("Madam"))
+... print(is_palindrome("Hello"))
+... print(is_palindrome("A man said hello!"))
+...
+True
+False
+False
+3.Write a lambda function to find the maximum of two numbers.
+>>> maximum = lambda a, b: a if a > b else b
+>>> print(maximum(10,20))
+20
+>>> print(maximum(100,98))
+100

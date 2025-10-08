@@ -1,0 +1,38 @@
+1.TESTING USING UNITTEST
+>>> import unittest
+>>> def add(a, b):
+...     return a + b
+... class TestMathOperations(unittest.TestCase):
+...     def test_add(self):
+...         self.assertEqual(add(2,3),5)
+...         self.assertNotEqual(add(2,2),5)
+... if __name__ == "__main__":
+...     unittest.main()
+...
+.
+----------------------------------------------------------------------
+Ran 1 test in 0.000s
+
+OK
+
+>>> def multiply(a, b):
+...     return a * b
+... def test_multiply():
+...     assert multipy(2, 3) == 6
+...     assert multiply(0, 5) == 0
+...
+
+
+>>> from unittest.mock import MagicMock
+>>> class serivce:
+...     def fetch_data(self):
+...         return "Real Data"
+...
+>>> class Service:
+...     def fetch_data(self):
+...         return "Real Data"
+... service = Service()
+... service.fetch_data = MagicMock(return_value="Mocked Data")
+... print(service.fetch_data())
+...
+Mocked Data

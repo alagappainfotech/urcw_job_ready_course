@@ -1,0 +1,32 @@
+SELECT DISTINCT director FROM movies pixar_movies ORDER BY director ASC;
+director
+Andrew Stanton
+Brad Bird
+Brenda Chapman
+Dan Scanlon
+John Lasseter
+Lee Unkrich
+Pete Docter
+
+SELECT title,year FROM movies ORDER BY year DESC LIMIT 4;
+title	year
+Monsters University	2013
+Brave	2012
+Cars 2	2011
+Toy Story 3	2010
+
+SELECT title FROM movies ORDER BY title ASC LIMIT 5;
+title
+A Bug's Life
+Brave
+Cars
+Cars 2
+Finding Nemo
+
+SELECT title FROM movies ORDER BY title ASC LIMIT 5 OFFSET 5;
+title
+Monsters University
+Monsters, Inc.
+Ratatouille
+The Incredibles
+Toy Story

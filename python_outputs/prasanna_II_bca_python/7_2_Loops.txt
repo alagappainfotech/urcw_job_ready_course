@@ -1,0 +1,103 @@
+1.For Loops:
+>>> fruits=['apple','banana','cherry']
+>>> for fruit in fruits:
+...     print(fruit)
+...
+apple
+banana
+cherry
+>>> for i in range(5):
+...     print(i)
+...
+0
+1
+2
+3
+4
+2.While Loops:
+>>> count=5
+>>> while count>0:
+...     print(count)
+...     count -= 1
+...
+5
+4
+3
+2
+1
+3.Nested Loops:
+>>> for i in range(1,4):
+...     for j in range(1,4):
+...         print(f"{i} multiply {j} = {i*j}")
+...
+1 multiply 1 = 1
+1 multiply 2 = 2
+1 multiply 3 = 3
+2 multiply 1 = 2
+2 multiply 2 = 4
+2 multiply 3 = 6
+3 multiply 1 = 3
+3 multiply 2 = 6
+3 multiply 3 = 9
+4.Break and Continue:
+Example using Break:
+>>> for num in range(1,10):
+...     if num == 5:
+...         break
+...     print(num)
+...
+1
+2
+3
+4
+Example using Continue:
+>>> for num in range(1,6):
+...     if num == 3:
+...         continue
+...     print(num)
+...
+1
+2
+4
+5
+5.Else with Loops:
+>>> for num in range(1,4):
+...     print(num)
+... else:
+...     print("Loop Completed!")
+...
+1
+2
+3
+Loop Completed!
+
+Execises:
+1.Write a program to calculate the sum of all even numbers from 1 to 100.
+>>> total=0
+>>> for num in range(1,101):
+...     if num % 2 == 0:
+...         total += num
+... print("The sum of all even numbers from 1 to 100 is:",total)
+...
+The sum of all even numbers from 1 to 100 is: 2550
+2. Create a nested loop to print a pattern like: 
+* 
+** 
+***
+>>> rows=3
+>>> for i in range(1, rows + 1):
+...     for j in range(i):
+...         print("*", end=" ")
+...     print()
+...
+*
+**
+***
+3.Write a program to find the first number divisible by 7 in a range of 1 to 50.
+>>> for i in range(1,51):
+...     if i % 7 == 0:
+...         print("The first number divisible by 7 is:",i)
+...         break
+...
+The first number divisible by 7 is: 7
+

@@ -1,0 +1,42 @@
+1.IMPORTING MODULE
+>>> import math
+>>> print(math.sqrt(16))
+4.0
+2.IMPORTING SPECIFIC FUNCITIONS OR VARIABLES
+>>> from math import pi, pow
+>>> print(pi)
+3.141592653589793
+>>> print(pow(2,3))
+8.0
+3.RENAMING A MODULE
+>>> import math as m
+>>> print(m.factorial(5))
+120
+4.USING A DIR FUNCTION
+>>> print(dir(math))
+['__doc__', '__loader__', '__name__', '__package__', '__spec__', 'acos', 'acosh', 'asin', 'asinh', 
+'atan', 'atan2', 'atanh', 'cbrt', 'ceil', 'comb', 'copysign', 'cos', 'cosh', 'degrees', 'dist', 'e', 
+'erf', 'erfc', 'exp', 'exp2', 'expm1', 'fabs', 'factorial', 'floor', 'fma', 'fmod', 'frexp', 'fsum', 
+'gamma', 'gcd', 'hypot', 'inf', 'isclose', 'isfinite', 'isinf', 'isnan', 'isqrt', 'lcm', 'ldexp', 
+'lgamma', 'log', 'log10', 'log1p', 'log2', 'modf', 'nan', 'nextafter', 'perm', 'pi', 'pow', 'prod', 
+'radians', 'remainder', 'sin', 'sinh', 'sqrt', 'sumprod', 'tan', 'tanh', 'tau', 'trunc', 'ulp']
+5.NUILT-IN MODULES
+>>> import random
+>>> print(random.randint(1, 10))
+1
+
+EXERCISES:
+1.Create a custom module with a function to calculate the area of a rectangle.
+def rectangle_area(length,width):
+     """Calculate the area of a rectangle."""
+     return length*width
+import mymodule
+length=10
+width=5
+area=mymodule.rectangle_area(length,width)
+print(f"Area of rectangle with length {length} and width {width} is: {area}")
+#output
+Area of the rectangle with length 10 and width 5 is: 50
+
+2.Use the 'random' module to generate the list of 5 random numbers
+ 
