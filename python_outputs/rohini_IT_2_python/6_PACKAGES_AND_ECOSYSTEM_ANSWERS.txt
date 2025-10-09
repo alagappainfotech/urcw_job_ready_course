@@ -1,0 +1,170 @@
+ 6_PACKAGES_AND_ECOSYSTEM_ANSWERS
+####################################################
+6. Packages & Ecosystem
+ Module 6: Packages & Ecosystem
+####################################################
+print("Module 6: Packages & Ecosystem")
+print("=" * 60)
+ =============================================================================
+ PACKAGES AND MODULES OVERVIEW
+ =============================================================================
+import importlib
+import sys
+import pkgutil
+print("\nPython Module Search Path (sys.path):")
+for p in sys.path[:5]:
+    print(" ", p)
+print("\nDiscovering installed top-level packages (first 20):")
+found = [m.name for m in pkgutil.iter_modules()]
+for name in sorted(found)[:20]:
+    print(" ", name)
+=============================================================================
+ STANDARD LIBRARY SAMPLER
+=============================================================================
+print("\nStandard library sampler:")
+from pathlib import Path
+from collections import Counter, defaultdict
+from datetime import datetime, timedelta
+import json
+import csv
+import statistics
+project_root = Path.cwd()
+print(f"Current working directory: {project_root}")
+print(f"Entries in cwd (first 5): {[p.name for p in list(project_root.iterdir())[:5]]}")
+counts = Counter(["a", "b", "a", "c", "b", "a"])
+print("Counter example:", counts)
+by_category = defaultdict(list)
+by_category["fruits"].extend(["apple", "banana"]) 
+by_category["veggies"].append("carrot")
+print("defaultdict example:", dict(by_category))
+now = datetime.now()
+print("Now:", now.isoformat(), " | +3 days:", (now + timedelta(days=3)).isoformat())
+obj = {"name": "Alice", "age": 30}
+print("JSON dumps:", json.dumps(obj))
+import io
+buf = io.StringIO()
+writer = csv.writer(buf)
+writer.writerow(["name", "score"]) 
+writer.writerows([["Alice", 95], ["Bob", 88]])
+print("CSV content:\n" + buf.getvalue())
+print("Mean of [1,2,3,4,5]:", statistics.mean([1,2,3,4,5]))
+ =============================================================================
+ VIRTUAL ENVIRONMENTS & DEPENDENCIES (CONCEPTUAL)
+ =============================================================================
+print("\nDependency management tips:")
+print("- Use venv for per-project environments")
+print("- Pin versions in requirements.txt for reproducibility")
+print("- Consider tools: pip-tools, poetry, or pipenv for advanced workflows")
+ =============================================================================
+ IMPORT PATTERNS
+ =============================================================================
+print("\nImport patterns:")
+print("- Absolute imports preferred: from mypkg.utils import helper")
+print("- Relative imports within a package: from .utils import helper")
+print("- Avoid wildcard imports in production code")
+module_name = "json"
+json_module = importlib.import_module(module_name)
+print("Dynamically imported:", json_module.__name__)
+=============================================================================
+SIMPLE PACKAGE LAYOUT EXAMPLE (DOC ONLY)
+=============================================================================
+print("\nSuggested package layout:")
+print("""
+mypackage/
+  __init__.py         
+  utils.py           
+  processing/
+    __init__.py
+    cleaning.py        
+    transform.py     
+  io/
+    __init__.py
+    readers.py         
+    writers.py        
+tests/
+  test_utils.py
+  test_processing.py
+""")
+print("\n" + "="*60)
+print("MODULE 6 COMPLETE!")
+print("Next: Module 7 - Data Handling, Persistence & Exploration")
+print("="*60)
+Module 6: Packages & Ecosystem
+============================================================
+
+Python Module Search Path (sys.path):
+
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2032.0_x64__qbz5n2kfra8p0\python313.zip
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2032.0_x64__qbz5n2kfra8p0\DLLs
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2032.0_x64__qbz5n2kfra8p0\Lib
+  C:\Program Files\WindowsApps\PythonSoftwareFoundation.Python.3.13_3.13.2032.0_x64__qbz5n2kfra8p0
+
+Discovering installed top-level packages (first 20):
+  __future__
+  __hello__
+  __phello__
+  _aix_support
+  _android_support
+  _apple_support
+  _asyncio
+  _bz2
+  _collections_abc
+  _colorize
+  _compat_pickle
+  _compression
+  _ctypes
+  _decimal
+  _elementtree
+  _hashlib
+  _ios_support
+  _lzma
+  _markupbase
+  _multiprocessing
+
+Standard library sampler:
+Current working directory: C:\Users
+Entries in cwd (first 5): ['All Users', 'Default', 'Default User', 'desktop.ini', 'DR.B.MARISAMY']
+Counter example: Counter({'a': 3, 'b': 2, 'c': 1})
+defaultdict example: {'fruits': ['apple', 'banana'], 'veggies': ['carrot']}
+Now: 2025-09-13T19:57:25.356621  | +3 days: 2025-09-16T19:57:25.356621
+JSON dumps: {"name": "Alice", "age": 30}
+CSV content:
+name,score
+Alice,95
+Bob,88
+
+Mean of [1,2,3,4,5]: 3
+
+Dependency management tips:
+- Use venv for per-project environments
+- Pin versions in requirements.txt for reproducibility
+- Consider tools: pip-tools, poetry, or pipenv for advanced workflows
+
+Import patterns:
+- Absolute imports preferred: from mypkg.utils import helper
+- Relative imports within a package: from .utils import helper
+- Avoid wildcard imports in production code
+Dynamically imported: json
+
+Suggested package layout:
+
+mypackage/
+  __init__.py          # Define public API via __all__
+  utils.py             # Helpers
+  processing/
+    __init__.py
+    cleaning.py        # Clean/normalize data
+    transform.py       # Transform data
+  io/
+    __init__.py
+    readers.py         # CSV/JSON readers
+    writers.py         # CSV/JSON writers
+tests/
+  test_utils.py
+  test_processing.py
+
+
+============================================================
+MODULE 6 COMPLETE!
+Next: Module 7 - Data Handling, Persistence & Exploration
+============================================================
