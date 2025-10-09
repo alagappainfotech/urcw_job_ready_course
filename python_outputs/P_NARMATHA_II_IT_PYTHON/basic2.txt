@@ -1,0 +1,406 @@
+Module 2: Advanced Data Structures & Control Flow
+print("=" * 60)
+============================================================
+print("I'm Python. Nice to meet you!")
+I'm Python. Nice to meet you!
+print("Hello, World", end="!")
+Hello, World!
+input_string_var = input("Enter some data: ")
+Enter some data: 
+some_var = 5
+some_var
+5
+"yay!" if 0 > 1 else "nay!"
+'nay!'
+li = []
+other_li = [4, 5, 6]
+
+li.append(1)
+li.append(2)
+li.append(4)
+li.append(3)
+li.pop()
+3
+li.append(3)
+li[0]
+1
+li[-1]
+3
+li[4]
+IndexError
+li[1:3]
+[2, 4]
+li[2:]
+[4, 3]
+li[:3]
+[1, 2, 4]
+li[::2]
+[1, 4]
+li[::-1]
+[3, 4, 2, 1]
+li2 = li[:]
+del li[2]
+li.remove(2)
+li.remove(2)
+list.remove
+li.insert(1, 2)
+li.index(2)
+1
+li.index(4)
+4 is not in list
+li + other_li
+[1, 2, 3, 4, 5, 6]
+li.extend(other_li)
+1 in li
+True
+len(li)
+6
+tup = (1, 2, 3)
+tup[0]
+1
+tup[0] = 3
+TypeError
+type((1))
+<class 'int'>
+type((1,))
+<class 'tuple'>
+type(())
+<class 'tuple'>
+type(())
+<class 'tuple'>
+len(tup)
+3
+tup + (4, 5, 6)
+(1, 2, 3, 4, 5, 6)
+tup[:2]
+(1, 2)
+2 in tup
+True
+a, b, c = (1, 2, 3)
+a, *b, c = (1, 2, 3, 4)
+d, e, f = 4, 5, 6
+e, d = d, e
+empty_dict = {}
+filled_dict = {"one": 1, "two": 2, "three": 3}
+invalid_dict = {[1,2,3]: "123"}
+valid_dict = {(1,2,3):[1,2,3]}
+filled_dict["one"]
+1
+list(filled_dict.keys())
+['one', 'two', 'three']
+list(filled_dict.keys())
+['one', 'two', 'three']
+list(filled_dict.values())
+[1, 2, 3]
+"one" in filled_dict
+True
+1 in filled_dict
+False
+filled_dict["four"]
+key error
+filled_dict.get("one")
+1
+filled_dict.get("four")
+filled_dict.get("one", 4)
+1
+filled_dict.get("four", 4)
+4
+filled_dict.setdefault("five", 5)
+5
+filled_dict.setdefault("five", 6)
+5
+filled_dict.update({"four":4})
+filled_dict["four"] = 4
+other_set = {3, 4, 5, 6}
+filled_set & other_set
+ {3, 4, 5}
+filled_set | other_set
+{1, 2, 3, 4, 5, 6}
+{1, 2, 3, 4} - {2, 3, 5}
+{1, 4}
+{1, 2, 3, 4} ^ {2, 3, 5}
+{1, 4, 5}
+{1, 2} >= {1, 2, 3}
+False
+{1, 2} <= {1, 2, 3}
+True
+2 in filled_set
+True
+10 in filled_set
+False
+filled_set = some_set.copy()
+filled_set is some_set
+False
+print("\n" + "="*60)
+
+============================================================
+print("ADVANCED COLLECTION OPERATIONS")
+ADVANCED COLLECTION OPERATIONS
+print("="*60)
+============================================================
+print("\n1. List Comprehensions:")
+
+1. List Comprehensions:
+print("-"*40)
+----------------------------------------
+squares = [x**2 for x in range(10)]
+print(f"Squares: {squares}")
+Squares: [0, 1, 4, 9, 16, 25, 36, 49, 64, 81]
+even_squares = [x**2 for x in range(10) if x % 2 == 0]
+print(f"Even squares: {even_squares}")
+Even squares: [0, 4, 16, 36, 64]
+matrix = [[i + j for j in range(3)] for i in range(3)]
+print(f"Matrix: {matrix}")
+Matrix: [[0, 1, 2], [1, 2, 3], [2, 3, 4]]
+print("\n2. Dictionary Comprehensions:")
+
+2. Dictionary Comprehensions:
+print("-" * 40)
+----------------------------------------
+unique_lengths = {len(word) for word in ["hello", "world", "python", "code"]}
+print(f"Unique word lengths: {unique_lengths}")
+
+Unique word lengths: {4, 5, 6}
+print("\n" + "="*60)
+
+
+============================================================
+print("STRING MANIPULATION AND FORMATTING")
+STRING MANIPULATION AND FORMATTING
+print("="*60)
+============================================================
+print("\n1. String Methods:")
+
+1. String Methods:
+print("-" * 40)
+----------------------------------------
+text = "  Hello, World!  "
+text = "  Hello, World!  "
+print(f"Original:'{text}'")
+Original:'  Hello, World!  '
+print(f"Strip: '{text.strip()}'")
+Strip: 'Hello, World!'
+print(f"Lower: '{text.lower()}'")
+Lower: '  hello, world!  '
+print(f"Upper: '{text.upper()}'")
+
+Upper: '  HELLO, WORLD!  '
+print(f"Replace: '{text.replace('World', 'Python')}'")
+
+Replace: '  Hello, Python!  '
+print(f"Split: {text.split(',')}")
+
+Split: ['  Hello', ' World!  ']
+print(f"Startswith 'Hello': {text.strip().startswith('Hello')}")
+Startswith 'Hello': True
+print(f"Endswith '!': {text.strip().endswith('!')}")
+Endswith '!': True
+print("\n2. String Formatting:")
+
+2. String Formatting:
+print("-"*40)
+----------------------------------------
+name="Alice"
+age=25
+score=87.5
+print(f"f-string: {name} is {age} years old and scored {score:.1f}%")
+f-string: Alice is 25 years old and scored 87.5%
+print("format(): {} is {} years old and scored {:.1f}%".format(name, age, score))
+
+format(): Alice is 25 years old and scored 87.5%
+print("% formatting: %s is %d years old and scored %.1f%%" % (name, age, score))
+
+type error
+print("\n3. String Joining:")
+
+3. String Joining:
+print("-"*40)
+----------------------------------------
+words = ["Python", "is", "awesome", "for", "data", "science"]
+sentence = " ".join(words)
+print(f"Joined: {sentence}")
+Joined: Python is awesome for data science
+csv_line = ",".join(["Alice", "25", "87.5", "Computer Science"])
+print(f"CSV format: {csv_line}")
+
+CSV format: Alice,25,87.5,Computer Science
+print("\n" + "="*60)
+
+============================================================
+print("CONTROL FLOW WITH COLLECTIONS")
+CONTROL FLOW WITH COLLECTIONS
+print("="*60)
+============================================================
+print("\n1. Conditional Expressions:")
+
+1. Conditional Expressions:
+print("-" * 40)
+
+----------------------------------------
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+even_numbers = [x for x in numbers if x % 2 ==0]
+odd_numbers = [x for x in numbers if x % 2 != 0]
+print(f"Even numbers: {even_numbers}")
+Even numbers: [2, 4, 6, 8, 10]
+print(f"odd numbers: {odd_numbers}")
+odd numbers: [1, 3, 5, 7, 9]
+filtered_numbers = [x for x in numbers if x > 3 and x < 8]
+
+print(f"Numbers between 3 and 8: {filtered_numbers}")
+Numbers between 3 and 8: [4, 5, 6, 7]
+print("\n2. Nested Operations:")
+
+2. Nested Operations:
+print("-" * 40)
+----------------------------------------
+nested_list = [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+flattened = [item for sublist in nested_list for item in sublist]
+print(f"Nested list: {nested_list}")
+Nested list: [[1, 2, 3], [4, 5, 6], [7, 8, 9]]
+print(f"Flattened: {flattened}")
+Flattened: [1, 2, 3, 4, 5, 6, 7, 8, 9]
+print("\n" + "="*60)
+
+============================================================
+print("PRACTICAL EXAMPLES")
+PRACTICAL EXAMPLES
+print("="*60)
+
+============================================================
+print("\n1. Data Processing Example:")
+
+
+1. Data Processing Example:
+print("-" * 40)
+----------------------------------------
+student_data = [
+    {"name": "Alice", "grades": [85, 92, 78, 96]},
+    {"name": "Bob", "grades": [90, 88, 95, 87]},
+    {"name": "Charlie", "grades": [70, 75, 80, 72]},
+    {"name": "Diana", "grades": [95, 98, 92, 94]}
+]
+for student in student_data:
+    name = student["name"]
+    grades = student["grades"]
+    average = sum(grades) / len(grades)
+    print(f"{name}: {grades} -> Average: {average:.1f}")
+
+Alice: [85, 92, 78, 96] -> Average: 87.8
+Bob: [90, 88, 95, 87] -> Average: 90.0
+Charlie: [70, 75, 80, 72] -> Average: 74.2
+Diana: [95, 98, 92, 94] -> Average: 94.8
+high_achievers = [s["name"] for s in student_data
+                   if sum(s["grades"]) / len(s["grades"]) > 85]
+print(f"High achievers (>85): {high_achievers}")
+High achievers (>85): ['Alice', 'Bob', 'Diana']
+print("\n2. Text Analysis Example:")
+
+2. Text Analysis Example:
+print("-" * 40)
+----------------------------------------
+text = "Python is a powerful programming language. Python is used for data science, web development, and automation."
+
+words = text.lower().replace(",", "").replace(".", "").split()
+words = text.lower().replace(",", "").replace(".", "").split()
+word_freq = {}
+for word in words:
+    word_freq[word] = word_freq.get(word, 0) + 1
+
+print("Word frequency:")
+Word frequency:
+for word, count in sorted(word_freq.items()):
+    print(f"  {word}: {count}")
+    most_common = sorted(word_freq.items(), key=lambda x: x[1], reverse=True)[:3]
+    print(f"Most common words: {most_common}")
+    print("\n3. Set Operations Example:")
+    print("-" * 40)
+group_a = {"Alice", "Bob", "Charlie", "Diana", "Eve"}
+group_b = {"Bob", "Charlie", "Frank", "Grace", "Henry"}
+print(f"Group A: {group_a}")
+Group A: {'Charlie', 'Alice', 'Eve', 'Diana', 'Bob'}
+print(f"Group B: {group_b}")
+Group B: {'Henry', 'Charlie', 'Grace', 'Bob', 'Frank'}
+both_groups = group_a & group_b
+only_a = group_a - group_b
+only_b = group_b - group_a
+all_students = group_a | group_b
+print(f"Students in both groups: {both_groups}")
+Students in both groups: {'Charlie', 'Bob'}
+print(f"Students only in Group A: {only_a}")
+Students only in Group A: {'Eve', 'Diana', 'Alice'}
+print(f"Students only in Group B: {only_b}")
+
+Students only in Group B: {'Grace', 'Frank', 'Henry'}
+print(f"All students: {all_students}")
+All students: {'Alice', 'Charlie', 'Diana', 'Grace', 'Bob', 'Frank', 'Henry', 'Eve'}
+print("\n" + "="*60)
+
+============================================================
+print("PERFORMANCE CONSIDERATIONS")
+PERFORMANCE CONSIDERATIONS
+print("="*60)
+============================================================
+print("""
+1. COLLECTION SELECTION:
+   - Use lists for ordered, mutable sequences
+   - Use tuples for fixed, immutable data
+   - Use sets for unique elements and fast membership testing
+   - Use dictionaries for key-value mappings
+
+2. COMPREHENSIONS:
+   - Prefer comprehensions over loops for simple transformations
+   - Keep comprehensions readable - use multiple lines if needed
+   - Use generator expressions for large datasets
+
+3. STRING OPERATIONS:
+   - Use f-strings for most formatting needs
+   - Use join() for concatenating multiple strings
+   - Be aware of string immutability
+
+4. PERFORMANCE:
+   - Choose appropriate data structures
+   - Use built-in methods when possible
+   - Consider memory usage for large datasets
+
+5. READABILITY:
+   - Use meaningful variable names
+   - Add comments for complex operations
+   - Follow PEP 8 style guidelines
+""")
+
+
+1. COLLECTION SELECTION:
+   - Use lists for ordered, mutable sequences
+   - Use tuples for fixed, immutable data
+   - Use sets for unique elements and fast membership testing
+   - Use dictionaries for key-value mappings
+
+2. COMPREHENSIONS:
+   - Prefer comprehensions over loops for simple transformations
+   - Keep comprehensions readable - use multiple lines if needed
+   - Use generator expressions for large datasets
+
+3. STRING OPERATIONS:
+   - Use f-strings for most formatting needs
+   - Use join() for concatenating multiple strings
+   - Be aware of string immutability
+
+4. PERFORMANCE:
+   - Choose appropriate data structures
+   - Use built-in methods when possible
+   - Consider memory usage for large datasets
+
+5. READABILITY:
+   - Use meaningful variable names
+   - Add comments for complex operations
+   - Follow PEP 8 style guidelines
+
+print("\n" + "="*60)
+
+============================================================
+print("MODULE 2 COMPLETE!")
+MODULE 2 COMPLETE!
+print("Next: Module 3 - Code Organization, Functions & Error Handling")
+Next: Module 3 - Code Organization, Functions & Error Handling
+print("="*60)
+============================================================
