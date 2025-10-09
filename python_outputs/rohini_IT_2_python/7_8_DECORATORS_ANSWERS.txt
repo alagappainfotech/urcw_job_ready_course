@@ -1,0 +1,298 @@
+  7_8_DECORATORS_ANSWERS
+def my_decorator(func):
+    def wrapper():
+        print("Something is happening before the function is called.")
+        func()
+        print("Something is happening after the function is called.")
+    return wrapper
+@my_decorator  
+def say_hello():
+    print("Hello!")
+say_hello()
+def my_decorator_with_args(func):
+    def wrapper(*args, **kwargs):
+        print("Before the function call.")
+        result = func(*args, **kwargs)
+        print("After the function call.")
+        return result
+    return wrapper
+@my_decorator_with_args
+def add(a, b):
+    return a + b
+print(add(3, 5))
+def decorator_one(func):
+    def wrapper():
+        print("Decorator One")
+        func()
+    return wrapper
+def decorator_two(func):
+    def wrapper():
+        print("Decorator Two")
+        func()
+    return wrapper
+@decorator_one
+@decorator_two
+def greet():
+    print("Hello!")
+greet()
+def log_method(func):
+    def wrapper(*args, **kwargs):
+        print(f"Method {func.__name__} is called.")
+        return func(*args, **kwargs)
+    return wrapper
+class MyClass:
+    @log_method
+    def display(self):
+        print("This is a method in MyClass.")
+obj = MyClass()
+obj.display()
+class Example:
+    @staticmethod
+    def static_method():
+        print("This is a static method.")
+   @classmethod
+    def class_method(cls):
+        print("This is a class method.")
+   @property
+    def read_only_property(self):
+        return "This is a read-only property."
+example = Example()
+example.static_method()  
+example.class_method()  
+print(example.read_only_property) 
+Something is happening before the function is called.
+Hello!
+Something is happening after the function is called.
+Before the function call.
+After the function call.
+8
+Decorator One
+Decorator Two
+Hello!
+Method display is called.
+This is a method in MyClass.
+This is a static method.
+This is a class method.
+This is a read-only property.
+Exercise:
+ 1. Create a decorator that logs the execution time of a function.
+>>>
+...
+... def time_logger(func):
+...     """
+...     A decorator that logs the execution time of the decorated function.
+...     """
+...     @wraps(func)
+...     def wrapper(*args, **kwargs):
+...         start_time = time.perf_counter()  # Use a high-resolution timer
+...         result = func(*args, **kwargs)
+...         end_time = time.perf_counter()
+...
+...         execution_time = end_time - start_time
+...
+...         print(f"Function '{func.__name__}' executed in {execution_time:.4f} seconds.")
+...         return result
+...
+...     return wrapper
+...
+... # --- Example Usage ---
+...
+... @time_logger
+... def slow_function(delay_seconds):
+...     """A sample function that waits for a specified number of seconds."""
+...     print(f"Executing slow_function with a delay of {delay_seconds} seconds...")
+...     time.sleep(delay_seconds)
+...     print("slow_function finished.")
+...     return "Done"
+...
+... @time_logger
+... def fast_calculation(n):
+...     """A sample function that performs a quick calculation."""
+...     print(f"Executing fast_calculation for n={n}...")
+...     return sum(x*x for x in range(n))
+...
+... if __name__ == "__main__":
+...     # Call the decorated functions
+...     slow_function(2)
+...     print("-" * 30)
+...
+...     result = fast_calculation(1000000)
+...     print(f"Result of fast_calculation: {result}")
+
+Executing slow_function with a delay of 2 seconds...
+slow_function finished.
+Function 'slow_function' executed in 2.0010 seconds.
+'Done'
+------------------------------
+Executing fast_calculation for n=1000000...
+Function 'fast_calculation' executed in 0.2539 seconds.
+Result of fast_calculation: 333332833333500000
+
+2. Write a decorator that checks if a user is authenticated before executing a function.
+>>>from functools import wraps
+user_session = {
+    'is_authenticated': False,
+    'username': None
+}
+def set_authenticated_user(username):
+    """A helper function to simulate a user logging in."""
+    user_session['is_authenticated'] = True
+    user_session['username'] = username
+    print(f"User '{username}' is now logged in.")
+def clear_authenticated_user():
+    """A helper function to simulate a user logging out."""
+    user_session['is_authenticated'] = False
+    user_session['username'] = None
+    print("User logged out.")
+def login_required(func)
+    """
+    Decorator to check if a user is authenticated before executing a function.
+    """
+    @wraps(func)
+    def wrapper(*args, **kwargs):
+        if not user_session.get('is_authenticated'):
+            print("Access Denied: You must be logged in to perform this action.")
+            return None 
+...         else:
+...             print(f"Access Granted: User '{user_session['username']}' is authenticated.")
+...             return func(*args, **kwargs)
+...     return wrapper
+... @login_required
+... def show_user_profile():
+...     """A function that can only be accessed by an authenticated user."""
+...     print(f"Viewing profile for user: {user_session['username']}")
+...     return True
+... @login_required
+... def delete_critical_data():
+...     """A more sensitive function that also requires authentication."""
+...     print("Deleting sensitive data...")
+...     return True
+... def access_public_page():
+...     """A function that does not require authentication."""
+...     print("Viewing the public homepage.")
+... if __name__ == "__main__":
+...     print("--- Test 1: User is not logged in ---")
+...     access_public_page()
+...     show_user_profile()
+...     delete_critical_data()
+...     print("-" * 30)
+...     print("--- Test 2: User logs in and accesses protected functions ---")
+...     set_authenticated_user("Alice")
+...     access_public_page()
+...     show_user_profile()
+...     delete_critical_data()
+...     print("-" * 30)
+...     print("--- Test 3: User logs out ---")
+...     clear_authenticated_user()
+...     show_user_profile()
+
+--- Test 1: User is not logged in ---
+Viewing the public homepage.
+Access Denied: You must be logged in to perform this action.
+Access Denied: You must be logged in to perform this action.
+------------------------------
+--- Test 2: User logs in and accesses protected functions ---
+User 'Alice' is now logged in.
+Viewing the public homepage.
+Access Granted: User 'Alice' is authenticated.
+Viewing profile for user: Alice
+True
+Access Granted: User 'Alice' is authenticated.
+Deleting sensitive data...
+True
+------------------------------
+--- Test 3: User logs out ---
+User logged out.
+Access Denied: You must be logged in to perform this action.
+
+ 3. Create a class with a method that uses a custom decorator to log method calls.
+import functools
+import logging
+
+# Set up basic logging configuration
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+    datefmt='%Y-%m-%d %H:%M:%S'
+)
+logger = logging.getLogger(__name__)
+
+# Define the custom decorator
+def log_method_call(func):
+    """
+    A decorator that logs the entry and exit of a method within a class.
+    It correctly handles the 'self' argument for instance methods.
+    """
+    @functools.wraps(func)
+    def wrapper(self, *args, **kwargs):
+        # Log the start of the method call, including the instance and method name
+        logger.info(f"Class: {self.__class__.__name__}, Method: {func.__name__} - Starting execution.")
+        
+        try:
+            # Call the original method
+            result = func(self, *args, **kwargs)
+            
+            # Log the successful completion and return value
+            logger.info(f"Class: {self.__class__.__name__}, Method: {func.__name__} - Finished successfully.")
+            return result
+        
+        except Exception as e:
+            # Log any exceptions that occur
+            logger.error(f"Class: {self.__class__.__name__}, Method: {func.__name__} - An error occurred: {e}", exc_info=True)
+            raise # Re-raise the exception to not alter program behavior
+
+    return wrapper
+
+# Define a class with a method using the custom decorator
+class Calculator:
+    """A sample class with methods that perform calculations."""
+
+    def __init__(self, value):
+        self.value = value
+        
+    @log_method_call
+    def add(self, x):
+        """Adds a value to the calculator's current value."""
+        self.value += x
+        return self.value
+
+    @log_method_call
+    def divide(self, x):
+        """Divides the calculator's current value by another value."""
+        if x == 0:
+            raise ValueError("Cannot divide by zero.")
+        self.value /= x
+        return self.value
+
+# Demonstrate the decorated methods
+if __name__ == "__main__":
+    calc = Calculator(10)
+
+    # Test a successful method call
+    print("--- Calling a successful method ---")
+    calc.add(5)
+    print(f"Current value: {calc.value}\n")
+
+    # Test a method call that raises an exception
+    print("--- Calling a method that raises an exception ---")
+    try:
+        calc.divide(0)
+    except ValueError as e:
+        print(f"Caught expected error: {e}")
+
+--- Calling a successful method ---
+2025-09-14 19:41:19 - __main__ - INFO - Class: Calculator, Method: add - Starting execution.
+2025-09-14 19:41:19 - __main__ - INFO - Class: Calculator, Method: add - Finished successfully.
+15
+Current value: 15
+
+--- Calling a method that raises an exception ---
+2025-09-14 19:41:19 - __main__ - INFO - Class: Calculator, Method: divide - Starting execution.
+2025-09-14 19:41:19 - __main__ - ERROR - Class: Calculator, Method: divide - An error occurred: Cannot divide by zero.
+Traceback (most recent call last):
+  File "<python-input-32>", line 25, in wrapper
+    result = func(self, *args, **kwargs)
+  File "<python-input-32>", line 55, in divide
+    raise ValueError("Cannot divide by zero.")
+ValueError: Cannot divide by zero.
+Caught expected error: Cannot divide by zero.
