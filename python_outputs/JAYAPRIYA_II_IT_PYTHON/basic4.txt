@@ -1,0 +1,308 @@
+4.FUNCTIONS
+
+def add(x, y):
+    print("x is {} and y is {}".format(x, y))
+    return x + y 
+add(5, 6)  
+add(y=6, x=5)  
+def varargs(*args):
+    return args
+varargs(1, 2, 3)  
+O/P
+x is 5 and y is 6
+x is 5 and y is 6
+def keyword_args(**kwargs):
+    return kwargs
+
+# Let's call it to see what happens
+keyword_args(big="foot", loch="ness")  # => {"big": "foot", "loch": "ness"}
+
+
+# You can do both at once, if you like
+def all_the_args(*args, **kwargs):
+    print(args)
+    print(kwargs)
+"""
+all_the_args(1, 2, a=3, b=4) prints:
+    (1, 2)
+    {"a": 3, "b": 4}
+"""
+
+# When calling functions, you can do the opposite of args/kwargs!
+# Use * to expand args (tuples) and use ** to expand kwargs (dictionaries).
+args = (1, 2, 3, 4)
+kwargs = {"a": 3, "b": 4}
+all_the_args(*args)            # equivalent: all_the_args(1, 2, 3, 4)
+all_the_args(**kwargs)         # equivalent: all_the_args(a=3, b=4)
+all_the_args(*args, **kwargs)  # equivalent: all_the_args(1, 2, 3, 4, a=3, b=4)
+
+# Returning multiple values (with tuple assignments)
+def swap(x, y):
+    return y, x  # Return multiple values as a tuple without the parenthesis.
+                 # (Note: parenthesis have been excluded but can be included)
+
+x = 1
+y = 2
+x, y = swap(x, y)     # => x = 2, y = 1
+# (x, y) = swap(x,y)  # Again the use of parenthesis is optional.
+
+# global scope
+x = 5
+
+def set_x(num):
+    # local scope begins here
+    # local var x not the same as global var x
+    x = num    # => 43
+    print(x)   # => 43
+
+def set_global_x(num):
+    # global indicates that particular var lives in the global scope
+    global x
+    print(x)   # => 5
+    x = num    # global var x is now set to 6
+    print(x)   # => 6
+
+set_x(43)
+set_global_x(6)
+
+O/P
+(1, 2, 3, 4)
+{}
+()
+{'a': 3, 'b': 4}
+(1, 2, 3, 4)
+{'a': 3, 'b': 4}
+43
+5
+6
+
+def create_adder(x):
+    def adder(y):
+        return x + y
+return adder
+
+add_10 = create_adder(10)
+add_10(3)   
+O/P
+13
+def keyword_args(**kwargs):
+    return kwargs
+
+# Let's call it to see what happens
+keyword_args(big="foot", loch="ness")  # => {"big": "foot", "loch": "ness"}
+
+
+# You can do both at once, if you like
+def all_the_args(*args, **kwargs):
+    print(args)
+    print(kwargs)
+"""
+all_the_args(1, 2, a=3, b=4) prints:
+ (1, 2)
+    {"a": 3, "b": 4}
+"""
+
+# When calling functions, you can do the opposite of args/kwargs!
+# Use * to expand args (tuples) and use ** to expand kwargs (dictionaries).
+args = (1, 2, 3, 4)
+kwargs = {"a": 3, "b": 4}
+all_the_args(*args)            # equivalent: all_the_args(1, 2, 3, 4)
+all_the_args(**kwargs)         # equivalent: all_the_args(a=3, b=4)
+all_the_args(*args, **kwargs)  # equivalent: all_the_args(1, 2, 3, 4, a=3, b=4)
+
+# Returning multiple values (with tuple assignments)
+def swap(x, y):
+    return y, x  # Return multiple values as a tuple without the parenthesis.
+                 # (Note: parenthesis have been excluded but can be included)
+x = 1
+y = 2
+x, y = swap(x, y)     # => x = 2, y = 1
+# (x, y) = swap(x,y)  # Again the use of parenthesis is optional.
+
+# global scope
+x = 5
+
+def set_x(num):
+    # local scope begins here
+    # local var x not the same as global var x
+    x = num    # => 43
+     print(x)   # => 43
+
+def set_global_x(num):
+    # global indicates that particular var lives in the global scope
+    global x
+    print(x)   # => 5
+    x = num    # global var x is now set to 6
+    print(x)   # => 6
+
+set_x(43)
+set_global_x(6)
+"""
+prints:
+    43
+    5
+    6
+"""
+
+
+# Python has first class functions
+def create_adder(x):
+    def adder(y):
+        return x + y
+    return adder
+
+add_10 = create_adder(10)
+add_10(3)  
+
+# Closures in nested functions:
+# We can use the nonlocal keyword to work with variables in nested scope which shouldn't be declared in the inner functions.
+def create_avg():
+    total = 0
+    count = 0
+    def avg(n):
+        nonlocal total, count
+        total += n
+        count += 1
+        return total/count
+    return avg
+avg = create_avg()
+avg(3)  
+avg(5)  # (3+5)/2 => 4.0
+avg(7)  # (8+7)/3 => 5.0
+
+# There are also anonymous functions
+(lambda x: x > 2)(3)                  
+(lambda x, y: x * 2 + y * 2)(2, 1)  
+
+# There are built-in higher order functions
+list(map(add_10, [1, 2, 3]))          
+list(map(max, [1, 2, 3], [4, 2, 1]))  
+
+list(filter(lambda x: x > 5, [3, 4, 5, 6, 7]))  
+
+# We can use list comprehensions for nice maps and filters
+# List comprehension stores the output as a list (which itself may be nested).
+[add_10(i) for i in [1, 
+
+# You can construct set and dict comprehensions as well.
+{x for x in "abcddeef" if x not in "abc"}  
+(1, 2, 3, 4)
+True
+{'a': 3, 'b': 4}
+(1, 2, 3, 4)
+{'a': 3, 'b': 4}
+43
+5
+6
+def greet(name):
+    """
+    This function takes a name as input and prints a greeting message.
+    :param name: str
+    """
+    print(f"Hello, {name}!")
+
+# Calling a function
+greet("Alice")
+
+O/P
+Hello,Alice!
+def add_numbers(a, b):
+    """
+    This function takes two numbers as input and returns their sum.
+    :param a: int or float
+    :param b: int or float
+    :return: int or float
+    """
+    return a + b
+
+# Using the return value
+result = add_numbers(5, 3)
+print(result)
+O/P
+8
+
+def introduce(name, age=18):
+ """
+    This function introduces a person with a default age of 18.
+    :param name: str
+    :param age: int
+    """
+    print(f"My name is {name} and I am {age} years old.")
+
+O/P
+My name is Bob and I am 18 years old.
+My name is Alice and I am 25 years old.
+
+def print_numbers(*args):
+    """
+    This function takes a variable number of arguments and prints them.
+    :param args: tuple
+    """
+    for num in args:
+ print(num)
+
+print_numbers(1, 2, 3, 4)  
+O/P
+1
+2
+3
+4
+
+def print_details(**kwargs):
+    """
+    This function takes keyword arguments and prints them as key-value pairs.
+    :param kwargs: dict
+    """
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+print_details(name="Alice", age=25, city="New York")
+O/P
+
+name: Alice
+age: 25
+city: New York
+
+square = lambda x: x ** 2
+print(square(4))
+
+O/P
+16
+1.write the function that calculayes the factorial of a number.
+
+def factorial(n):
+    if n < 0:
+        return "Factorial is not defined for negative numbers."
+    if n == 0 or n == 1:
+        return 1
+    return n * factorial(n - 1)
+# Example usage:
+number = 5
+print(f"The factorial of {number} is {factorial(number)}")
+
+O/P
+The factorial of 5 is 120.
+def is_palindrome(s):
+    # Remove spaces and convert to lowercase for uniformity
+    cleaned = ''.join(char.lower() for char in s if char.isalnum())
+    # Check if the cleaned string is the same forwards and backwards
+    return cleaned == cleaned[::-1]
+
+# Example usage:
+string = "A man, a plan, a canal, Panama"
+if is_palindrome(string):
+    print(f'"{string}" is a palindrome.')
+else:
+    print(f'"{string}" is not a palindrome.')
+O/P
+
+"A man, a plan, a canal, Panama" is a palindrome.
+
+3.write a lamda function to find the
+
+ maximum of two numbers 
+max_of_two = lambda a, b: a if a > b else b
+
+Example:
+print(max_of_two(10, 20))  
+print(max_of_two(5, 3))    
